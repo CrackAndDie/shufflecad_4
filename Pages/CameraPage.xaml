@@ -25,7 +25,7 @@
         <Image Grid.RowSpan="3" Grid.ColumnSpan="3" RenderOptions.BitmapScalingMode="NearestNeighbor" RenderOptions.EdgeMode="Aliased" 
                x:Name="ImageCamera" Stretch="Uniform" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
 
-        <Border Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Background="#3f444f" BorderThickness="0" CornerRadius="15" Margin="8">
+        <Border Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Background="#3f444f" BorderThickness="0" CornerRadius="8" Margin="8">
             
         </Border>
 

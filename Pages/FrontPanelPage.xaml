@@ -39,16 +39,16 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="25"></RowDefinition>
                 <RowDefinition Height="0.6*"></RowDefinition>
-                <RowDefinition Height="60 px"></RowDefinition>
+                <RowDefinition Height="42 px"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" ></ColumnDefinition>
             </Grid.ColumnDefinitions>
             
             <TextBlock Text="Input Variables" Foreground="AliceBlue" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Bottom"/>
-            <Border Grid.Column="0" Grid.Row="1" Background="#3f444f" Margin="8" CornerRadius="15" BorderThickness="0"/>
+            <Border Grid.Column="0" Grid.Row="1" Background="#3f444f" Margin="5" CornerRadius="8" BorderThickness="0"/>
             <ListBox x:Name="InputVariables" Grid.Column="0" Grid.Row="1" Background="#3f444f" BorderThickness="0" 
-                        Margin="15" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
+                        Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <UniformGrid Columns="2" HorizontalAlignment="Stretch">
@@ -61,26 +61,30 @@
             </ListBox>
 
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Output Variables" Foreground="AliceBlue" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Bottom"/>
-            <ListBox x:Name="OutputVariables" Background="#3f444f" Grid.Column="0" Grid.Row="3" BorderThickness="0" Margin="5" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <Border Grid.Column="0" Grid.Row="3" Background="#3f444f" Margin="5" CornerRadius="8" BorderThickness="0"/>
+            <ListBox x:Name="OutputVariables" Background="#3f444f" Grid.Column="0" Grid.Row="3" BorderThickness="0" Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Background="#3f444f">
-                            <TextBlock FontSize="14" Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="10, 0" Foreground="#b0a47b" Background="#3f444f"/>
-                            <TextBlock FontSize="14" Text="{Binding Path=Value}" VerticalAlignment="Center" Foreground="#e0d4ab" Background="#3f444f"/>
-                        </StackPanel>
+                        <UniformGrid Columns="2" HorizontalAlignment="Stretch">
+                            <TextBlock FontSize="14" Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="0, 0" Foreground="AliceBlue"/>
+                            <TextBlock FontSize="14" Text="{Binding Path=Value}" VerticalAlignment="Center" Margin="9, 0" 
+                                       Foreground="AliceBlue" HorizontalAlignment="Left"/>
+                        </UniformGrid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
 
             <TextBlock Grid.Row="4" Text="Chart Variables" Foreground="AliceBlue" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Bottom"/>
+            <Border Grid.Column="0" Grid.Row="5" Background="#3f444f" Margin="5" CornerRadius="8" BorderThickness="0"/>
             <ListBox x:Name="ChartVariables" Grid.Column="0" Grid.Row="5" Background="#3f444f" BorderThickness="0" 
-                        Margin="5" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Background="#3f444f">
-                            <TextBlock FontSize="14" Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="10, 0" Foreground="#b0a47b" Background="#3f444f"/>
-                            <TextBlock FontSize="14" Text="{Binding Path=Value}" VerticalAlignment="Center" Foreground="#e0d4ab" Background="#3f444f"/>
-                        </StackPanel>
+                        <UniformGrid Columns="2" HorizontalAlignment="Stretch">
+                            <TextBlock FontSize="14" Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="0, 0" Foreground="AliceBlue"/>
+                            <TextBlock FontSize="14" Text="{Binding Path=Value}" VerticalAlignment="Center" Margin="9, 0"
+                                       Foreground="AliceBlue" HorizontalAlignment="Left"/>
+                        </UniformGrid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
@@ -94,14 +98,16 @@
                     <ColumnDefinition Width="*" ></ColumnDefinition>
                     <ColumnDefinition Width="*" ></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="SaveFieldButton" Grid.Column="1" Grid.Row="0" Width="45" Height="45" Style="{StaticResource NormalButton}">
-                    <materialDesign:PackIcon Width="36" Height="36" HorizontalAlignment="Center" Kind="ContentSave" />
+                <Button x:Name="SaveFieldButton" Grid.Column="1" Grid.Row="0" Width="35" Height="35" Style="{StaticResource NormalButton}">
+                    <materialDesign:PackIcon Width="26" Height="26" HorizontalAlignment="Center" Kind="ContentSave" />
                 </Button>
-                <Button x:Name="OpenFieldButton" Grid.Column="2" Grid.Row="0" Width="45" Height="45" Style="{StaticResource NormalButton}">
-                    <materialDesign:PackIcon Width="36" Height="36" HorizontalAlignment="Center" Kind="FolderOpen" />
+                <Button x:Name="OpenFieldButton" Grid.Column="2" Grid.Row="0" Width="35" Height="35" 
+                        Style="{StaticResource NormalButton}" HorizontalAlignment="Left">
+                    <materialDesign:PackIcon Width="26" Height="26" HorizontalAlignment="Center" Kind="FolderOpen" />
                 </Button>
-                <Button x:Name="CleanFieldButton" Grid.Column="0" Grid.Row="0" Width="45" Height="45" Style="{StaticResource NormalButton}">
-                    <materialDesign:PackIcon Width="36" Height="36" HorizontalAlignment="Center" Kind="Vacuum" />
+                <Button x:Name="CleanFieldButton" Grid.Column="0" Grid.Row="0" Width="35" Height="35" 
+                        Style="{StaticResource NormalButton}" HorizontalAlignment="Right">
+                    <materialDesign:PackIcon Width="26" Height="26" HorizontalAlignment="Center" Kind="Vacuum" />
                 </Button>
             </Grid>
         </Grid>

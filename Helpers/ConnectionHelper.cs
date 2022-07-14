@@ -28,6 +28,8 @@ namespace shufflecad_4.Helpers
         private static DateTime lastRPIDataUpdate = DateTime.Now;
         public static event EventHandler<EventArgs> OnRPIDataChange;
 
+        public static event EventHandler<EventArgs> OnDisconnect;
+
         public static void StartHelper()
         {
             stopTask = false;
@@ -63,7 +65,7 @@ namespace shufflecad_4.Helpers
                                 if (!CheckAlive())
                                 {
                                     StopChannesls();
-                                    InfoHolder.ClearAll();
+                                    OnDisconnect?.Invoke(null, EventArgs.Empty);
                                     SetUpChannels();
                                     LinkEvents();
                                     StartChannels();
@@ -75,7 +77,7 @@ namespace shufflecad_4.Helpers
                             if (isConnected)
                             {
                                 StopChannesls();
-                                InfoHolder.ClearAll();
+                                OnDisconnect?.Invoke(null, EventArgs.Empty);
 
                                 isConnected = false;
                             }
@@ -278,6 +280,7 @@ namespace shufflecad_4.Helpers
                     if (v != null)
                     {
                         v.Value = cameraChannel.OutBytes;
+                        v.Shape = cv.Shape;
                     }
                     else
                     {

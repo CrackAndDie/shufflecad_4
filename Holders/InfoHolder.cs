@@ -27,6 +27,11 @@ namespace shufflecad_4.Holders
         public static event EventHandler<EventArgs> OnChartVariablesChange;
         public static event EventHandler<EventArgs> OnCameraVariablesChange;
 
+        static InfoHolder()
+        {
+            ConnectionHelper.OnDisconnect += new EventHandler<EventArgs>(ClearAll);
+        }
+
         public static void OnOutVariablesChangeWrapper()
         {
             if (OnOutVariablesChange != null)
@@ -59,7 +64,7 @@ namespace shufflecad_4.Holders
             }
         }
 
-        public static void ClearAll()
+        public static void ClearAll(object sender, EventArgs args)
         {
             CurrentRPIData.ClearAll();
             OutVariables.Clear();

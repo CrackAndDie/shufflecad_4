@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace shufflecad_4.Classes
+{
+    public class SettingsClass
+    {
+        // defaults
+        public string PathToSrc { get; set; }
+        public string MainFileName { get; set; }
+        public string IpAddress { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+
+        // settings
+        public bool DetailedOutput { get; set; }
+        public bool ShowMinimap { get; set; }
+    }
+}

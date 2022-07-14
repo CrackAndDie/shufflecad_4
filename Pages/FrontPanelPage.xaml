@@ -1,0 +1,109 @@
+﻿<Page x:Class="shufflecad_4.Pages.FrontPanelPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:shufflecad_4.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="FrontPanelPage">
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" ></ColumnDefinition>
+            <ColumnDefinition Width="240 px" ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"  Grid.Column="0" Grid.Row="0" x:Name="scrollViewer"
+                      CanContentScroll="True" Style="{StaticResource FavsScrollViewer}">
+            <Canvas x:Name="canvas" Width="1300" Height="1300" Background="#3f444f" MouseRightButtonDown="canvas_MouseRightButtonDown" MouseRightButtonUp="canvas_MouseRightButtonUp" MouseMove="canvas_MouseMove">
+            </Canvas>
+        </ScrollViewer>
+
+
+        <Border x:Name="MinimapBorder" BorderThickness="1" BorderBrush="Black"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                Width="110" Height="110" Margin="20"  Grid.Column="0" Grid.Row="0" x:FieldModifier="public">
+            <Border.Background>
+                <VisualBrush Visual="{Binding ElementName=canvas}" />
+            </Border.Background>
+        </Border>
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="25"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="25"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="60 px"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Text="Input Variables" Foreground="AliceBlue" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Bottom"/>
+            <Border Grid.Column="0" Grid.Row="1" Background="#3f444f" Margin="8" CornerRadius="15" BorderThickness="0"/>
+            <ListBox x:Name="InputVariables" Grid.Column="0" Grid.Row="1" Background="#3f444f" BorderThickness="0" 
+                        Margin="15" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <UniformGrid Columns="2" HorizontalAlignment="Stretch">
+                            <TextBlock FontSize="14" Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="0, 0" Foreground="AliceBlue"/>
+                            <TextBlock FontSize="14" Text="{Binding Path=Value}" VerticalAlignment="Center" Margin="9, 0" 
+                                       Foreground="AliceBlue" HorizontalAlignment="Left"/>
+                        </UniformGrid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Output Variables" Foreground="AliceBlue" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Bottom"/>
+            <ListBox x:Name="OutputVariables" Background="#3f444f" Grid.Column="0" Grid.Row="3" BorderThickness="0" Margin="5" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Background="#3f444f">
+                            <TextBlock FontSize="14" Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="10, 0" Foreground="#b0a47b" Background="#3f444f"/>
+                            <TextBlock FontSize="14" Text="{Binding Path=Value}" VerticalAlignment="Center" Foreground="#e0d4ab" Background="#3f444f"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <TextBlock Grid.Row="4" Text="Chart Variables" Foreground="AliceBlue" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Bottom"/>
+            <ListBox x:Name="ChartVariables" Grid.Column="0" Grid.Row="5" Background="#3f444f" BorderThickness="0" 
+                        Margin="5" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Background="#3f444f">
+                            <TextBlock FontSize="14" Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="10, 0" Foreground="#b0a47b" Background="#3f444f"/>
+                            <TextBlock FontSize="14" Text="{Binding Path=Value}" VerticalAlignment="Center" Foreground="#e0d4ab" Background="#3f444f"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Grid Grid.Column="0" Grid.Row="6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" ></ColumnDefinition>
+                    <ColumnDefinition Width="*" ></ColumnDefinition>
+                    <ColumnDefinition Width="*" ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="SaveFieldButton" Grid.Column="1" Grid.Row="0" Width="45" Height="45" Style="{StaticResource NormalButton}">
+                    <materialDesign:PackIcon Width="36" Height="36" HorizontalAlignment="Center" Kind="ContentSave" />
+                </Button>
+                <Button x:Name="OpenFieldButton" Grid.Column="2" Grid.Row="0" Width="45" Height="45" Style="{StaticResource NormalButton}">
+                    <materialDesign:PackIcon Width="36" Height="36" HorizontalAlignment="Center" Kind="FolderOpen" />
+                </Button>
+                <Button x:Name="CleanFieldButton" Grid.Column="0" Grid.Row="0" Width="45" Height="45" Style="{StaticResource NormalButton}">
+                    <materialDesign:PackIcon Width="36" Height="36" HorizontalAlignment="Center" Kind="Vacuum" />
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

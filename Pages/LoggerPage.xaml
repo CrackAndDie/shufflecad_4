@@ -1,0 +1,35 @@
+﻿<Page x:Class="shufflecad_4.Pages.LoggerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:shufflecad_4.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="LoggerPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" ></ColumnDefinition>
+            <ColumnDefinition Width="60 px" ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <RichTextBox Grid.Column="0" Grid.Row="0" Name="LoggerBox" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="20" 
+                 Background="#3f444f" BorderThickness="0" Foreground="AliceBlue" 
+                 HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="0,0" Padding="10, 5, 0, 5">
+            <RichTextBox.Resources>
+                <Style TargetType="{x:Type Paragraph}">
+                    <Setter Property="Margin" Value="0"/>
+                </Style>
+            </RichTextBox.Resources>
+        </RichTextBox>
+
+        <ToggleButton Width="45" Height="45" x:Name="ScrollDownButton" Grid.Column="1" Grid.Row="0" Margin="0, 20" 
+                      VerticalAlignment="Bottom" HorizontalAlignment="Center" Style="{StaticResource NormalToggle}" Checked="ScrollDownButton_Checked">
+            <materialDesign:PackIcon Width="36" Height="36" HorizontalAlignment="Center" Kind="ArrowDownThick" />
+        </ToggleButton>
+    </Grid>
+</Page>

@@ -1,0 +1,58 @@
+﻿<Page x:Class="shufflecad_4.Pages.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:shufflecad_4.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="SettingsPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="100px"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60px"></RowDefinition>
+                <RowDefinition Height="60px"></RowDefinition>
+                <RowDefinition Height="60px"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250px" ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ToggleButton Grid.Row="1" HorizontalAlignment="Left" Margin="14" x:Name="DetailedOutputButton"
+                Style="{StaticResource MaterialDesignSwitchToggleButton}">
+                <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                    <SolidColorBrush Color="LightGreen" />
+                </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                <materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                    <SolidColorBrush Color="LightPink" />
+                </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+            </ToggleButton>
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Detailed Output" FontSize="18" VerticalAlignment="Center" 
+                       HorizontalAlignment="Left" FontFamily="Trebuchet MS" Foreground="AliceBlue" Margin="60, 0"/>
+
+            <ToggleButton Grid.Row="2" HorizontalAlignment="Left" Margin="14" x:Name="ShowMinimapButton"
+                Style="{StaticResource MaterialDesignSwitchToggleButton}">
+                <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                    <SolidColorBrush Color="LightGreen" />
+                </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                <materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                    <SolidColorBrush Color="LightPink" />
+                </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+            </ToggleButton>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Show Minimap" FontSize="18" VerticalAlignment="Center" 
+                       HorizontalAlignment="Left" FontFamily="Trebuchet MS" Foreground="AliceBlue" Margin="60, 0"/>
+
+            
+        </Grid>
+        <Button Grid.Column="0" Grid.Row="1" Height="40" Width="80" Content="Save" x:Name="SaveButton" Style="{StaticResource NormalButton}"
+                    HorizontalAlignment="Right" Margin="20, 10" VerticalAlignment="Center" Click="SaveButton_Click" />
+    </Grid>
+</Page>

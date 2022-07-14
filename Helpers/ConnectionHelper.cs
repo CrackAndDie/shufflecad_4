@@ -168,7 +168,7 @@ namespace shufflecad_4.Helpers
             try
             {
                 // chart variables
-                string chartVarsString = inVariablesChannel.OutString;
+                string chartVarsString = chartsChannel.OutString;
                 if (chartVarsString != "null" && chartVarsString != string.Empty)
                 {
                     string[] vars = chartVarsString.Split('&');

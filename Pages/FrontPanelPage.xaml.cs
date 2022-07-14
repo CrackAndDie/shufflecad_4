@@ -34,6 +34,7 @@ namespace shufflecad_4.Pages
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
+                OutputVariables.Items.Clear();
                 OutputVariables.ItemsSource = null;
                 OutputVariables.ItemsSource = InfoHolder.OutVariables;
             });
@@ -43,6 +44,7 @@ namespace shufflecad_4.Pages
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
+                InputVariables.Items.Clear();
                 InputVariables.ItemsSource = null;
                 InputVariables.ItemsSource = InfoHolder.InVariables;
             });
@@ -52,6 +54,7 @@ namespace shufflecad_4.Pages
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
+                ChartVariables.Items.Clear();
                 ChartVariables.ItemsSource = null;
                 ChartVariables.ItemsSource = InfoHolder.ChartVariables;
             });

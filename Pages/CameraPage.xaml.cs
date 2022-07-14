@@ -21,6 +21,7 @@ namespace shufflecad_4.Pages
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
+                CamerasList.Items.Clear();
                 CamerasList.ItemsSource = null;
                 CamerasList.ItemsSource = InfoHolder.CameraVariables;
             });

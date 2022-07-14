@@ -71,6 +71,8 @@ namespace shufflecad_4.Holders
             OnInVariablesChange(null, EventArgs.Empty);
             OnChartVariablesChange(null, EventArgs.Empty);
             OnCameraVariablesChange(null, EventArgs.Empty);
+
+            CurrentRPIData.OnRPIDataChange(null, EventArgs.Empty);
         }
     }
 }

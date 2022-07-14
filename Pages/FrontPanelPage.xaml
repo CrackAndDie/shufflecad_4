@@ -62,7 +62,8 @@
 
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Output Variables" Foreground="AliceBlue" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Bottom"/>
             <Border Grid.Column="0" Grid.Row="3" Background="#3f444f" Margin="5" CornerRadius="8" BorderThickness="0"/>
-            <ListBox x:Name="OutputVariables" Background="#3f444f" Grid.Column="0" Grid.Row="3" BorderThickness="0" Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox x:Name="OutputVariables" Background="#3f444f" Grid.Column="0" Grid.Row="3" BorderThickness="0" 
+                     Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <UniformGrid Columns="2" HorizontalAlignment="Stretch">
@@ -77,7 +78,7 @@
             <TextBlock Grid.Row="4" Text="Chart Variables" Foreground="AliceBlue" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Bottom"/>
             <Border Grid.Column="0" Grid.Row="5" Background="#3f444f" Margin="5" CornerRadius="8" BorderThickness="0"/>
             <ListBox x:Name="ChartVariables" Grid.Column="0" Grid.Row="5" Background="#3f444f" BorderThickness="0" 
-                        Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <UniformGrid Columns="2" HorizontalAlignment="Stretch">

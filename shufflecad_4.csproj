@@ -92,6 +92,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\InBoolControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\OutBoolControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -106,8 +114,16 @@
     <Compile Include="Classes\RPIDataClass.cs" />
     <Compile Include="Classes\SettingsClass.cs" />
     <Compile Include="Classes\Variables\ChartVariable.cs" />
+    <Compile Include="Classes\Variables\IFrontVariable.cs" />
+    <Compile Include="Classes\Variables\IVariable.cs" />
     <Compile Include="Classes\Variables\ShuffleVariable.cs" />
     <Compile Include="Classes\TalkPort.cs" />
+    <Compile Include="Controls\InBoolControl.xaml.cs">
+      <DependentUpon>InBoolControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OutBoolControl.xaml.cs">
+      <DependentUpon>OutBoolControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\CommandsHelper.cs" />
     <Compile Include="Helpers\ConnectionHelper.cs" />
     <Compile Include="Helpers\FuncadHelper.cs" />
@@ -203,9 +219,7 @@
   <ItemGroup>
     <Resource Include="Res\logo_sc4.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace shufflecad_4.Classes.Variables
 {
-    public class CameraVariable : INotifyPropertyChanged
+    public class CameraVariable : INotifyPropertyChanged, IVariable
     {
         private byte[] _value;
         private string _name;

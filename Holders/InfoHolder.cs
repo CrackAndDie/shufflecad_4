@@ -32,7 +32,7 @@ namespace shufflecad_4.Holders
 
         static InfoHolder()
         {
-            ConnectionHelper.OnDisconnect += new EventHandler<EventArgs>(ClearAll);
+            ConnectionHelper.OnDisconnect += new EventHandler<EventArgs>(ClearAll);            
         }
 
         public static void OnOutVariablesChangeWrapper()

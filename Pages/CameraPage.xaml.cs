@@ -77,24 +77,9 @@ namespace shufflecad_4.Pages
 
                     Application.Current.Dispatcher.Invoke(() =>
                     {
-                        //MainWindow.cameraPage.ImageCamera.Width = 640;
-                        //MainWindow.cameraPage.ImageCamera.Height = 480;
                         MainWindow.cameraPage.ImageCamera.Source = image;
                     });
                 });
-                
-                //if (shape[0] > 0)
-                //{
-                //    MainWindow.cameraPage.ImageCamera.Width = shape[0];
-                //    MainWindow.cameraPage.ImageCamera.Height = shape[1];
-                //    //System.Diagnostics.Debug.WriteLine(shape[0]);
-                //    //System.Diagnostics.Debug.WriteLine(shape[1]);
-                //}
-                //else
-                //{
-                //    //MainWindow.cameraPage.ImageCamera.Width = 640;
-                //    //MainWindow.cameraPage.ImageCamera.Height = 480;
-                //}
                 
             }
             catch (Exception ex)

@@ -180,7 +180,8 @@ namespace shufflecad_4.Helpers
                         var cv = new ChartVariable()
                         {
                             Name = paramss[0],
-                            Value = paramss[1]
+                            Value = paramss[1],
+                            Type = ShuffleVariable.CHART_TYPE
                         };
                         var contains = InfoHolder.ChartVariables.FirstOrDefault(x => x.Name == cv.Name);
                         if (contains == null)

@@ -19,7 +19,9 @@
         </Grid.ColumnDefinitions>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"  Grid.Column="0" Grid.Row="0" x:Name="scrollViewer"
                       CanContentScroll="True" Style="{StaticResource FavsScrollViewer}">
-            <Canvas x:Name="canvas" Width="1300" Height="1300" Background="#3f444f" MouseRightButtonDown="canvas_MouseRightButtonDown" MouseRightButtonUp="canvas_MouseRightButtonUp" MouseMove="canvas_MouseMove">
+            <Canvas x:Name="canvas" Width="1300" Height="1300" Background="#3f444f" 
+                    MouseRightButtonDown="canvas_MouseRightButtonDown" MouseRightButtonUp="canvas_MouseRightButtonUp" 
+                    MouseMove="canvas_MouseMove" AllowDrop="True" Drop="canvas_Drop">
             </Canvas>
         </ScrollViewer>
 
@@ -47,24 +49,29 @@
             
             <TextBlock Text="Input Variables" Foreground="AliceBlue" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Bottom"/>
             <Border Grid.Column="0" Grid.Row="1" Background="#3f444f" Margin="5" CornerRadius="8" BorderThickness="0"/>
-            <ListBox x:Name="InputVariables" Grid.Column="0" Grid.Row="1" Background="#3f444f" BorderThickness="0" 
+            <ListView x:Name="InputVariables" Grid.Column="0" Grid.Row="1" Background="#3f444f" BorderThickness="0" 
                         Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
-                <ListBox.ItemTemplate>
+                <!--<ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="MouseMove" Handler="InputVars_MouseMove"/>
+                    </Style>
+                </ListView.ItemContainerStyle>-->
+                <ListView.ItemTemplate>
                     <DataTemplate>
-                        <UniformGrid Columns="2" HorizontalAlignment="Stretch">
+                        <UniformGrid Columns="2" HorizontalAlignment="Stretch" MouseMove="InputVars_MouseMove">
                             <TextBlock FontSize="14" Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="0, 0" Foreground="AliceBlue"/>
                             <TextBlock FontSize="14" Text="{Binding Path=Value}" VerticalAlignment="Center" Margin="9, 0" 
                                        Foreground="AliceBlue" HorizontalAlignment="Left"/>
                         </UniformGrid>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </ListView.ItemTemplate>
+            </ListView>
 
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Output Variables" Foreground="AliceBlue" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Bottom"/>
             <Border Grid.Column="0" Grid.Row="3" Background="#3f444f" Margin="5" CornerRadius="8" BorderThickness="0"/>
-            <ListBox x:Name="OutputVariables" Background="#3f444f" Grid.Column="0" Grid.Row="3" BorderThickness="0" 
+            <ListView x:Name="OutputVariables" Background="#3f444f" Grid.Column="0" Grid.Row="3" BorderThickness="0" 
                      Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
-                <ListBox.ItemTemplate>
+                <ListView.ItemTemplate>
                     <DataTemplate>
                         <UniformGrid Columns="2" HorizontalAlignment="Stretch">
                             <TextBlock FontSize="14" Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="0, 0" Foreground="AliceBlue"/>
@@ -72,14 +79,14 @@
                                        Foreground="AliceBlue" HorizontalAlignment="Left"/>
                         </UniformGrid>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </ListView.ItemTemplate>
+            </ListView>
 
             <TextBlock Grid.Row="4" Text="Chart Variables" Foreground="AliceBlue" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Bottom"/>
             <Border Grid.Column="0" Grid.Row="5" Background="#3f444f" Margin="5" CornerRadius="8" BorderThickness="0"/>
-            <ListBox x:Name="ChartVariables" Grid.Column="0" Grid.Row="5" Background="#3f444f" BorderThickness="0" 
+            <ListView x:Name="ChartVariables" Grid.Column="0" Grid.Row="5" Background="#3f444f" BorderThickness="0" 
                         Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
-                <ListBox.ItemTemplate>
+                <ListView.ItemTemplate>
                     <DataTemplate>
                         <UniformGrid Columns="2" HorizontalAlignment="Stretch">
                             <TextBlock FontSize="14" Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="0, 0" Foreground="AliceBlue"/>
@@ -87,8 +94,8 @@
                                        Foreground="AliceBlue" HorizontalAlignment="Left"/>
                         </UniformGrid>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </ListView.ItemTemplate>
+            </ListView>
 
             <Grid Grid.Column="0" Grid.Row="6">
                 <Grid.RowDefinitions>

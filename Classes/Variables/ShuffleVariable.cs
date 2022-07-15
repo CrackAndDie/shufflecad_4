@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace shufflecad_4.Classes.Variables
 {
-    public class ShuffleVariable : INotifyPropertyChanged
+    public class ShuffleVariable : INotifyPropertyChanged, IFrontVariable
     {
         public const string FLOAT_TYPE = "float";
         public const string STRING_TYPE = "string";

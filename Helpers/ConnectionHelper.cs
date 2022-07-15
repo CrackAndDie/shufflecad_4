@@ -263,6 +263,8 @@ namespace shufflecad_4.Helpers
             }
         }
 
+        private static long lastCameraChannelUpdate = 0;
+
         private static void OnCameraVarsChanged(object sender, EventArgs args)
         {
             try
@@ -279,15 +281,26 @@ namespace shufflecad_4.Helpers
                     var v = InfoHolder.CameraVariables.FirstOrDefault(x => x.Name == cv.Name);
                     if (v != null)
                     {
+                        InfoHolder.CameraVariablesAllGot = true;
+
                         v.Value = cameraChannel.OutBytes;
                         v.Shape = cv.Shape;
+
+                        cameraChannel.SendString = InfoHolder.CurrentSelectedCamera.ToString();
                     }
                     else
                     {
+                        InfoHolder.CameraVariablesAllGot = false;
+
                         cv.Value = cameraChannel.OutBytes;
                         InfoHolder.CameraVariables.Add(cv);
                         InfoHolder.OnCameraVariablesChangeWrapper();
+
+                        cameraChannel.SendString = "-1";
                     }
+
+                    InfoHolder.CurrentRPIData.CameraTime = (DateTimeOffset.Now.ToUnixTimeMilliseconds() - lastCameraChannelUpdate).ToString();
+                    lastCameraChannelUpdate = DateTimeOffset.Now.ToUnixTimeMilliseconds();
                 }
             }
             catch (Exception ex)
@@ -298,12 +311,12 @@ namespace shufflecad_4.Helpers
 
         private static void SetUpChannels()
         {
-            inVariablesChannel = new ListenPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63253));
-            outVariablesChannel = new TalkPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63258));
-            chartsChannel = new ListenPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63255));
-            outcadChannel = new ListenPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63257));
-            rpiDataChannel = new ListenPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63256));
-            cameraChannel = new ListenPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63254), true);
+            inVariablesChannel = new ListenPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63253), 5);
+            outVariablesChannel = new TalkPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63258), 5);
+            chartsChannel = new ListenPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63255), 2);
+            outcadChannel = new ListenPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63257), 300);
+            rpiDataChannel = new ListenPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63256), 500);
+            cameraChannel = new ListenPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63254), 0, true);
         }
 
         private static void LinkEvents()

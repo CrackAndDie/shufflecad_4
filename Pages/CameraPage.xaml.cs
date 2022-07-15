@@ -105,15 +105,23 @@ namespace shufflecad_4.Pages
 
         private void CamerasList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (CamerasList.SelectedItem != null)
+            if (InfoHolder.CameraVariablesAllGot)
             {
-                if (currentCameraVariable != null)
+                if (CamerasList.SelectedItem != null)
                 {
-                    currentCameraVariable.PropertyChanged -= OnImageUpdateAsync;
-                }
+                    if (currentCameraVariable != null)
+                    {
+                        currentCameraVariable.PropertyChanged -= OnImageUpdateAsync;
+                    }
 
-                currentCameraVariable = CamerasList.SelectedItem as CameraVariable;
-                currentCameraVariable.PropertyChanged += OnImageUpdateAsync;
+                    InfoHolder.CurrentSelectedCamera = CamerasList.SelectedIndex;
+                    currentCameraVariable = CamerasList.SelectedItem as CameraVariable;
+                    currentCameraVariable.PropertyChanged += OnImageUpdateAsync;
+                }
+            }
+            else
+            {
+                CamerasList.SelectedItem = null;
             }
         }
 

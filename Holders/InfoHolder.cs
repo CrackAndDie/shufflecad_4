@@ -8,6 +8,9 @@ namespace shufflecad_4.Holders
 {
     public class InfoHolder
     {
+        public static int CurrentSelectedCamera = 0;
+        public static bool CameraVariablesAllGot = false;
+
         public static SettingsClass CurrentSettings { get; set; }
 
         public static RPIDataClass CurrentRPIData = new RPIDataClass();

@@ -22,9 +22,12 @@ namespace shufflecad_4.Classes
         private Socket sct;
         public Thread thread;
 
-        internal TalkPort(IPEndPoint ipPoint)
+        private readonly int sleepTime;
+
+        internal TalkPort(IPEndPoint ipPoint, int sleepTime)
         {
             this.ipPoint = ipPoint;
+            this.sleepTime = sleepTime;
         }
 
         private void SetUpSocket()
@@ -84,7 +87,7 @@ namespace shufflecad_4.Classes
                     }
 
                     FuncadHelper.SetOutputBytes(Encoding.ASCII.GetBytes(OutString), sct);
-                    Thread.Sleep(4);
+                    Thread.Sleep(this.sleepTime);
                 }
                 catch (Exception ex)
                 {

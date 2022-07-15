@@ -15,6 +15,7 @@ namespace shufflecad_4.Classes
     {
         public event EventHandler<EventArgs> OnGotMessage;
 
+        public string SendString = "-1";
         public string OutString = string.Empty;
         public byte[] OutBytes = new byte[0];
         private bool stopThread = false;
@@ -24,10 +25,13 @@ namespace shufflecad_4.Classes
         public Thread thread;
         private bool isCamera;
 
-        internal ListenPort(IPEndPoint ipPoint, bool isCamera = false)
+        private readonly int sleepTime;
+
+        internal ListenPort(IPEndPoint ipPoint, int sleepTime, bool isCamera = false)
         {
             this.ipPoint = ipPoint;
             this.isCamera = isCamera;
+            this.sleepTime = sleepTime;
         }
 
         private void SetUpSocket()
@@ -40,6 +44,7 @@ namespace shufflecad_4.Classes
         {
             OutString = string.Empty;
             OutBytes = new byte[0];
+            SendString = "-1";
         }
 
         public void StartListening()
@@ -98,13 +103,10 @@ namespace shufflecad_4.Classes
 
                     OutString = outString;
 
-                    if (OnGotMessage != null)
-                    {
-                        OnGotMessage(this, EventArgs.Empty);
-                    }
+                    OnGotMessage?.Invoke(this, EventArgs.Empty);
 
-                    FuncadHelper.SetOutputBytes(new byte[4], sct);
-                    Thread.Sleep(4);
+                    FuncadHelper.SetOutputBytes(Encoding.ASCII.GetBytes(SendString), sct);
+                    Thread.Sleep(this.sleepTime);
                 }
                 catch (Exception ex)
                 {

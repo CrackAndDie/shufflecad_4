@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace shufflecad_4.Classes.Variables
+namespace shufflecad_4.Classes.Variables.Interfaces
 {
     public interface IVariable
     {

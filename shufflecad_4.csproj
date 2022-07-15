@@ -114,8 +114,8 @@
     <Compile Include="Classes\RPIDataClass.cs" />
     <Compile Include="Classes\SettingsClass.cs" />
     <Compile Include="Classes\Variables\ChartVariable.cs" />
-    <Compile Include="Classes\Variables\IFrontVariable.cs" />
-    <Compile Include="Classes\Variables\IVariable.cs" />
+    <Compile Include="Classes\Variables\Interfaces\IFrontVariable.cs" />
+    <Compile Include="Classes\Variables\Interfaces\IVariable.cs" />
     <Compile Include="Classes\Variables\ShuffleVariable.cs" />
     <Compile Include="Classes\TalkPort.cs" />
     <Compile Include="Controls\InBoolControl.xaml.cs">

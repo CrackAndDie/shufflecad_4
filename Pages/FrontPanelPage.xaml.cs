@@ -1,4 +1,5 @@
 ﻿using shufflecad_4.Classes.Variables;
+using shufflecad_4.Classes.Variables.Interfaces;
 using shufflecad_4.Controls;
 using shufflecad_4.Holders;
 using System;

@@ -1,4 +1,5 @@
-﻿using shufflecad_4.Classes.Variables;
+﻿using MaterialDesignThemes.Wpf;
+using shufflecad_4.Classes.Variables;
 using shufflecad_4.Controls.Interfaces;
 using System.ComponentModel;
 using System.Windows;
@@ -26,14 +27,16 @@ namespace shufflecad_4.Controls
 
             if (this.variable.Direction == ShuffleVariable.IN_DIR)
             {
+                StateToggle.IsHitTestVisible = false;
                 SetState(this.variable.GetBool());
                 // подписываемся на изменения переменной
                 this.variable.PropertyChanged += OnPropertyChanged;
             }
             else
             {
-                InputToggle.Visibility = Visibility.Collapsed;
-                OutputToggle.Visibility = Visibility.Visible;
+                // меняем картинки на кнопке
+                StateToggle.Content = new PackIcon() { Kind = PackIconKind.Close };
+                ToggleButtonAssist.SetOnContent(StateToggle, new PackIcon() { Kind = PackIconKind.Check });
 
                 SetColor(false);
             }
@@ -53,13 +56,13 @@ namespace shufflecad_4.Controls
         {
             if (state)
             {
-                InputToggle.IsChecked = true;
-                InputToggle.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(trueColor);
+                StateToggle.IsChecked = true;
+                SetColor(true);
             }
             else
             {
-                InputToggle.IsChecked = false;
-                InputToggle.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(falseColor);
+                StateToggle.IsChecked = false;
+                SetColor(false);
             }
         }
 
@@ -79,9 +82,9 @@ namespace shufflecad_4.Controls
         private void SetColor(bool state)
         {
             if (state)
-                OutputToggle.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(trueColor);
+                StateToggle.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(trueColor);
             else
-                OutputToggle.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(falseColor);
+                StateToggle.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(falseColor);
         }
 
         public void Remove()

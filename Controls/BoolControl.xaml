@@ -15,14 +15,9 @@
         <TextBlock Text="{Binding Name}" Style="{StaticResource ControlText}"/>
         <ToggleButton
                   Style="{StaticResource MaterialDesignActionToggleButton}"
-                  ToolTip="MaterialDesignActionLightToggleButton" Grid.Row="1" x:Name="InputToggle" Padding="0"
-                  Content="{materialDesign:PackIcon Kind=AlphaF,Size=32}" IsChecked="True" IsHitTestVisible="False"
-                  materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=AlphaT,Size=32}" />
-        <ToggleButton Visibility="Collapsed"
-                  Style="{StaticResource MaterialDesignActionLightToggleButton}"
-                  IsChecked="False" Grid.Row="1" x:Name="OutputToggle"
-                  ToolTip="MaterialDesignActionLightToggleButton" Checked="StateToggleButton_Checked" Unchecked="StateToggleButton_Unchecked">
-            <materialDesign:PackIcon Kind="Close" />
-        </ToggleButton>
+                  Grid.Row="1" x:Name="StateToggle" Padding="0"
+                  Content="{materialDesign:PackIcon Kind=AlphaF,Size=32}" IsChecked="False"
+                  materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=AlphaT,Size=32}" 
+                  Checked="StateToggleButton_Checked" Unchecked="StateToggleButton_Unchecked"/>
     </Grid>
 </UserControl>

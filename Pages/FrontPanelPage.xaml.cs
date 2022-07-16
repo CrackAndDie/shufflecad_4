@@ -4,6 +4,7 @@ using shufflecad_4.Controls;
 using shufflecad_4.Holders;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +37,7 @@ namespace shufflecad_4.Pages
 
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "1" });
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
@@ -192,6 +193,11 @@ namespace shufflecad_4.Pages
                             if (var.Direction == ShuffleVariable.OUT_DIR)
                             {
                                 OutBoolControl ctrl = new OutBoolControl(var as ShuffleVariable);
+                                SetUpCtrl(ctrl, e);
+                            }
+                            else
+                            {
+                                InBoolControl ctrl = new InBoolControl(var as ShuffleVariable);
                                 SetUpCtrl(ctrl, e);
                             }
                             break;

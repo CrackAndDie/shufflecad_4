@@ -1,0 +1,4 @@
+open scp://userNameHere:userPasswordHere@ipAddressHere -hostkey="*"
+put currentPath\PyCommands \compycad
+close
+exit

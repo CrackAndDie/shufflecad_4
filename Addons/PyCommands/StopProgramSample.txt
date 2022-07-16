@@ -1,0 +1,4 @@
+open scp://userNameHere:userPasswordHere@ipAddressHere -hostkey="*"
+call /bin/bash /home/pi/compycad/StopPyFile.sh
+close
+exit

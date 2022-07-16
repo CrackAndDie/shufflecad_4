@@ -225,10 +225,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)..\PyCommands\*.*" CopyToOutputDirectory="PreserveNewest" TargetPath="PyCommands\%(Filename)%(Extension)" />
+    <ContentWithTargetPath Include="$(MSBuildThisFileDirectory).\Addons\PyCommands\*.*" CopyToOutputDirectory="PreserveNewest" TargetPath="PyCommands\%(Filename)%(Extension)" />
   </ItemGroup>
   <ItemGroup>
-    <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)..\WinSCP\**" CopyToOutputDirectory="PreserveNewest" TargetPath="WinSCP\%(RecursiveDir)\%(Filename)%(Extension)" />
+    <ContentWithTargetPath Include="$(MSBuildThisFileDirectory).\Addons\WinSCP\*.*" CopyToOutputDirectory="PreserveNewest" TargetPath="WinSCP\%(Filename)%(Extension)" />
+  </ItemGroup>
+  <ItemGroup>
+    <ContentWithTargetPath Include="$(MSBuildThisFileDirectory).\Addons\WinSCP\PuTTY\*.*" CopyToOutputDirectory="PreserveNewest" TargetPath="WinSCP\PuTTY\%(Filename)%(Extension)" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Res\logo_sc4.png" />

@@ -1,0 +1,7 @@
+open scp://userNameHere:userPasswordHere@ipAddressHere -hostkey="*"
+call rm -rf /home/pi/loggercad
+call mkdir /home/pi/loggercad
+put distDirHere \pycad
+call /bin/bash /home/pi/compycad/StartPyFile.sh
+close
+exit

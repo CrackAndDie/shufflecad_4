@@ -100,6 +100,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\OutStringControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -123,6 +127,9 @@
     </Compile>
     <Compile Include="Controls\OutBoolControl.xaml.cs">
       <DependentUpon>OutBoolControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OutStringControl.xaml.cs">
+      <DependentUpon>OutStringControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CommandsHelper.cs" />
     <Compile Include="Helpers\ConnectionHelper.cs" />

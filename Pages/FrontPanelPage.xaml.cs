@@ -37,11 +37,11 @@ namespace shufflecad_4.Pages
 
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "1" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime1", Type = ShuffleVariable.STRING_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
+            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime2", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime3", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime4", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime5", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
 
             OnInVariablesChange(null, EventArgs.Empty);
 
@@ -135,17 +135,15 @@ namespace shufflecad_4.Pages
             anchorPoint = e.GetPosition(null);
             element.CaptureMouse();
             isInDrag = true;
-            e.Handled = true;
             draggingElement = element;
 
-            // selectedPanelOnCanvas = sender as StackPanel;
+            e.Handled = true;
         }
 
         private void root_MouseMove(object sender, MouseEventArgs e)
         {
             if (isInDrag)
             {
-                //var element = sender as FrameworkElement;
                 if (draggingElement != null)
                 {
                     var element = draggingElement;
@@ -167,11 +165,11 @@ namespace shufflecad_4.Pages
                 if (draggingElement != null)
                 {
                     var element = draggingElement;
-                    //var element = sender as FrameworkElement;
                     element.ReleaseMouseCapture();
                     isInDrag = false;
-                    e.Handled = true;
                     draggingElement = null;
+
+                    e.Handled = true;
                 }
             }
 
@@ -186,6 +184,11 @@ namespace shufflecad_4.Pages
                 {
                     case ShuffleVariable.STRING_TYPE:
                         {
+                            if (var.Direction == ShuffleVariable.OUT_DIR)
+                            {
+                                OutStringControl ctrl = new OutStringControl(var as ShuffleVariable);
+                                SetUpCtrl(ctrl, e);
+                            }
                             break;
                         }
                     case ShuffleVariable.BOOL_TYPE:

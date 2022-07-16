@@ -58,7 +58,7 @@
                 </ListView.ItemContainerStyle>-->
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <UniformGrid Columns="2" HorizontalAlignment="Stretch" MouseMove="InputVars_MouseMove">
+                        <UniformGrid Columns="2" HorizontalAlignment="Stretch" MouseMove="InputVars_MouseMove" Margin="-5">
                             <TextBlock FontSize="14" Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="0, 0" Foreground="AliceBlue"/>
                             <TextBlock FontSize="14" Text="{Binding Path=Value}" VerticalAlignment="Center" Margin="9, 0" 
                                        Foreground="AliceBlue" HorizontalAlignment="Left"/>
@@ -73,7 +73,7 @@
                      Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <UniformGrid Columns="2" HorizontalAlignment="Stretch">
+                        <UniformGrid Columns="2" HorizontalAlignment="Stretch" Margin="-5">
                             <TextBlock FontSize="14" Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="0, 0" Foreground="AliceBlue"/>
                             <TextBlock FontSize="14" Text="{Binding Path=Value}" VerticalAlignment="Center" Margin="9, 0" 
                                        Foreground="AliceBlue" HorizontalAlignment="Left"/>
@@ -88,7 +88,7 @@
                         Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <UniformGrid Columns="2" HorizontalAlignment="Stretch">
+                        <UniformGrid Columns="2" HorizontalAlignment="Stretch" Margin="-5">
                             <TextBlock FontSize="14" Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="0, 0" Foreground="AliceBlue"/>
                             <TextBlock FontSize="14" Text="{Binding Path=Value}" VerticalAlignment="Center" Margin="9, 0"
                                        Foreground="AliceBlue" HorizontalAlignment="Left"/>

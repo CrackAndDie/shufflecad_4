@@ -41,7 +41,8 @@ namespace shufflecad_4.Pages
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime2", Type = ShuffleVariable.STRING_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime3", Type = ShuffleVariable.BIG_STRING_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime4", Type = ShuffleVariable.BIG_STRING_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime5", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime5", Type = ShuffleVariable.FLOAT_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
+            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime6", Type = ShuffleVariable.FLOAT_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
 
             OnInVariablesChange(null, EventArgs.Empty);
 
@@ -187,6 +188,8 @@ namespace shufflecad_4.Pages
                         }
                     case ShuffleVariable.FLOAT_TYPE:
                         {
+                            FloatControl ctrl = new FloatControl(variable as ShuffleVariable);
+                            SetUpCtrl(ctrl, position);
                             break;
                         }
                     case ShuffleVariable.CHART_TYPE:

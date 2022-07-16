@@ -96,6 +96,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\FloatControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\StringControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -120,6 +124,9 @@
     <Compile Include="Classes\TalkPort.cs" />
     <Compile Include="Controls\BoolControl.xaml.cs">
       <DependentUpon>BoolControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FloatControl.xaml.cs">
+      <DependentUpon>FloatControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Interfaces\IRemoveable.cs" />
     <Compile Include="Controls\StringControl.xaml.cs">

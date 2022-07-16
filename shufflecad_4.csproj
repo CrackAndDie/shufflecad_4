@@ -96,6 +96,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\InStringControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\OutBoolControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -124,6 +128,9 @@
     <Compile Include="Classes\TalkPort.cs" />
     <Compile Include="Controls\InBoolControl.xaml.cs">
       <DependentUpon>InBoolControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InStringControl.xaml.cs">
+      <DependentUpon>InStringControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\OutBoolControl.xaml.cs">
       <DependentUpon>OutBoolControl.xaml</DependentUpon>

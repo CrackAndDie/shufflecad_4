@@ -38,7 +38,7 @@ namespace shufflecad_4.Pages
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime1", Type = ShuffleVariable.STRING_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime2", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime2", Type = ShuffleVariable.STRING_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime3", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime4", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime5", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
@@ -84,35 +84,10 @@ namespace shufflecad_4.Pages
 
         private void canvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Point p = Mouse.GetPosition(canvas);
-            //if (!(lastSelect is null) && !MoveToggled)
-            //{
-            //    SetElementOnField(lastSelect, (float)p.X, (float)p.Y);
-            //}
             scrollMousePoint = e.GetPosition(null);
             hOff = scrollViewer.HorizontalOffset;
             vOff = scrollViewer.VerticalOffset;
             canvas.CaptureMouse();
-        }
-
-        private void canvas_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            if (isInDrag)
-            {
-                if (!(draggingElement is null))
-                {
-                    var element = draggingElement;
-                    //var element = sender as FrameworkElement;
-                    element.ReleaseMouseCapture();
-                    isInDrag = false;
-                    e.Handled = true;
-                    draggingElement = null;
-                }
-            }
-            if (canvas.IsMouseCaptured)
-            {
-                canvas.ReleaseMouseCapture();
-            }
         }
 
         private void canvas_MouseMove(object sender, MouseEventArgs e)
@@ -123,6 +98,14 @@ namespace shufflecad_4.Pages
                 scrollViewer.ScrollToVerticalOffset(vOff + (scrollMousePoint.Y - e.GetPosition(null).Y));
             }
         }
+
+        private void canvas_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (canvas.IsMouseCaptured)
+            {
+                canvas.ReleaseMouseCapture();
+            }
+        }        
 
         Point anchorPoint;
         Point currentPoint;
@@ -177,31 +160,42 @@ namespace shufflecad_4.Pages
 
         private void canvas_Drop(object sender, DragEventArgs e)
         {
-            IFrontVariable var = e.Data.GetData(DataFormats.Serializable) as IFrontVariable;
-            if (var != null)
+            IFrontVariable variable = e.Data.GetData(DataFormats.Serializable) as IFrontVariable;
+            Point position = e.GetPosition(canvas);
+            PlaceVariable(variable, position);
+        }
+
+        private void PlaceVariable(IFrontVariable variable, Point position)
+        {
+            if (variable != null)
             {
-                switch (var.Type)
+                switch (variable.Type)
                 {
                     case ShuffleVariable.STRING_TYPE:
                         {
-                            if (var.Direction == ShuffleVariable.OUT_DIR)
+                            if (variable.Direction == ShuffleVariable.OUT_DIR)
                             {
-                                OutStringControl ctrl = new OutStringControl(var as ShuffleVariable);
-                                SetUpCtrl(ctrl, e);
+                                OutStringControl ctrl = new OutStringControl(variable as ShuffleVariable);
+                                SetUpCtrl(ctrl, position);
+                            }
+                            else
+                            {
+                                InStringControl ctrl = new InStringControl(variable as ShuffleVariable);
+                                SetUpCtrl(ctrl, position);
                             }
                             break;
                         }
                     case ShuffleVariable.BOOL_TYPE:
                         {
-                            if (var.Direction == ShuffleVariable.OUT_DIR)
+                            if (variable.Direction == ShuffleVariable.OUT_DIR)
                             {
-                                OutBoolControl ctrl = new OutBoolControl(var as ShuffleVariable);
-                                SetUpCtrl(ctrl, e);
+                                OutBoolControl ctrl = new OutBoolControl(variable as ShuffleVariable);
+                                SetUpCtrl(ctrl, position);
                             }
                             else
                             {
-                                InBoolControl ctrl = new InBoolControl(var as ShuffleVariable);
-                                SetUpCtrl(ctrl, e);
+                                InBoolControl ctrl = new InBoolControl(variable as ShuffleVariable);
+                                SetUpCtrl(ctrl, position);
                             }
                             break;
                         }
@@ -221,12 +215,11 @@ namespace shufflecad_4.Pages
             }
         }
 
-        private void SetUpCtrl(FrameworkElement ctrl, DragEventArgs e)
+        private void SetUpCtrl(FrameworkElement ctrl, Point position)
         {
             ctrl.MouseLeftButtonDown += new MouseButtonEventHandler(root_MouseLeftButtonDown);
             ctrl.MouseMove += new MouseEventHandler(root_MouseMove);
             ctrl.MouseLeftButtonUp += new MouseButtonEventHandler(root_MouseLeftButtonUp);
-            Point position = e.GetPosition(canvas);
             Canvas.SetLeft(ctrl, position.X);
             Canvas.SetTop(ctrl, position.Y);
             canvas.Children.Add(ctrl);

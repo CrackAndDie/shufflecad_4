@@ -139,7 +139,6 @@ namespace shufflecad_4.Pages
                     anchorPoint = currentPoint;
                 }
             }
-
         }
 
         private void root_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -156,7 +155,6 @@ namespace shufflecad_4.Pages
                     e.Handled = true;
                 }
             }
-
         }
 
         private void canvas_Drop(object sender, DragEventArgs e)
@@ -170,33 +168,9 @@ namespace shufflecad_4.Pages
         {
             if (variable != null)
             {
-                switch (variable.Type)
-                {
-                    // они имеют одинаковый контрол
-                    case ShuffleVariable.STRING_TYPE:
-                    case ShuffleVariable.BIG_STRING_TYPE:
-                        {
-                            StringControl ctrl = new StringControl(variable as ShuffleVariable);
-                            SetUpCtrl(ctrl, position);
-                            break;
-                        }
-                    case ShuffleVariable.BOOL_TYPE:
-                        {
-                            BoolControl ctrl = new BoolControl(variable as ShuffleVariable);
-                            SetUpCtrl(ctrl, position);
-                            break;
-                        }
-                    case ShuffleVariable.FLOAT_TYPE:
-                        {
-                            FloatControl ctrl = new FloatControl(variable as ShuffleVariable);
-                            SetUpCtrl(ctrl, position);
-                            break;
-                        }
-                    case ShuffleVariable.CHART_TYPE:
-                        {
-                            break;
-                        }
-                }
+                FrameworkElement ctrl = ControlsFactory.GetFactory().Create(variable);
+                if (ctrl != null)
+                    SetUpCtrl(ctrl, position);
             }
         }
 

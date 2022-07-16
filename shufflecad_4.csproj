@@ -92,11 +92,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Controls\InBigStringControl.xaml">
+    <Page Include="Controls\BoolControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\InBoolControl.xaml">
+    <Page Include="Controls\InBigStringControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,10 +105,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\OutBigStringControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\OutBoolControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,11 +130,11 @@
     <Compile Include="Classes\Variables\Interfaces\IVariable.cs" />
     <Compile Include="Classes\Variables\ShuffleVariable.cs" />
     <Compile Include="Classes\TalkPort.cs" />
+    <Compile Include="Controls\BoolControl.xaml.cs">
+      <DependentUpon>BoolControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\InBigStringControl.xaml.cs">
       <DependentUpon>InBigStringControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\InBoolControl.xaml.cs">
-      <DependentUpon>InBoolControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\InStringControl.xaml.cs">
       <DependentUpon>InStringControl.xaml</DependentUpon>
@@ -146,9 +142,6 @@
     <Compile Include="Controls\Interfaces\IRemoveable.cs" />
     <Compile Include="Controls\OutBigStringControl.xaml.cs">
       <DependentUpon>OutBigStringControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\OutBoolControl.xaml.cs">
-      <DependentUpon>OutBoolControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\OutStringControl.xaml.cs">
       <DependentUpon>OutStringControl.xaml</DependentUpon>

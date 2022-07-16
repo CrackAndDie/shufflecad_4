@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="shufflecad_4.Controls.OutBoolControl"
+﻿<UserControl x:Class="shufflecad_4.Controls.BoolControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -13,10 +13,15 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Text="{Binding Name}" Style="{StaticResource ControlText}"/>
-        <ToggleButton 
-              Style="{StaticResource MaterialDesignActionLightToggleButton}"
-              IsChecked="False" Grid.Row="1" x:Name="StateToggle"
-              ToolTip="MaterialDesignActionLightToggleButton" Checked="StateToggleButton_Checked" Unchecked="StateToggleButton_Unchecked">
+        <ToggleButton
+                  Style="{StaticResource MaterialDesignActionToggleButton}"
+                  ToolTip="MaterialDesignActionLightToggleButton" Grid.Row="1" x:Name="InputToggle" Padding="0"
+                  Content="{materialDesign:PackIcon Kind=AlphaF,Size=32}" IsChecked="True" IsHitTestVisible="False"
+                  materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=AlphaT,Size=32}" />
+        <ToggleButton Visibility="Collapsed"
+                  Style="{StaticResource MaterialDesignActionLightToggleButton}"
+                  IsChecked="False" Grid.Row="1" x:Name="OutputToggle"
+                  ToolTip="MaterialDesignActionLightToggleButton" Checked="StateToggleButton_Checked" Unchecked="StateToggleButton_Unchecked">
             <materialDesign:PackIcon Kind="Close" />
         </ToggleButton>
     </Grid>

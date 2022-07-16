@@ -187,16 +187,8 @@ namespace shufflecad_4.Pages
                         }
                     case ShuffleVariable.BOOL_TYPE:
                         {
-                            if (variable.Direction == ShuffleVariable.OUT_DIR)
-                            {
-                                OutBoolControl ctrl = new OutBoolControl(variable as ShuffleVariable);
-                                SetUpCtrl(ctrl, position);
-                            }
-                            else
-                            {
-                                InBoolControl ctrl = new InBoolControl(variable as ShuffleVariable);
-                                SetUpCtrl(ctrl, position);
-                            }
+                            BoolControl ctrl = new BoolControl(variable as ShuffleVariable);
+                            SetUpCtrl(ctrl, position);
                             break;
                         }
                     case ShuffleVariable.FLOAT_TYPE:

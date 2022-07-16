@@ -8,3 +8,10 @@
 <h3>О проекте:</h3>  
 
 Приложение *shufflecad* предназначено для работы с мобильными роботами с контроллерами VMX и Titan на базе прошивок *firmwarecad*. С помощью этого приложения можно загружать проекты, написанные на языке Python, просматривать видео-потоки, смотреть и редактировать переменные, выводить графики, вести логи. 
+
+<h3>Зависимости:</h3>  
+
+- [PuTTY](https://putty.org/) [лицензия](https://github.com/CrackAndDie/shufflecad_4/blob/main/Addons/WinSCP/PuTTY/LICENCE.txt)
+- [WinSCP](https://winscp.net/eng/index.php) [лицензия](https://github.com/CrackAndDie/shufflecad_4/blob/main/Addons/WinSCP/license.txt)
+- [ScottPlot](https://github.com/ScottPlot/ScottPlot) [лицензия](https://github.com/ScottPlot/ScottPlot/blob/main/LICENSE)
+- PyCommands [лицензия](https://github.com/CrackAndDie/shufflecad_4/blob/main/Addons/PyCommands/license.txt)

@@ -18,10 +18,16 @@ namespace shufflecad_4.Controls
             InitializeComponent();
 
             this.variable = variable;
+            SetText(variable.GetString());
             // подписываемся на изменения переменной
             this.variable.PropertyChanged += OnPropertyChanged;
 
             DataContext = this.variable;
+        }
+
+        private void SetText(string text)
+        {
+            TextTB.Text = text;
         }
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs args)
@@ -29,7 +35,7 @@ namespace shufflecad_4.Controls
             // если поменялось именно значение переменной
             if (args.PropertyName == "Value")
             {
-                TextTB.Text = variable.GetString();
+                SetText(variable.GetString());
             }
         }
 

@@ -17,6 +17,6 @@
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             VerticalAlignment="Top" Width="160" TextAlignment="Center"
             TextWrapping="Wrap" Foreground="AliceBlue" FontSize="14" x:Name="TextTB"
-            MaxLength="50" Grid.Row="1" Padding="6" IsReadOnly="True"/>
+            MaxLength="200" Grid.Row="1" Padding="6" IsReadOnly="True"/>
     </Grid>
 </UserControl>

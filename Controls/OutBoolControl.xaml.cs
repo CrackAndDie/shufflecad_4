@@ -1,4 +1,5 @@
 ﻿using shufflecad_4.Classes.Variables;
+using shufflecad_4.Controls.Interfaces;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -8,7 +9,7 @@ namespace shufflecad_4.Controls
     /// <summary>
     /// Interaction logic for OutBoolControl.xaml
     /// </summary>
-    public partial class OutBoolControl : UserControl
+    public partial class OutBoolControl : UserControl, IRemoveable
     {
         private readonly ShuffleVariable variable;
 
@@ -43,6 +44,11 @@ namespace shufflecad_4.Controls
                 StateToggle.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(trueColor);
             else
                 StateToggle.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(falseColor);
+        }
+
+        public void Remove()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

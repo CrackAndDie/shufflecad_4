@@ -5,13 +5,13 @@ using System.Windows.Controls;
 namespace shufflecad_4.Controls
 {
     /// <summary>
-    /// Interaction logic for OutStringControl.xaml
+    /// Interaction logic for OutBigStringControl.xaml
     /// </summary>
-    public partial class OutStringControl : UserControl, IRemoveable
+    public partial class OutBigStringControl : UserControl, IRemoveable
     {
         private readonly ShuffleVariable variable;
 
-        public OutStringControl(ShuffleVariable variable)
+        public OutBigStringControl(ShuffleVariable variable)
         {
             InitializeComponent();
 

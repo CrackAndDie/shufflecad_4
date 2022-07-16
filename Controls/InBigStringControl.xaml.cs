@@ -1,18 +1,19 @@
 ﻿using shufflecad_4.Classes.Variables;
 using shufflecad_4.Controls.Interfaces;
+using System;
 using System.ComponentModel;
 using System.Windows.Controls;
 
 namespace shufflecad_4.Controls
 {
     /// <summary>
-    /// Interaction logic for InStringControl.xaml
+    /// Interaction logic for InBigStringControl.xaml
     /// </summary>
-    public partial class InStringControl : UserControl, IRemoveable
+    public partial class InBigStringControl : UserControl, IRemoveable
     {
         private readonly ShuffleVariable variable;
 
-        public InStringControl(ShuffleVariable variable)
+        public InBigStringControl(ShuffleVariable variable)
         {
             InitializeComponent();
 
@@ -34,7 +35,7 @@ namespace shufflecad_4.Controls
 
         public void Remove()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

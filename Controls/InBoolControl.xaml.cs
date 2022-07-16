@@ -1,4 +1,5 @@
 ﻿using shufflecad_4.Classes.Variables;
+using shufflecad_4.Controls.Interfaces;
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -8,7 +9,7 @@ namespace shufflecad_4.Controls
     /// <summary>
     /// Interaction logic for InBoolControl.xaml
     /// </summary>
-    public partial class InBoolControl : UserControl
+    public partial class InBoolControl : UserControl, IRemoveable
     {
         private readonly ShuffleVariable variable;
 
@@ -49,6 +50,11 @@ namespace shufflecad_4.Controls
                 StateToggle.IsChecked = false;
                 StateToggle.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(falseColor);
             }
+        }
+
+        public void Remove()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

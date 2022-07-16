@@ -96,19 +96,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\InBigStringControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\InStringControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\OutBigStringControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\OutStringControl.xaml">
+    <Page Include="Controls\StringControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -133,18 +121,9 @@
     <Compile Include="Controls\BoolControl.xaml.cs">
       <DependentUpon>BoolControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\InBigStringControl.xaml.cs">
-      <DependentUpon>InBigStringControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\InStringControl.xaml.cs">
-      <DependentUpon>InStringControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\Interfaces\IRemoveable.cs" />
-    <Compile Include="Controls\OutBigStringControl.xaml.cs">
-      <DependentUpon>OutBigStringControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\OutStringControl.xaml.cs">
-      <DependentUpon>OutStringControl.xaml</DependentUpon>
+    <Compile Include="Controls\StringControl.xaml.cs">
+      <DependentUpon>StringControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CommandsHelper.cs" />
     <Compile Include="Helpers\ConnectionHelper.cs" />

@@ -171,18 +171,12 @@ namespace shufflecad_4.Pages
             {
                 switch (variable.Type)
                 {
+                    // они имеют одинаковый контрол
                     case ShuffleVariable.STRING_TYPE:
+                    case ShuffleVariable.BIG_STRING_TYPE:
                         {
-                            if (variable.Direction == ShuffleVariable.OUT_DIR)
-                            {
-                                OutStringControl ctrl = new OutStringControl(variable as ShuffleVariable);
-                                SetUpCtrl(ctrl, position);
-                            }
-                            else
-                            {
-                                InStringControl ctrl = new InStringControl(variable as ShuffleVariable);
-                                SetUpCtrl(ctrl, position);
-                            }
+                            StringControl ctrl = new StringControl(variable as ShuffleVariable);
+                            SetUpCtrl(ctrl, position);
                             break;
                         }
                     case ShuffleVariable.BOOL_TYPE:
@@ -197,20 +191,6 @@ namespace shufflecad_4.Pages
                         }
                     case ShuffleVariable.CHART_TYPE:
                         {
-                            break;
-                        }
-                    case ShuffleVariable.BIG_STRING_TYPE:
-                        {
-                            if (variable.Direction == ShuffleVariable.OUT_DIR)
-                            {
-                                OutBigStringControl ctrl = new OutBigStringControl(variable as ShuffleVariable);
-                                SetUpCtrl(ctrl, position);
-                            }
-                            else
-                            {
-                                InBigStringControl ctrl = new InBigStringControl(variable as ShuffleVariable);
-                                SetUpCtrl(ctrl, position);
-                            }
                             break;
                         }
                 }

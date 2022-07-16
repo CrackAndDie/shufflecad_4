@@ -26,9 +26,9 @@
         </ScrollViewer>
 
 
-        <Border x:Name="MinimapBorder" BorderThickness="1" BorderBrush="Black"
-                HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                Width="110" Height="110" Margin="20"  Grid.Column="0" Grid.Row="0" x:FieldModifier="public">
+        <Border x:Name="MinimapBorder" BorderThickness="2" BorderBrush="Coral"
+                HorizontalAlignment="Left" VerticalAlignment="Top" CornerRadius="6"
+                Width="130" Height="130" Margin="20"  Grid.Column="0" Grid.Row="0" x:FieldModifier="public">
             <Border.Background>
                 <VisualBrush Visual="{Binding ElementName=canvas}" />
             </Border.Background>

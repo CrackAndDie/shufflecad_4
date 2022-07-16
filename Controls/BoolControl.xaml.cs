@@ -69,14 +69,20 @@ namespace shufflecad_4.Controls
         // out bool control
         private void StateToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            this.variable?.SetBool(true);
-            SetColor(true);
+            if (this.variable.Direction == ShuffleVariable.OUT_DIR)
+            {
+                this.variable?.SetBool(true);
+                SetColor(true);
+            }
         }
 
         private void StateToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            this.variable?.SetBool(false);
-            SetColor(false);
+            if (this.variable.Direction == ShuffleVariable.OUT_DIR)
+            {
+                this.variable?.SetBool(false);
+                SetColor(false);
+            }
         }
 
         private void SetColor(bool state)

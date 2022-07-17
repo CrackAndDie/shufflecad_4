@@ -1,26 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace shufflecad_4.Classes.Variables
 {
     public class ChartVariable : ShuffleVariable
     {
-        private const int DATA_SIZE = 1024;
+        private const int DATA_SIZE = 256;
 
-        public float[] Data = new float[DATA_SIZE];
+        public double[] Data = new double[DATA_SIZE];
+
+        public event EventHandler<EventArgs> DataChanged;
 
         public void ResetData()
         {
-            Data = new float[DATA_SIZE];
+            Data = new double[DATA_SIZE];
         }
 
         public void PasteToTheEnd(float value)
         {
             Array.Copy(Data, 1, Data, 0, Data.Length - 1);
             Data[Data.Length - 1] = value;
+
+            DataChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace shufflecad_4.Controls
                     }
                 case ShuffleVariable.CHART_TYPE:
                     {
-                        break;
+                        return new ChartControl(variable as ChartVariable);
                     }
             }
             return null;

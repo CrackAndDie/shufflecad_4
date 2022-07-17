@@ -1,6 +1,7 @@
 ﻿using shufflecad_4.Classes.Variables;
 using shufflecad_4.Controls.Interfaces;
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace shufflecad_4.Controls
@@ -43,11 +44,14 @@ namespace shufflecad_4.Controls
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs args)
         {
-            // если поменялось именно значение переменной
-            if (args.PropertyName == "Value")
+            Application.Current.Dispatcher.Invoke(() =>
             {
-                SetText(variable.GetString());
-            }
+                // если поменялось именно значение переменной
+                if (args.PropertyName == "Value")
+                {
+                    SetText(variable.GetString());
+                }
+            });
         }
 
         // out string control

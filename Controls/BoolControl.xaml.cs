@@ -45,11 +45,14 @@ namespace shufflecad_4.Controls
         // in bool control
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs args)
         {
-            // если поменялось именно значение переменной
-            if (args.PropertyName == "Value")
+            Application.Current.Dispatcher.Invoke(() =>
             {
-                this.SetState(this.variable.GetBool());
-            }
+                // если поменялось именно значение переменной
+                if (args.PropertyName == "Value")
+                {
+                    this.SetState(this.variable.GetBool());
+                }
+            });
         }
 
         private void SetState(bool state)

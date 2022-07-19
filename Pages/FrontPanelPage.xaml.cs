@@ -60,6 +60,8 @@ namespace shufflecad_4.Pages
             });
         }
 
+        // moving on canvas logic
+
         Point scrollMousePoint = new Point();
         double hOff = 1;
         double vOff = 1;
@@ -87,7 +89,9 @@ namespace shufflecad_4.Pages
             {
                 canvas.ReleaseMouseCapture();
             }
-        }        
+        }    
+        
+        // moving elements logic
 
         Point anchorPoint;
         Point currentPoint;
@@ -138,6 +142,8 @@ namespace shufflecad_4.Pages
             }
         }
 
+        // drag and drop logic
+
         private void canvas_Drop(object sender, DragEventArgs e)
         {
             IFrontVariable variable = e.Data.GetData(DataFormats.Serializable) as IFrontVariable;
@@ -154,7 +160,8 @@ namespace shufflecad_4.Pages
                 {
                     SetUpCtrl(ctrl, position);
                     // добавляем в лист переменную, которая будет находиться на панели
-                    InfoHolder.VariablesOnFrontPanel.Add(variable);
+                    if (!InfoHolder.VariablesOnFrontPanel.Contains(variable))
+                        InfoHolder.VariablesOnFrontPanel.Add(variable);
                 }
             }
         }
@@ -175,6 +182,24 @@ namespace shufflecad_4.Pages
             {
                 DragDrop.DoDragDrop(frameworkElement, new DataObject(DataFormats.Serializable, frameworkElement.DataContext), DragDropEffects.Move);
             }
+        }
+
+        // buttons logic
+
+        private void SaveFieldButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OpenFieldButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CleanFieldButton_Click(object sender, RoutedEventArgs e)
+        {
+            canvas.Children.Clear();
+            InfoHolder.VariablesOnFrontPanel.Clear();
         }
     }
 }

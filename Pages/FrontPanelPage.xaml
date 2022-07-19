@@ -72,15 +72,16 @@
                     <ColumnDefinition Width="*" ></ColumnDefinition>
                     <ColumnDefinition Width="*" ></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="SaveFieldButton" Grid.Column="1" Grid.Row="0" Width="35" Height="35" Style="{StaticResource NormalButton}">
+                <Button x:Name="SaveFieldButton" Grid.Column="1" Grid.Row="0" Width="35" Height="35" 
+                        Style="{StaticResource NormalButton}" Click="SaveFieldButton_Click">
                     <materialDesign:PackIcon Width="26" Height="26" HorizontalAlignment="Center" Kind="ContentSave" />
                 </Button>
                 <Button x:Name="OpenFieldButton" Grid.Column="2" Grid.Row="0" Width="35" Height="35" 
-                        Style="{StaticResource NormalButton}" HorizontalAlignment="Left">
+                        Style="{StaticResource NormalButton}" HorizontalAlignment="Left" Click="OpenFieldButton_Click">
                     <materialDesign:PackIcon Width="26" Height="26" HorizontalAlignment="Center" Kind="FolderOpen" />
                 </Button>
                 <Button x:Name="CleanFieldButton" Grid.Column="0" Grid.Row="0" Width="35" Height="35" 
-                        Style="{StaticResource NormalButton}" HorizontalAlignment="Right">
+                        Style="{StaticResource NormalButton}" HorizontalAlignment="Right" Click="CleanFieldButton_Click">
                     <materialDesign:PackIcon Width="26" Height="26" HorizontalAlignment="Center" Kind="Vacuum" />
                 </Button>
             </Grid>

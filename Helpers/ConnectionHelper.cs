@@ -43,14 +43,7 @@ namespace shufflecad_4.Helpers
                     {
                         if (InfoHolder.CurrentRPIData.PIR)
                         {
-                            if (DateTime.Now - lastRPIDataUpdate > TimeSpan.FromSeconds(3))
-                            {
-                                InfoHolder.CurrentRPIData.PIC = false;
-                            }
-                            else
-                            {
-                                InfoHolder.CurrentRPIData.PIC = true;
-                            }
+                            InfoHolder.CurrentRPIData.PIC = !(DateTime.Now - lastRPIDataUpdate > TimeSpan.FromSeconds(3));
 
                             if (!isConnected)
                             {

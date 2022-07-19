@@ -110,29 +110,19 @@ namespace shufflecad_4.Helpers
                             Name = paramss[0],
                             Value = paramss[1],
                             Type = paramss[2],
-                            Direction = paramss[3]
+                            Direction = FuncadHelper.ReverseDirection(paramss[3])
                         };
-                        if (sv.Direction == ShuffleVariable.IN_DIR)
+                        
+                        var contains = InfoHolder.AllVariables.FirstOrDefault(x => x.Name == sv.Name);
+                        if (contains == null)
                         {
-                            var contains = InfoHolder.OutVariables.FirstOrDefault(x => x.Name == sv.Name);
-                            if (contains == null)
-                            {
-                                InfoHolder.OutVariables.Add(sv);
-                                InfoHolder.OnOutVariablesChangeWrapper();
-                            }
+                            InfoHolder.AllVariables.Add(sv);
+                            InfoHolder.OnAllVariablesChangeWrapper();
                         }
                         else
                         {
-                            var contains = InfoHolder.InVariables.FirstOrDefault(x => x.Name == sv.Name);
-                            if (contains == null)
-                            {
-                                InfoHolder.InVariables.Add(sv);
-                                InfoHolder.OnInVariablesChangeWrapper();
-                            }
-                            else
-                            {
+                            if (sv.Direction == ShuffleVariable.IN_DIR)
                                 contains.Value = sv.Value;
-                            }
                         }
                     }
                 }
@@ -148,9 +138,10 @@ namespace shufflecad_4.Helpers
             try
             {
                 // out variables
-                if (InfoHolder.OutVariables.Count > 0)
+                if (InfoHolder.AllVariables.Where(x => x.Direction == ShuffleVariable.OUT_DIR).ToList().Count > 0)
                 {
-                    List<string> stringVars = InfoHolder.OutVariables.Select(x => string.Format("{0};{1}", x.Name, x.Value)).ToList();
+                    List<string> stringVars = InfoHolder.AllVariables.Where(x => x.Direction == ShuffleVariable.OUT_DIR).
+                        Select(x => string.Format("{0};{1}", x.Name, x.Value)).ToList();
                     string sendString = string.Join("&", stringVars);
                     outVariablesChannel.OutString = sendString;
                 }
@@ -183,16 +174,16 @@ namespace shufflecad_4.Helpers
                             Value = paramss[1],
                             Type = ShuffleVariable.CHART_TYPE
                         };
-                        var contains = InfoHolder.ChartVariables.FirstOrDefault(x => x.Name == cv.Name);
+                        var contains = InfoHolder.AllVariables.FirstOrDefault(x => x.Name == cv.Name);
                         if (contains == null)
                         {
-                            InfoHolder.ChartVariables.Add(cv);
-                            InfoHolder.OnChartVariablesChangeWrapper();
+                            InfoHolder.AllVariables.Add(cv);
+                            InfoHolder.OnAllVariablesChangeWrapper();
                         }
                         else
                         {
                             contains.Value = cv.Value;
-                            contains.PasteToTheEnd(contains.GetFloat());
+                            (contains as ChartVariable).PasteToTheEnd(contains.GetFloat());
                         }
                     }
                 }

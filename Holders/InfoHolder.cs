@@ -3,6 +3,7 @@ using shufflecad_4.Classes;
 using shufflecad_4.Helpers;
 using System.Collections.Generic;
 using System;
+using shufflecad_4.Classes.Variables.Interfaces;
 
 namespace shufflecad_4.Holders
 {
@@ -17,17 +18,11 @@ namespace shufflecad_4.Holders
 
         public static UserLogHelper UserLogger = new UserLogHelper("Begin");
 
-        public static List<ShuffleVariable> OutVariables = new List<ShuffleVariable>();
-
-        public static List<ShuffleVariable> InVariables = new List<ShuffleVariable>();
-
-        public static List<ChartVariable> ChartVariables = new List<ChartVariable>();
+        public static List<IFrontVariable> AllVariables = new List<IFrontVariable>();
 
         public static List<CameraVariable> CameraVariables = new List<CameraVariable>();
 
-        public static event EventHandler<EventArgs> OnOutVariablesChange;
-        public static event EventHandler<EventArgs> OnInVariablesChange;
-        public static event EventHandler<EventArgs> OnChartVariablesChange;
+        public static event EventHandler<EventArgs> OnAllVariablesChange;
         public static event EventHandler<EventArgs> OnCameraVariablesChange;
 
         static InfoHolder()
@@ -35,27 +30,11 @@ namespace shufflecad_4.Holders
             ConnectionHelper.OnDisconnect += new EventHandler<EventArgs>(ClearAll);            
         }
 
-        public static void OnOutVariablesChangeWrapper()
+        public static void OnAllVariablesChangeWrapper()
         {
-            if (OnOutVariablesChange != null)
+            if (OnAllVariablesChange != null)
             {
-                OnOutVariablesChange(null, EventArgs.Empty);
-            }
-        }
-
-        public static void OnInVariablesChangeWrapper()
-        {
-            if (OnInVariablesChange != null)
-            {
-                OnInVariablesChange(null, EventArgs.Empty);
-            }
-        }
-
-        public static void OnChartVariablesChangeWrapper()
-        {
-            if (OnChartVariablesChange != null)
-            {
-                OnChartVariablesChange(null, EventArgs.Empty);
+                OnAllVariablesChange(null, EventArgs.Empty);
             }
         }
 
@@ -70,14 +49,10 @@ namespace shufflecad_4.Holders
         public static void ClearAll(object sender, EventArgs args)
         {
             CurrentRPIData.ClearAll();
-            OutVariables.Clear();
-            InVariables.Clear();
-            ChartVariables.Clear();
+            AllVariables.Clear();
             CameraVariables.Clear();
 
-            OnOutVariablesChange(null, EventArgs.Empty);
-            OnInVariablesChange(null, EventArgs.Empty);
-            OnChartVariablesChange(null, EventArgs.Empty);
+            OnAllVariablesChange(null, EventArgs.Empty);
             OnCameraVariablesChange(null, EventArgs.Empty);
 
             CurrentRPIData.OnRPIDataChange(null, EventArgs.Empty);

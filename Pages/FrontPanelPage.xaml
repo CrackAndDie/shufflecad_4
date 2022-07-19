@@ -37,19 +37,15 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="25"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="25"></RowDefinition>
-                <RowDefinition Height="0.6*"></RowDefinition>
                 <RowDefinition Height="42 px"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" ></ColumnDefinition>
             </Grid.ColumnDefinitions>
             
-            <TextBlock Text="Input Variables" Foreground="AliceBlue" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Bottom"/>
+            <TextBlock Text="Variables" Foreground="AliceBlue" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Bottom"/>
             <Border Grid.Column="0" Grid.Row="1" Background="#3f444f" Margin="5" CornerRadius="8" BorderThickness="0"/>
-            <ListView x:Name="InputVariables" Grid.Column="0" Grid.Row="1" Background="#3f444f" BorderThickness="0" 
+            <ListView x:Name="AllVariables" Grid.Column="0" Grid.Row="1" Background="#3f444f" BorderThickness="0" 
                         Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
                 <!--<ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
@@ -58,7 +54,7 @@
                 </ListView.ItemContainerStyle>-->
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <UniformGrid Columns="2" HorizontalAlignment="Stretch" MouseMove="InputVars_MouseMove" Margin="-5">
+                        <UniformGrid Columns="2" HorizontalAlignment="Stretch" MouseMove="AllVars_MouseMove" Margin="-5">
                             <TextBlock FontSize="14" Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="0, 0" Foreground="AliceBlue"/>
                             <TextBlock FontSize="14" Text="{Binding Path=Value}" VerticalAlignment="Center" Margin="9, 0" 
                                        Foreground="AliceBlue" HorizontalAlignment="Left"/>
@@ -67,37 +63,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <TextBlock Grid.Column="0" Grid.Row="2" Text="Output Variables" Foreground="AliceBlue" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Bottom"/>
-            <Border Grid.Column="0" Grid.Row="3" Background="#3f444f" Margin="5" CornerRadius="8" BorderThickness="0"/>
-            <ListView x:Name="OutputVariables" Background="#3f444f" Grid.Column="0" Grid.Row="3" BorderThickness="0" 
-                     Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <UniformGrid Columns="2" HorizontalAlignment="Stretch" Margin="-5">
-                            <TextBlock FontSize="14" Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="0, 0" Foreground="AliceBlue"/>
-                            <TextBlock FontSize="14" Text="{Binding Path=Value}" VerticalAlignment="Center" Margin="9, 0" 
-                                       Foreground="AliceBlue" HorizontalAlignment="Left"/>
-                        </UniformGrid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-            <TextBlock Grid.Row="4" Text="Chart Variables" Foreground="AliceBlue" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Bottom"/>
-            <Border Grid.Column="0" Grid.Row="5" Background="#3f444f" Margin="5" CornerRadius="8" BorderThickness="0"/>
-            <ListView x:Name="ChartVariables" Grid.Column="0" Grid.Row="5" Background="#3f444f" BorderThickness="0" 
-                        Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <UniformGrid Columns="2" HorizontalAlignment="Stretch" Margin="-5">
-                            <TextBlock FontSize="14" Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="0, 0" Foreground="AliceBlue"/>
-                            <TextBlock FontSize="14" Text="{Binding Path=Value}" VerticalAlignment="Center" Margin="9, 0"
-                                       Foreground="AliceBlue" HorizontalAlignment="Left"/>
-                        </UniformGrid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-            <Grid Grid.Column="0" Grid.Row="6">
+            <Grid Grid.Column="0" Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>

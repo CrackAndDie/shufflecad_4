@@ -1,4 +1,5 @@
-﻿using System;
+﻿using shufflecad_4.Classes.Variables;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -100,6 +101,15 @@ namespace shufflecad_4.Helpers
             byte[] toSendLenBytes = System.BitConverter.GetBytes(data.Length);
             clientSocket.Send(toSendLenBytes);
             clientSocket.Send(toSendBytes);
+        }
+
+        // делает обратное направление для переменной, потому что питон думает иначе
+        public static string ReverseDirection(string dir)
+        {
+            if (dir == ShuffleVariable.IN_DIR)
+                return ShuffleVariable.OUT_DIR;
+            else
+                return ShuffleVariable.IN_DIR;
         }
     }
 }

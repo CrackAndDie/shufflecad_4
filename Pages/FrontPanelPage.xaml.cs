@@ -29,56 +29,34 @@ namespace shufflecad_4.Pages
         {
             InitializeComponent();
 
-            InfoHolder.OnOutVariablesChange += new EventHandler<EventArgs>(OnOutVariablesChange);
-            InfoHolder.OnInVariablesChange += new EventHandler<EventArgs>(OnInVariablesChange);
-            InfoHolder.OnChartVariablesChange += new EventHandler<EventArgs>(OnChartVariablesChange);
+            InfoHolder.OnAllVariablesChange += new EventHandler<EventArgs>(OnAllVariablesChange);
 
             // test - remove then
 
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime1", Type = ShuffleVariable.STRING_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime2", Type = ShuffleVariable.STRING_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime3", Type = ShuffleVariable.BIG_STRING_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime4", Type = ShuffleVariable.BIG_STRING_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime5", Type = ShuffleVariable.FLOAT_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime6", Type = ShuffleVariable.FLOAT_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ChartVariable() { Name = "anime7", Type = ShuffleVariable.CHART_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime8", Type = ShuffleVariable.SLIDER_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
-            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime9", Type = ShuffleVariable.SLIDER_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "24" });
+            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
+            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime1", Type = ShuffleVariable.STRING_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
+            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime2", Type = ShuffleVariable.STRING_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime3", Type = ShuffleVariable.BIG_STRING_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
+            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime4", Type = ShuffleVariable.BIG_STRING_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime5", Type = ShuffleVariable.FLOAT_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
+            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime6", Type = ShuffleVariable.FLOAT_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            InfoHolder.AllVariables.Add(new ChartVariable() { Name = "anime7", Type = ShuffleVariable.CHART_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime8", Type = ShuffleVariable.SLIDER_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
+            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime9", Type = ShuffleVariable.SLIDER_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "24" });
 
-            OnInVariablesChange(null, EventArgs.Empty);
+            OnAllVariablesChange(null, EventArgs.Empty);
 
             // test - remove then
         }
 
-        private void OnOutVariablesChange(object sender, EventArgs args)
+        private void OnAllVariablesChange(object sender, EventArgs args)
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                OutputVariables.ItemsSource = null;
-                OutputVariables.Items.Clear();
-                OutputVariables.ItemsSource = InfoHolder.OutVariables;
-            });
-        }
-
-        private void OnInVariablesChange(object sender, EventArgs args)
-        {
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                InputVariables.ItemsSource = null;
-                InputVariables.Items.Clear();
-                InputVariables.ItemsSource = InfoHolder.InVariables;
-            });
-        }
-
-        private void OnChartVariablesChange(object sender, EventArgs args)
-        {
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                ChartVariables.ItemsSource = null;
-                ChartVariables.Items.Clear();
-                ChartVariables.ItemsSource = InfoHolder.ChartVariables;
+                AllVariables.ItemsSource = null;
+                AllVariables.Items.Clear();
+                AllVariables.ItemsSource = InfoHolder.AllVariables;
             });
         }
 
@@ -187,7 +165,7 @@ namespace shufflecad_4.Pages
             canvas.Children.Add(ctrl);
         }
 
-        private void InputVars_MouseMove(object sender, MouseEventArgs e)
+        private void AllVars_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed && sender is FrameworkElement frameworkElement)
             {

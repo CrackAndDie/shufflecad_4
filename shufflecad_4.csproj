@@ -119,6 +119,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\SliderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\StringControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -153,6 +157,9 @@
     </Compile>
     <Compile Include="Controls\Interfaces\IFactory.cs" />
     <Compile Include="Controls\Interfaces\IRemoveable.cs" />
+    <Compile Include="Controls\SliderControl.xaml.cs">
+      <DependentUpon>SliderControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\StringControl.xaml.cs">
       <DependentUpon>StringControl.xaml</DependentUpon>
     </Compile>

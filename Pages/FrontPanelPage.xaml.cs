@@ -44,6 +44,8 @@ namespace shufflecad_4.Pages
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime5", Type = ShuffleVariable.FLOAT_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
             InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime6", Type = ShuffleVariable.FLOAT_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
             InfoHolder.InVariables.Add(new ChartVariable() { Name = "anime7", Type = ShuffleVariable.CHART_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime8", Type = ShuffleVariable.SLIDER_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
+            InfoHolder.InVariables.Add(new ShuffleVariable() { Name = "anime9", Type = ShuffleVariable.SLIDER_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "24" });
 
             OnInVariablesChange(null, EventArgs.Empty);
 

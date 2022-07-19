@@ -41,6 +41,10 @@ namespace shufflecad_4.Controls
                     {
                         return new ChartControl(variable as ChartVariable);
                     }
+                case ShuffleVariable.SLIDER_TYPE:
+                    {
+                        return new SliderControl(variable as ShuffleVariable);
+                    }
             }
             return null;
         }

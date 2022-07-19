@@ -86,6 +86,7 @@ namespace shufflecad_4.Helpers
             });
         }
 
+        private static long lastInVarsChannelUpdate = 0;
         private static void OnInVarsChanged(object sender, EventArgs args)
         {
             try
@@ -119,6 +120,8 @@ namespace shufflecad_4.Helpers
                         }
                     }
                 }
+                InfoHolder.CurrentRPIData.VarsInTime = (DateTimeOffset.Now.ToUnixTimeMilliseconds() - lastInVarsChannelUpdate).ToString();
+                lastInVarsChannelUpdate = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             }
             catch (Exception ex)
             {
@@ -126,6 +129,7 @@ namespace shufflecad_4.Helpers
             }
         }
 
+        private static long lastOutVarsChannelUpdate = 0;
         private static void OnOutVarsNeedToBeSet(object sender, EventArgs args)
         {
             try
@@ -142,6 +146,8 @@ namespace shufflecad_4.Helpers
                 {
                     outVariablesChannel.OutString = "null";
                 }
+                InfoHolder.CurrentRPIData.VarsOutTime = (DateTimeOffset.Now.ToUnixTimeMilliseconds() - lastOutVarsChannelUpdate).ToString();
+                lastOutVarsChannelUpdate = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             }
             catch (Exception ex)
             {
@@ -149,6 +155,7 @@ namespace shufflecad_4.Helpers
             }
         }
 
+        private static long lastChartsChannelUpdate = 0;
         private static void OnChartVarsChanged(object sender, EventArgs args)
         {
             try
@@ -180,6 +187,8 @@ namespace shufflecad_4.Helpers
                         }
                     }
                 }
+                InfoHolder.CurrentRPIData.ChartsTime = (DateTimeOffset.Now.ToUnixTimeMilliseconds() - lastChartsChannelUpdate).ToString();
+                lastChartsChannelUpdate = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             }
             catch (Exception ex)
             {
@@ -187,6 +196,7 @@ namespace shufflecad_4.Helpers
             }
         }
 
+        private static long lastOutcadChannelUpdate = 0;
         private static void OnOutcadVarsChanged(object sender, EventArgs args)
         {
             try
@@ -202,6 +212,8 @@ namespace shufflecad_4.Helpers
                         MainWindow.loggerPage.AppendTextToLog(paramss[0], string.Format("#{0}", paramss[1]));
                     }
                 }
+                InfoHolder.CurrentRPIData.OutcadTime = (DateTimeOffset.Now.ToUnixTimeMilliseconds() - lastOutcadChannelUpdate).ToString();
+                lastOutcadChannelUpdate = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             }
             catch (Exception ex)
             {
@@ -209,6 +221,7 @@ namespace shufflecad_4.Helpers
             }
         }
 
+        private static long lastRPIDataChannelUpdate = 0;
         private static void OnRPIDataVarsChanged(object sender, EventArgs args)
         {
             try
@@ -241,6 +254,8 @@ namespace shufflecad_4.Helpers
                         }
                     }
                 }
+                InfoHolder.CurrentRPIData.RPIDataTime = (DateTimeOffset.Now.ToUnixTimeMilliseconds() - lastRPIDataChannelUpdate).ToString();
+                lastRPIDataChannelUpdate = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             }
             catch (Exception ex)
             {

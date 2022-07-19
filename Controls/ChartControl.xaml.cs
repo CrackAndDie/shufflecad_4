@@ -30,11 +30,11 @@ namespace shufflecad_4.Controls
             DataChart.Configuration.RightClickDragZoom = false;
             DataChart.Configuration.ScrollWheelZoom = false;
 
-            DataChart.Plot.XAxis.Label("");
-            DataChart.Plot.YAxis.Label("");
+            DataChart.Plot.XAxis.Label(null);
+            DataChart.Plot.YAxis.Label(null);
 
-            DataChart.Plot.XAxis.TickLabelStyle(rotation: 45);
-            DataChart.Plot.YAxis.TickLabelStyle(rotation: 45);
+            //DataChart.Plot.XAxis.TickLabelStyle(rotation: 45);
+            //DataChart.Plot.YAxis.TickLabelStyle(rotation: 45);
 
             DataChart.Plot.Style(ScottPlot.Style.Gray1);
 
@@ -47,6 +47,8 @@ namespace shufflecad_4.Controls
             DataChart.Plot.ManualDataArea(padding);
 
             DataChart.Plot.AddSignal(this.varaible.Data);
+
+            DataChart.Render();
         }
 
         private void OnDataChanged(object sender, EventArgs args)
@@ -55,6 +57,7 @@ namespace shufflecad_4.Controls
             {
                 DataChart.Plot.AxisAuto();
                 DataChart.Refresh();
+                DataChart.Render();
             });
         }
     }

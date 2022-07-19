@@ -151,7 +151,11 @@ namespace shufflecad_4.Pages
             {
                 FrameworkElement ctrl = ControlsFactory.GetFactory().Create(variable);
                 if (ctrl != null)
+                {
                     SetUpCtrl(ctrl, position);
+                    // добавляем в лист переменную, которая будет находиться на панели
+                    InfoHolder.VariablesOnFrontPanel.Add(variable);
+                }
             }
         }
 

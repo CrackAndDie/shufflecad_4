@@ -27,7 +27,7 @@
                 <ColumnDefinition Width="250px" ></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <ToggleButton Grid.Row="1" HorizontalAlignment="Left" Margin="14" x:Name="DetailedOutputButton"
-                Style="{StaticResource MaterialDesignSwitchToggleButton}">
+                Style="{StaticResource MaterialDesignSwitchToggleButton}" LostFocus="AnyButton_LostFocus">
                 <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
                     <SolidColorBrush Color="LightGreen" />
                 </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
@@ -39,7 +39,7 @@
                        HorizontalAlignment="Left" FontFamily="Trebuchet MS" Foreground="AliceBlue" Margin="60, 0"/>
 
             <ToggleButton Grid.Row="2" HorizontalAlignment="Left" Margin="14" x:Name="ShowMinimapButton"
-                Style="{StaticResource MaterialDesignSwitchToggleButton}">
+                Style="{StaticResource MaterialDesignSwitchToggleButton}" LostFocus="AnyButton_LostFocus">
                 <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
                     <SolidColorBrush Color="LightGreen" />
                 </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
@@ -50,9 +50,7 @@
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Show Minimap" FontSize="18" VerticalAlignment="Center" 
                        HorizontalAlignment="Left" FontFamily="Trebuchet MS" Foreground="AliceBlue" Margin="60, 0"/>
 
-            
+
         </Grid>
-        <Button Grid.Column="0" Grid.Row="1" Height="40" Width="80" Content="Save" x:Name="SaveButton" Style="{StaticResource NormalButton}"
-                    HorizontalAlignment="Right" Margin="20, 10" VerticalAlignment="Center" Click="SaveButton_Click" />
     </Grid>
 </Page>

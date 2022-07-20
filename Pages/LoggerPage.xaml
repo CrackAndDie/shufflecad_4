@@ -15,7 +15,6 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" ></ColumnDefinition>
-            <ColumnDefinition Width="60 px" ></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <RichTextBox Grid.Column="0" Grid.Row="0" Name="LoggerBox" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="20" 
                  Background="#3f444f" BorderThickness="0" Foreground="AliceBlue" 
@@ -27,8 +26,8 @@
             </RichTextBox.Resources>
         </RichTextBox>
 
-        <ToggleButton Width="45" Height="45" x:Name="ScrollDownButton" Grid.Column="1" Grid.Row="0" Margin="0, 20" 
-                      VerticalAlignment="Bottom" HorizontalAlignment="Center" Style="{StaticResource NormalToggle}" Checked="ScrollDownButton_Checked">
+        <ToggleButton Width="45" Height="45" x:Name="ScrollDownButton" Grid.Column="0" Grid.Row="0" Margin="25, 10" 
+                      VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource NormalToggle}" Checked="ScrollDownButton_Checked">
             <materialDesign:PackIcon Width="36" Height="36" HorizontalAlignment="Center" Kind="ArrowDownThick" />
         </ToggleButton>
     </Grid>

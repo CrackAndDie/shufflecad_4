@@ -1,9 +1,9 @@
-﻿using shufflecad_4.Classes.Variables;
-using shufflecad_4.Classes;
-using shufflecad_4.Helpers;
-using System.Collections.Generic;
-using System;
+﻿using shufflecad_4.Classes;
+using shufflecad_4.Classes.Variables;
 using shufflecad_4.Classes.Variables.Interfaces;
+using shufflecad_4.Helpers;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace shufflecad_4.Holders
@@ -30,7 +30,7 @@ namespace shufflecad_4.Holders
 
         static InfoHolder()
         {
-            ConnectionHelper.OnDisconnect += new EventHandler<EventArgs>(ClearAll);            
+            ConnectionHelper.OnDisconnect += new EventHandler<EventArgs>(ClearAll);
         }
 
         public static void OnAllVariablesChangeWrapper()

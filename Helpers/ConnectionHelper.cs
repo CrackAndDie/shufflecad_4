@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -82,7 +81,7 @@ namespace shufflecad_4.Helpers
                     }
 
                     Thread.Sleep(4);
-                }                
+                }
             });
         }
 
@@ -106,7 +105,7 @@ namespace shufflecad_4.Helpers
                             Type = paramss[2],
                             Direction = FuncadHelper.ReverseDirection(paramss[3])
                         };
-                        
+
                         var contains = InfoHolder.AllVariables.FirstOrDefault(x => x.Name == sv.Name);
                         if (contains == null)
                         {

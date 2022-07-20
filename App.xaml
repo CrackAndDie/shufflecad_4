@@ -49,18 +49,24 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border x:Name="border8" CornerRadius="4" BorderThickness="0" Background="Transparent">
+                            <Border x:Name="borderInside" CornerRadius="4" BorderThickness="1" Background="Transparent" BorderBrush="AliceBlue">
                                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsDefaulted" Value="true">
-                                    <Setter Property="Background" TargetName="border8" Value="Transparent"/>
+                                    <Setter Property="Background" TargetName="borderInside" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" TargetName="borderInside" Value="1"/>
+                                    <Setter Property="BorderBrush" TargetName="borderInside" Value="AliceBlue"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter Property="Background" TargetName="border8" Value="#99d984"/>
+                                    <Setter Property="Background" TargetName="borderInside" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" TargetName="borderInside" Value="2"/>
+                                    <Setter Property="BorderBrush" TargetName="borderInside" Value="#99d984"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="true">
-                                    <Setter Property="Background" TargetName="border8" Value="#81eb5e"/>
+                                    <Setter Property="Background" TargetName="borderInside" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" TargetName="borderInside" Value="3"/>
+                                    <Setter Property="BorderBrush" TargetName="borderInside" Value="#81eb5e"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -80,18 +86,24 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border x:Name="border8" CornerRadius="4" BorderThickness="0" Background="Transparent">
+                            <Border x:Name="borderInside" CornerRadius="4" BorderThickness="1" Background="Transparent" BorderBrush="AliceBlue">
                                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsDefaulted" Value="true">
-                                    <Setter Property="Background" TargetName="border8" Value="Transparent"/>
+                                    <Setter Property="Background" TargetName="borderInside" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" TargetName="borderInside" Value="1"/>
+                                    <Setter Property="BorderBrush" TargetName="borderInside" Value="AliceBlue"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter Property="Background" TargetName="border8" Value="#f59090"/>
+                                    <Setter Property="Background" TargetName="borderInside" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" TargetName="borderInside" Value="2"/>
+                                    <Setter Property="BorderBrush" TargetName="borderInside" Value="#f59090"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="true">
-                                    <Setter Property="Background" TargetName="border8" Value="#f06565"/>
+                                    <Setter Property="Background" TargetName="borderInside" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" TargetName="borderInside" Value="3"/>
+                                    <Setter Property="BorderBrush" TargetName="borderInside" Value="#f06565"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -109,18 +121,24 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border x:Name="border8" CornerRadius="4" BorderThickness="0" Background="Transparent">
+                            <Border x:Name="borderInside" CornerRadius="4" BorderThickness="1" Background="Transparent" BorderBrush="AliceBlue">
                                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsDefaulted" Value="true">
-                                    <Setter Property="Background" TargetName="border8" Value="Transparent"/>
+                                    <Setter Property="Background" TargetName="borderInside" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" TargetName="borderInside" Value="1"/>
+                                    <Setter Property="BorderBrush" TargetName="borderInside" Value="AliceBlue"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter Property="Background" TargetName="border8" Value="#FF383B41"/>
+                                    <Setter Property="Background" TargetName="borderInside" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" TargetName="borderInside" Value="2"/>
+                                    <Setter Property="BorderBrush" TargetName="borderInside" Value="AliceBlue"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="true">
-                                    <Setter Property="Background" TargetName="border8" Value="#FF484B51"/>
+                                    <Setter Property="Background" TargetName="borderInside" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" TargetName="borderInside" Value="3"/>
+                                    <Setter Property="BorderBrush" TargetName="borderInside" Value="AliceBlue"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -131,23 +149,27 @@
             <Style x:Key="NormalToggle" TargetType="{x:Type ToggleButton}">
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="Foreground" Value="AliceBlue"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="BorderBrush" Value="AliceBlue"/>
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="ToggleButton">
+                        <ControlTemplate TargetType="ToggleButton" >
                             <Border BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="4,4,4,4"
-                                Background="{TemplateBinding Background}">
+                                Background="{TemplateBinding Background}" x:Name="borderInside">
                                 <ContentPresenter HorizontalAlignment="Center"                  
                                               VerticalAlignment="Center"/>
                             </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" TargetName="borderInside" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" TargetName="borderInside" Value="2"/>
+                                    <Setter Property="BorderBrush" TargetName="borderInside" Value="AliceBlue"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
-                <Style.Triggers>
-                    <Trigger Property="IsChecked" Value="True">
-                        <Setter Property="Background" Value="#FF484B51">
-                        </Setter>
-                    </Trigger>
-                </Style.Triggers>
+                
             </Style>
 
             <Style x:Key="SettingsToggle" TargetType="{x:Type ToggleButton}">

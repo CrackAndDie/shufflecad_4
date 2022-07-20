@@ -24,7 +24,7 @@
                RenderOptions.BitmapScalingMode="Fant"/>
         <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="shufflecad" FontSize="96" VerticalAlignment="Center" 
                    HorizontalAlignment="Center" FontFamily="Trebuchet MS" Foreground="AliceBlue"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" Text="Powered by: WinSCP, PuTTY, ScottPlot" Foreground="AliceBlue" 
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Powered by: WinSCP, PuTTY, ScottPlot, PyCommands" Foreground="AliceBlue" 
                    HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
 
     </Grid>

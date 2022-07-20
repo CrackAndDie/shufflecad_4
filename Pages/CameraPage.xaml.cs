@@ -59,7 +59,7 @@ namespace shufflecad_4.Pages
         {
             try
             {
-                
+
                 await Task.Run(() =>
                 {
                     var image = new BitmapImage();
@@ -80,7 +80,7 @@ namespace shufflecad_4.Pages
                         MainWindow.cameraPage.ImageCamera.Source = image;
                     });
                 });
-                
+
             }
             catch (Exception ex)
             {

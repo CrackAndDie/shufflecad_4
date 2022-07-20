@@ -1,20 +1,8 @@
 ﻿using shufflecad_4.Helpers;
 using shufflecad_4.Holders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace shufflecad_4.Pages
 {
@@ -28,14 +16,9 @@ namespace shufflecad_4.Pages
             InitializeComponent();
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void AnyTB_LostFocus(object sender, RoutedEventArgs e)
         {
             MainWindow.settingsPage.Save();
-        }
-
-        private void FixButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         async private void RunButton_Click(object sender, RoutedEventArgs e)

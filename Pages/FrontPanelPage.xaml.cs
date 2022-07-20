@@ -4,20 +4,10 @@ using shufflecad_4.Controls;
 using shufflecad_4.Helpers;
 using shufflecad_4.Holders;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace shufflecad_4.Pages
 {
@@ -90,8 +80,8 @@ namespace shufflecad_4.Pages
             {
                 canvas.ReleaseMouseCapture();
             }
-        }    
-        
+        }
+
         // moving elements logic
 
         Point anchorPoint;

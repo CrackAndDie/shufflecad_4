@@ -1,8 +1,5 @@
-﻿using shufflecad_4.Classes;
-using shufflecad_4.Classes.Variables;
-using shufflecad_4.Holders;
+﻿using shufflecad_4.Holders;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -124,41 +121,9 @@ namespace shufflecad_4.Helpers
 
         async public static Task StartProgram()
         {
-            bool check = string.IsNullOrEmpty(InfoHolder.CurrentSettings.PathToSrc) || 
-                string.IsNullOrEmpty(InfoHolder.CurrentSettings.MainFileName) ||
-                string.IsNullOrEmpty(InfoHolder.CurrentSettings.IpAddress) || 
-                string.IsNullOrEmpty(InfoHolder.CurrentSettings.Password) || 
-                string.IsNullOrEmpty(InfoHolder.CurrentSettings.UserName);
-            if (check)
-            {
-                System.Windows.Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().CurrentState.Text = "Not all fields are filled up!";
-            }
-            else
-            {
-                if (InfoHolder.CurrentRPIData.RIC)
-                {
-                    Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().CurrentState.Text = "Loading Commands...";
-                    await Task.Run(() =>
-                    {
-                        StandartRun("/PyCommands/LoadCommands.txt").WaitForExit();
-                    });
-                    Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().CurrentState.Text = "Deploying...";
-                    await Task.Run(() =>
-                    {
-                        StandartRun("/PyCommands/StopProgram.txt").WaitForExit();
-                        StandartRun("/PyCommands/StartProgram.txt").WaitForExit();
-                    });
-                    Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().CurrentState.Text = "Deployed";
-                }
-                else
-                {
-                    Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().CurrentState.Text = "Robot is not connected";
-                }
-            }
-        }
+            // берем текущее окно
+            MainWindow mainWindow = System.Windows.Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
 
-        async public static Task StopProgram()
-        {
             bool check = string.IsNullOrEmpty(InfoHolder.CurrentSettings.PathToSrc) ||
                 string.IsNullOrEmpty(InfoHolder.CurrentSettings.MainFileName) ||
                 string.IsNullOrEmpty(InfoHolder.CurrentSettings.IpAddress) ||
@@ -166,22 +131,60 @@ namespace shufflecad_4.Helpers
                 string.IsNullOrEmpty(InfoHolder.CurrentSettings.UserName);
             if (check)
             {
-                System.Windows.Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().CurrentState.Text = "Not all fields are filled up!";
+                mainWindow.ChangeStateText("Not all fields are filled up!", MainWindow.STATE_ERROR_COLOR);
             }
             else
             {
                 if (InfoHolder.CurrentRPIData.RIC)
                 {
-                    Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().CurrentState.Text = "Stopping...";
+                    mainWindow.ChangeStateText("Loading Commands...");
+                    await Task.Run(() =>
+                    {
+                        StandartRun("/PyCommands/LoadCommands.txt").WaitForExit();
+                    });
+                    mainWindow.ChangeStateText("Deploying...");
+                    await Task.Run(() =>
+                    {
+                        StandartRun("/PyCommands/StopProgram.txt").WaitForExit();
+                        StandartRun("/PyCommands/StartProgram.txt").WaitForExit();
+                    });
+                    mainWindow.ChangeStateText("Deployed");
+                }
+                else
+                {
+                    mainWindow.ChangeStateText("Robot is not connected", MainWindow.STATE_WARNING_COLOR);
+                }
+            }
+        }
+
+        async public static Task StopProgram()
+        {
+            // берем текущее окно
+            MainWindow mainWindow = System.Windows.Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+
+            bool check = string.IsNullOrEmpty(InfoHolder.CurrentSettings.PathToSrc) ||
+                string.IsNullOrEmpty(InfoHolder.CurrentSettings.MainFileName) ||
+                string.IsNullOrEmpty(InfoHolder.CurrentSettings.IpAddress) ||
+                string.IsNullOrEmpty(InfoHolder.CurrentSettings.Password) ||
+                string.IsNullOrEmpty(InfoHolder.CurrentSettings.UserName);
+            if (check)
+            {
+                mainWindow.ChangeStateText("Not all fields are filled up!", MainWindow.STATE_ERROR_COLOR);
+            }
+            else
+            {
+                if (InfoHolder.CurrentRPIData.RIC)
+                {
+                    mainWindow.ChangeStateText("Stopping...");
                     await Task.Run(() =>
                     {
                         StandartRun("/PyCommands/StopProgram.txt").WaitForExit();
                     });
-                    Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().CurrentState.Text = "Stopped";
+                    mainWindow.ChangeStateText("Stopped");
                 }
                 else
                 {
-                    Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().CurrentState.Text = "Robot is not connected";
+                    mainWindow.ChangeStateText("Robot is not connected", MainWindow.STATE_WARNING_COLOR);
                 }
             }
         }

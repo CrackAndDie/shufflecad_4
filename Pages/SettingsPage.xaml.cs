@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace shufflecad_4.Pages
 {
@@ -20,6 +21,11 @@ namespace shufflecad_4.Pages
         public SettingsPage()
         {
             InitializeComponent();
+        }
+
+        private void AnyButton_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Save();
         }
 
         public void LoadAndSet()
@@ -63,12 +69,15 @@ namespace shufflecad_4.Pages
             {
                 MainWindow.frontPanelPage.MinimapBorder.Visibility = Visibility.Visible;
             }
-            else MainWindow.frontPanelPage.MinimapBorder.Visibility = Visibility.Hidden;            
+            else MainWindow.frontPanelPage.MinimapBorder.Visibility = Visibility.Hidden;
         }
 
         public void Save()
         {
-            System.Windows.Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().CurrentState.Text = "Settings saved";
+            // берем текущее окно
+            MainWindow mainWindow = System.Windows.Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+
+            mainWindow.ChangeStateText("Settings saved");
 
             SettingsClass setts = new SettingsClass()
             {
@@ -87,11 +96,6 @@ namespace shufflecad_4.Pages
 
             string json = JsonSerializer.Serialize(setts);
             File.WriteAllText(settingsPath, json);
-        }
-
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            Save();
         }
 
         private void ChangeCommandFiles(SettingsClass data)

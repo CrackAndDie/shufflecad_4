@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace shufflecad_4
 {
@@ -70,9 +71,14 @@ namespace shufflecad_4
             AllDonePI.Visibility = Visibility.Visible;
         }
 
-        public void ChangeStateText(string text)
+        public const string STATE_DEFAULT_COLOR = "#F0F8FF";
+        public const string STATE_WARNING_COLOR = "#DEAA1D";
+        public const string STATE_ERROR_COLOR = "#FC5532";
+
+        public void ChangeStateText(string text, string color = STATE_DEFAULT_COLOR)
         {
             CurrentState.Text = text;
+            CurrentState.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(color));
         }
 
         private void MinimizeButtonClick(object sender, RoutedEventArgs e)

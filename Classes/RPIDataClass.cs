@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
@@ -23,17 +21,17 @@ namespace shufflecad_4.Classes
 
         // main window
         private float power;
-        public float Power 
+        public float Power
         {
             get
             {
                 return power;
             }
-            set 
-            { 
+            set
+            {
                 this.power = value;
                 PowerChanged();
-            } 
+            }
         }
         private float temperature;
         public float Temperature
@@ -165,7 +163,7 @@ namespace shufflecad_4.Classes
                 Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().RobotConnectedBorder.Background = ric ? greenColor : redColor;
             });
         }
-        
+
         private void PIRChanged()
         {
             Application.Current.Dispatcher.Invoke(() =>

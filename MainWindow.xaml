@@ -200,7 +200,7 @@
                            Foreground="AliceBlue" x:Name="CurrentState" FontSize="14" TextAlignment="Center"/>
             </Grid>
 
-            <!--<Rectangle Grid.ColumnSpan="2" Grid.Row="1" Fill="#FF67676A" />-->
+            <Rectangle Grid.ColumnSpan="3" Grid.Row="1" Fill="#FF282B31" />
             <materialDesign:Card Grid.Row="1">
                 <TabControl
                     HorizontalContentAlignment="Center"

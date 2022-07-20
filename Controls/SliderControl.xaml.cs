@@ -1,4 +1,5 @@
 ﻿using shufflecad_4.Classes.Variables;
+using shufflecad_4.Classes.Variables.Interfaces;
 using shufflecad_4.Controls.Interfaces;
 using System;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ namespace shufflecad_4.Controls
     /// <summary>
     /// Interaction logic for SliderControl.xaml
     /// </summary>
-    public partial class SliderControl : UserControl, IRemoveable
+    public partial class SliderControl : UserControl, IRemoveable, IHaveVariable
     {
         private readonly ShuffleVariable variable;
 
@@ -35,6 +36,11 @@ namespace shufflecad_4.Controls
             ChangeFreq();
 
             DataContext = this.variable;
+        }
+
+        public IFrontVariable GetVariable()
+        {
+            return this.variable;
         }
 
         // in slider control

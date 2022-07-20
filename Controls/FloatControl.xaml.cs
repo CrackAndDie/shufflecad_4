@@ -1,5 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
 using shufflecad_4.Classes.Variables;
+using shufflecad_4.Classes.Variables.Interfaces;
+using shufflecad_4.Controls.Interfaces;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -11,7 +13,7 @@ namespace shufflecad_4.Controls
     /// <summary>
     /// Interaction logic for FloatControl.xaml
     /// </summary>
-    public partial class FloatControl : UserControl
+    public partial class FloatControl : UserControl, IRemoveable, IHaveVariable
     {
         private readonly ShuffleVariable variable;
 
@@ -31,6 +33,11 @@ namespace shufflecad_4.Controls
             }
 
             DataContext = this.variable;
+        }
+
+        public IFrontVariable GetVariable()
+        {
+            return this.variable;
         }
 
         // in float control
@@ -72,6 +79,11 @@ namespace shufflecad_4.Controls
                     this.variable.SetString("0");
                 }
             }
+        }
+
+        public void Remove()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

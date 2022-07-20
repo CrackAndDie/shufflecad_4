@@ -1,32 +1,34 @@
-﻿using shufflecad_4.Helpers;
+﻿using shufflecad_4.Classes.ConnectionClasses.Interfaces;
+using shufflecad_4.Helpers;
 using shufflecad_4.Holders;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace shufflecad_4.Classes
+namespace shufflecad_4.Classes.ConnectionClasses
 {
-    public class TalkPort
+    public class ListenPort : IPort
     {
-        public event EventHandler<EventArgs> OnNeedToSetMessage;
+        public event EventHandler<EventArgs> OnGotMessage;
 
-        public string OutString = "";
+        public string SendString = "-1";
+        public string OutString = string.Empty;
+        public byte[] OutBytes = new byte[0];
         private bool stopThread = false;
         private IPEndPoint ipPoint;
 
         private Socket sct;
         public Thread thread;
+        private bool isCamera;
 
         private readonly int sleepTime;
 
-        internal TalkPort(IPEndPoint ipPoint, int sleepTime)
+        internal ListenPort(IPEndPoint ipPoint, int sleepTime, bool isCamera = false)
         {
             this.ipPoint = ipPoint;
+            this.isCamera = isCamera;
             this.sleepTime = sleepTime;
         }
 
@@ -36,17 +38,24 @@ namespace shufflecad_4.Classes
             sct.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
         }
 
-        public void StartTalking()
+        public void ResetOut()
         {
-            OutString = "";
+            OutString = string.Empty;
+            OutBytes = new byte[0];
+            SendString = "-1";
+        }
+
+        public void StartListening()
+        {
             this.stopThread = false;
             SetUpSocket();
-            thread = new Thread(() => { Talking(); });
+            thread = new Thread(() => { Listening(); });
             thread.Start();
         }
 
-        private void Talking()
+        private void Listening()
         {
+            // Debug.Log("ListenPort Started on port: " + this.ipPoint.Port.ToString());
             try
             {
                 sct.Connect(ipPoint);
@@ -61,11 +70,6 @@ namespace shufflecad_4.Classes
             {
                 try
                 {
-                    if (OnNeedToSetMessage != null)
-                    {
-                        OnNeedToSetMessage(this, EventArgs.Empty);
-                    }
-
                     string outString = Encoding.ASCII.GetString(FuncadHelper.GetInputBytes(sct));
 
                     // тут, если пользователь отключился, то в текущем задании будет пустая строка
@@ -77,6 +81,7 @@ namespace shufflecad_4.Classes
                         {
                             SetUpSocket();
                             sct.Connect(ipPoint);
+                            // continue;
                         }
                         catch (SocketException exx)
                         {
@@ -86,7 +91,19 @@ namespace shufflecad_4.Classes
                         }
                     }
 
-                    FuncadHelper.SetOutputBytes(Encoding.ASCII.GetBytes(OutString), sct);
+                    if (this.isCamera)
+                    {
+                        FuncadHelper.SetOutputBytes(new byte[4], sct);
+
+                        byte[] data = FuncadHelper.GetInputBytes(sct);
+                        OutBytes = data;
+                    }
+
+                    OutString = outString;
+
+                    OnGotMessage?.Invoke(this, EventArgs.Empty);
+
+                    FuncadHelper.SetOutputBytes(Encoding.ASCII.GetBytes(SendString), sct);
                     Thread.Sleep(this.sleepTime);
                 }
                 catch (Exception ex)
@@ -124,7 +141,7 @@ namespace shufflecad_4.Classes
             return false;
         }
 
-        public void StopTalking()
+        public void StopListening()
         {
             this.stopThread = true;
             try
@@ -145,11 +162,6 @@ namespace shufflecad_4.Classes
                 }
             }
             ResetOut();
-        }
-
-        public void ResetOut()
-        {
-            OutString = "";
         }
     }
 }

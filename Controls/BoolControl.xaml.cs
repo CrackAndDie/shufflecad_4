@@ -1,5 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
 using shufflecad_4.Classes.Variables;
+using shufflecad_4.Classes.Variables.Interfaces;
 using shufflecad_4.Controls.Interfaces;
 using System.ComponentModel;
 using System.Windows;
@@ -11,7 +12,7 @@ namespace shufflecad_4.Controls
     /// <summary>
     /// Interaction logic for BoolControl.xaml
     /// </summary>
-    public partial class BoolControl : UserControl, IRemoveable
+    public partial class BoolControl : UserControl, IRemoveable, IHaveVariable
     {
         private readonly ShuffleVariable variable;
 
@@ -40,6 +41,11 @@ namespace shufflecad_4.Controls
 
                 SetColor(false);
             }
+        }
+
+        public IFrontVariable GetVariable()
+        {
+            return this.variable;
         }
 
         // in bool control

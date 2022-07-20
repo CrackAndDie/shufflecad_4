@@ -135,16 +135,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\ConnectionClasses\Interfaces\IPort.cs" />
+    <Compile Include="Classes\SavingVariableClass.cs" />
     <Compile Include="Classes\Variables\CameraVariable.cs" />
     <Compile Include="Classes\LanguageClass.cs" />
-    <Compile Include="Classes\ListenPort.cs" />
+    <Compile Include="Classes\ConnectionClasses\ListenPort.cs" />
     <Compile Include="Classes\RPIDataClass.cs" />
     <Compile Include="Classes\SettingsClass.cs" />
     <Compile Include="Classes\Variables\ChartVariable.cs" />
     <Compile Include="Classes\Variables\Interfaces\IFrontVariable.cs" />
-    <Compile Include="Classes\Variables\Interfaces\IVariable.cs" />
     <Compile Include="Classes\Variables\ShuffleVariable.cs" />
-    <Compile Include="Classes\TalkPort.cs" />
+    <Compile Include="Classes\ConnectionClasses\TalkPort.cs" />
     <Compile Include="Controls\BoolControl.xaml.cs">
       <DependentUpon>BoolControl.xaml</DependentUpon>
     </Compile>
@@ -156,6 +157,7 @@
       <DependentUpon>FloatControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Interfaces\IFactory.cs" />
+    <Compile Include="Controls\Interfaces\IHaveVariable.cs" />
     <Compile Include="Controls\Interfaces\IRemoveable.cs" />
     <Compile Include="Controls\SliderControl.xaml.cs">
       <DependentUpon>SliderControl.xaml</DependentUpon>
@@ -165,6 +167,7 @@
     </Compile>
     <Compile Include="Helpers\CommandsHelper.cs" />
     <Compile Include="Helpers\ConnectionHelper.cs" />
+    <Compile Include="Helpers\FrontPanelHelper.cs" />
     <Compile Include="Helpers\FuncadHelper.cs" />
     <Compile Include="Helpers\UserLogHelper.cs" />
     <Compile Include="Holders\InfoHolder.cs" />

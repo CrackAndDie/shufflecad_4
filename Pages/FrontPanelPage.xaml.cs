@@ -1,6 +1,7 @@
 ﻿using shufflecad_4.Classes.Variables;
 using shufflecad_4.Classes.Variables.Interfaces;
 using shufflecad_4.Controls;
+using shufflecad_4.Helpers;
 using shufflecad_4.Holders;
 using System;
 using System.Collections.Generic;
@@ -188,7 +189,12 @@ namespace shufflecad_4.Pages
 
         private void SaveFieldButton_Click(object sender, RoutedEventArgs e)
         {
-
+            string path = FrontPanelHelper.GetSavingPath();
+            if (path != null)
+            {
+                var vars = FrontPanelHelper.GetVariablesList(canvas);
+                FrontPanelHelper.SaveVariables(path, vars);
+            }
         }
 
         private void OpenFieldButton_Click(object sender, RoutedEventArgs e)

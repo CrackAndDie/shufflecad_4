@@ -1,4 +1,6 @@
 ﻿using shufflecad_4.Classes.Variables;
+using shufflecad_4.Classes.Variables.Interfaces;
+using shufflecad_4.Controls.Interfaces;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,20 +10,25 @@ namespace shufflecad_4.Controls
     /// <summary>
     /// Interaction logic for ChartControl.xaml
     /// </summary>
-    public partial class ChartControl : UserControl
+    public partial class ChartControl : UserControl, IRemoveable, IHaveVariable
     {
-        private readonly ChartVariable varaible;
+        private readonly ChartVariable variable;
 
-        public ChartControl(ChartVariable varaible)
+        public ChartControl(ChartVariable variable)
         {
             InitializeComponent();
 
-            this.varaible = varaible;
-            DataContext = this.varaible;
+            this.variable = variable;
+            DataContext = this.variable;
 
-            this.varaible.DataChanged += OnDataChanged;
+            this.variable.DataChanged += OnDataChanged;
 
             SetUpChart();
+        }
+
+        public IFrontVariable GetVariable()
+        {
+            return this.variable;
         }
 
         private void SetUpChart()
@@ -46,7 +53,7 @@ namespace shufflecad_4.Controls
 
             DataChart.Plot.ManualDataArea(padding);
 
-            DataChart.Plot.AddSignal(this.varaible.Data);
+            DataChart.Plot.AddSignal(this.variable.Data);
 
             DataChart.Render();
         }
@@ -59,6 +66,11 @@ namespace shufflecad_4.Controls
                 DataChart.Refresh();
                 DataChart.Render();
             });
+        }
+
+        public void Remove()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -38,6 +38,7 @@
             </Style>
 
             <Style TargetType="Button" x:Key="GreenButton">
+                <Setter Property="Foreground" Value="AliceBlue" />
                 <Setter Property="FontWeight" Value="Bold" />
                 <Setter Property="FontFamily" Value="Trebuchet MS" />
                 <Setter Property="Height" Value="90" />
@@ -48,12 +49,12 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border x:Name="border8" CornerRadius="4" BorderThickness="0" Background="#c9f7ba">
+                            <Border x:Name="border8" CornerRadius="4" BorderThickness="0" Background="Transparent">
                                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsDefaulted" Value="true">
-                                    <Setter Property="Background" TargetName="border8" Value="#c9f7ba"/>
+                                    <Setter Property="Background" TargetName="border8" Value="Transparent"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
                                     <Setter Property="Background" TargetName="border8" Value="#99d984"/>
@@ -68,6 +69,7 @@
             </Style>
 
             <Style TargetType="Button" x:Key="RedButton">
+                <Setter Property="Foreground" Value="AliceBlue" />
                 <Setter Property="FontWeight" Value="Bold" />
                 <Setter Property="FontFamily" Value="Trebuchet MS" />
                 <Setter Property="Height" Value="90" />
@@ -78,12 +80,12 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border x:Name="border8" CornerRadius="4" BorderThickness="0" Background="#fcbdbd">
+                            <Border x:Name="border8" CornerRadius="4" BorderThickness="0" Background="Transparent">
                                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsDefaulted" Value="true">
-                                    <Setter Property="Background" TargetName="border8" Value="#fcbdbd"/>
+                                    <Setter Property="Background" TargetName="border8" Value="Transparent"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
                                     <Setter Property="Background" TargetName="border8" Value="#f59090"/>
@@ -98,6 +100,7 @@
             </Style>
 
             <Style TargetType="Button" x:Key="NormalButton">
+                <Setter Property="Foreground" Value="AliceBlue" />
                 <Setter Property="FontWeight" Value="Bold" />
                 <Setter Property="FontFamily" Value="Trebuchet MS" />
                 <Setter Property="FontSize" Value="20" />
@@ -106,18 +109,18 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border x:Name="border8" CornerRadius="4" BorderThickness="0" Background="#f0ab84">
+                            <Border x:Name="border8" CornerRadius="4" BorderThickness="0" Background="Transparent">
                                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsDefaulted" Value="true">
-                                    <Setter Property="Background" TargetName="border8" Value="#f0ab84"/>
+                                    <Setter Property="Background" TargetName="border8" Value="Transparent"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter Property="Background" TargetName="border8" Value="#eb915e"/>
+                                    <Setter Property="Background" TargetName="border8" Value="#FF383B41"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="true">
-                                    <Setter Property="Background" TargetName="border8" Value="#f07935"/>
+                                    <Setter Property="Background" TargetName="border8" Value="#FF484B51"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -126,7 +129,8 @@
             </Style>
 
             <Style x:Key="NormalToggle" TargetType="{x:Type ToggleButton}">
-                <Setter Property="Background" Value="#f0ab84"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="AliceBlue"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="ToggleButton">
@@ -140,7 +144,7 @@
                 </Setter>
                 <Style.Triggers>
                     <Trigger Property="IsChecked" Value="True">
-                        <Setter Property="Background" Value="#f07935">
+                        <Setter Property="Background" Value="#FF484B51">
                         </Setter>
                     </Trigger>
                 </Style.Triggers>

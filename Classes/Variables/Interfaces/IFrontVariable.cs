@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace shufflecad_4.Classes.Variables.Interfaces
+﻿namespace shufflecad_4.Classes.Variables.Interfaces
 {
-    public interface IFrontVariable : IVariable
+    public interface IFrontVariable
     {
+        string Name { get; set; }
         string Type { get; set; }
         string Value { get; set; }
         string Direction { get; set; }

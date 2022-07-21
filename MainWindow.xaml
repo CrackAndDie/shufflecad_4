@@ -111,7 +111,7 @@
 		    Grid.Column="0"
 		    Width="20"
 		    Height="20"
-		    Margin="1"
+		    Margin="1" Source="/Res/logo_sc4.png"
 		    x:Name="UpperLogoImage" RenderOptions.BitmapScalingMode="Fant"/>
                 <TextBlock
 		    Grid.Column="1"

@@ -22,11 +22,12 @@
                 <RowDefinition Height="60px"></RowDefinition>
                 <RowDefinition Height="60px"></RowDefinition>
                 <RowDefinition Height="60px"></RowDefinition>
+                <RowDefinition Height="60px"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250px" ></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <ToggleButton Grid.Row="1" HorizontalAlignment="Left" Margin="14" x:Name="DetailedOutputButton"
+            <ToggleButton Grid.Row="0" HorizontalAlignment="Left" Margin="14" x:Name="DetailedOutputButton"
                 Style="{StaticResource MaterialDesignSwitchToggleButton}" LostFocus="AnyButton_LostFocus">
                 <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
                     <SolidColorBrush Color="LightGreen" />
@@ -35,10 +36,10 @@
                     <SolidColorBrush Color="LightPink" />
                 </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
             </ToggleButton>
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="Detailed Output" FontSize="18" VerticalAlignment="Center" 
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Detailed Output" FontSize="18" VerticalAlignment="Center" 
                        HorizontalAlignment="Left" FontFamily="Trebuchet MS" Foreground="AliceBlue" Margin="60, 0"/>
 
-            <ToggleButton Grid.Row="2" HorizontalAlignment="Left" Margin="14" x:Name="ShowMinimapButton"
+            <ToggleButton Grid.Row="1" HorizontalAlignment="Left" Margin="14" x:Name="ShowMinimapButton"
                 Style="{StaticResource MaterialDesignSwitchToggleButton}" LostFocus="AnyButton_LostFocus">
                 <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
                     <SolidColorBrush Color="LightGreen" />
@@ -47,10 +48,32 @@
                     <SolidColorBrush Color="LightPink" />
                 </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
             </ToggleButton>
-            <TextBlock Grid.Column="0" Grid.Row="2" Text="Show Minimap" FontSize="18" VerticalAlignment="Center" 
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Show Minimap" FontSize="18" VerticalAlignment="Center" 
                        HorizontalAlignment="Left" FontFamily="Trebuchet MS" Foreground="AliceBlue" Margin="60, 0"/>
 
+            <ToggleButton Grid.Row="2" HorizontalAlignment="Left" Margin="14" x:Name="AutoConnectButton"
+                Style="{StaticResource MaterialDesignSwitchToggleButton}" LostFocus="AnyButton_LostFocus">
+                <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                    <SolidColorBrush Color="LightGreen" />
+                </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                <materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                    <SolidColorBrush Color="LightPink" />
+                </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+            </ToggleButton>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Auto Connect" FontSize="18" VerticalAlignment="Center" 
+                       HorizontalAlignment="Left" FontFamily="Trebuchet MS" Foreground="AliceBlue" Margin="60, 0"/>
 
+            <ToggleButton Grid.Row="3" HorizontalAlignment="Left" Margin="14" x:Name="ShowPasswordButton"
+                Style="{StaticResource MaterialDesignSwitchToggleButton}" LostFocus="AnyButton_LostFocus">
+                <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                    <SolidColorBrush Color="LightGreen" />
+                </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                <materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                    <SolidColorBrush Color="LightPink" />
+                </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+            </ToggleButton>
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="Show Password" FontSize="18" VerticalAlignment="Center" 
+                       HorizontalAlignment="Left" FontFamily="Trebuchet MS" Foreground="AliceBlue" Margin="60, 0"/>
         </Grid>
     </Grid>
 </Page>

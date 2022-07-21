@@ -12,5 +12,7 @@
         // settings
         public bool DetailedOutput { get; set; }
         public bool ShowMinimap { get; set; }
+        public bool AutoConnect { get; set; }
+        public bool ShowPassword { get; set; }
     }
 }

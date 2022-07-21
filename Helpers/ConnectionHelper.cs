@@ -44,23 +44,26 @@ namespace shufflecad_4.Helpers
                         {
                             InfoHolder.CurrentRPIData.PIC = !(DateTime.Now - lastRPIDataUpdate > TimeSpan.FromSeconds(3));
 
-                            if (!isConnected)
+                            if (InfoHolder.CurrentSettings.AutoConnect)
                             {
-                                SetUpChannels();
-                                LinkEvents();
-                                StartChannels();
-
-                                isConnected = true;
-                            }
-                            else
-                            {
-                                if (!CheckAlive())
+                                if (!isConnected)
                                 {
-                                    StopChannesls();
-                                    OnDisconnect?.Invoke(null, EventArgs.Empty);
                                     SetUpChannels();
                                     LinkEvents();
                                     StartChannels();
+
+                                    isConnected = true;
+                                }
+                                else
+                                {
+                                    if (!CheckAlive())
+                                    {
+                                        StopChannesls();
+                                        OnDisconnect?.Invoke(null, EventArgs.Empty);
+                                        SetUpChannels();
+                                        LinkEvents();
+                                        StartChannels();
+                                    }
                                 }
                             }
                         }

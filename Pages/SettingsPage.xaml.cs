@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace shufflecad_4.Pages
@@ -48,6 +49,8 @@ namespace shufflecad_4.Pages
         {
             DetailedOutputButton.IsChecked = setts.DetailedOutput;
             ShowMinimapButton.IsChecked = setts.ShowMinimap;
+            AutoConnectButton.IsChecked = setts.AutoConnect;
+            ShowPasswordButton.IsChecked = setts.ShowPassword;
 
             MainWindow.runPage.PathToSrcFolderTB.Text = setts.PathToSrc;
             MainWindow.runPage.MainFileNameTB.Text = setts.MainFileName;
@@ -70,6 +73,15 @@ namespace shufflecad_4.Pages
                 MainWindow.frontPanelPage.MinimapBorder.Visibility = Visibility.Visible;
             }
             else MainWindow.frontPanelPage.MinimapBorder.Visibility = Visibility.Hidden;
+
+            if (setts.ShowPassword)
+            {
+                MainWindow.runPage.PasswordTB.Foreground = new SolidColorBrush(Colors.AliceBlue);
+            }
+            else
+            {
+                MainWindow.runPage.PasswordTB.Foreground = new SolidColorBrush(Colors.Transparent);
+            }
         }
 
         public void Save()
@@ -83,6 +95,8 @@ namespace shufflecad_4.Pages
             {
                 DetailedOutput = (bool)DetailedOutputButton.IsChecked,
                 ShowMinimap = (bool)ShowMinimapButton.IsChecked,
+                AutoConnect = (bool)AutoConnectButton.IsChecked,
+                ShowPassword = (bool)ShowPasswordButton.IsChecked,
 
                 PathToSrc = MainWindow.runPage.PathToSrcFolderTB.Text,
                 MainFileName = MainWindow.runPage.MainFileNameTB.Text,

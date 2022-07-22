@@ -1,7 +1,9 @@
-﻿namespace shufflecad_4.Controls.Interfaces
+﻿using System;
+
+namespace shufflecad_4.Controls.Interfaces
 {
     public interface IRemoveable
     {
-        void Remove();
+        event EventHandler OnRemove;
     }
 }

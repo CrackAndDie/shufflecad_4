@@ -2,6 +2,7 @@
 using shufflecad_4.Classes.Variables;
 using shufflecad_4.Classes.Variables.Interfaces;
 using shufflecad_4.Controls.Interfaces;
+using System;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -16,6 +17,8 @@ namespace shufflecad_4.Controls
     public partial class FloatControl : UserControl, IRemoveable, IHaveVariable
     {
         private readonly ShuffleVariable variable;
+
+        public event EventHandler OnRemove;
 
         public FloatControl(ShuffleVariable variable)
         {
@@ -81,9 +84,9 @@ namespace shufflecad_4.Controls
             }
         }
 
-        public void Remove()
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            OnRemove?.Invoke(this, EventArgs.Empty);
         }
     }
 }

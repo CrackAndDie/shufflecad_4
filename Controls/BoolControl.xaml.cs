@@ -2,6 +2,7 @@
 using shufflecad_4.Classes.Variables;
 using shufflecad_4.Classes.Variables.Interfaces;
 using shufflecad_4.Controls.Interfaces;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,6 +19,8 @@ namespace shufflecad_4.Controls
 
         private const string falseColor = "#cf5353";
         private const string trueColor = "#52a85b";
+
+        public event EventHandler OnRemove;
 
         public BoolControl(ShuffleVariable variable)
         {
@@ -102,9 +105,9 @@ namespace shufflecad_4.Controls
                 StateToggle.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(falseColor);
         }
 
-        public void Remove()
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            OnRemove?.Invoke(this, EventArgs.Empty);
         }
     }
 }

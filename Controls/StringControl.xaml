@@ -12,7 +12,17 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Name}" Style="{StaticResource ControlText}"/>
+        <TextBlock Text="{Binding Name}" Style="{StaticResource ControlText}">
+            <TextBlock.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Remove" x:Name="RemoveButton" Click="RemoveButton_Click">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="TrashCanOutline" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </TextBlock.ContextMenu>
+        </TextBlock>
         <TextBox
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             VerticalAlignment="Top" Width="110" TextAlignment="Center"

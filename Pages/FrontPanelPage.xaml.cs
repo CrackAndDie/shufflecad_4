@@ -1,6 +1,7 @@
 ﻿using shufflecad_4.Classes.Variables;
 using shufflecad_4.Classes.Variables.Interfaces;
 using shufflecad_4.Controls;
+using shufflecad_4.Controls.Interfaces;
 using shufflecad_4.Helpers;
 using shufflecad_4.Holders;
 using System;
@@ -159,6 +160,8 @@ namespace shufflecad_4.Pages
 
         private void SetUpCtrl(FrameworkElement ctrl, Point position)
         {
+            (ctrl as IRemoveable).OnRemove += WannaBeRemoved;
+
             ctrl.MouseLeftButtonDown += new MouseButtonEventHandler(root_MouseLeftButtonDown);
             ctrl.MouseMove += new MouseEventHandler(root_MouseMove);
             ctrl.MouseLeftButtonUp += new MouseButtonEventHandler(root_MouseLeftButtonUp);
@@ -204,6 +207,14 @@ namespace shufflecad_4.Pages
         {
             canvas.Children.Clear();
             InfoHolder.VariablesOnFrontPanel.Clear();
+        }
+
+        // removing
+        private void WannaBeRemoved(object sender, EventArgs args)
+        {
+            (sender as IRemoveable).OnRemove -= WannaBeRemoved;
+            canvas.Children.Remove(sender as FrameworkElement);
+            InfoHolder.VariablesOnFrontPanel.Remove((sender as IHaveVariable).GetVariable());
         }
     }
 }

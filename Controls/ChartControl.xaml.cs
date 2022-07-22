@@ -14,6 +14,8 @@ namespace shufflecad_4.Controls
     {
         private readonly ChartVariable variable;
 
+        public event EventHandler OnRemove;
+
         public ChartControl(ChartVariable variable)
         {
             InitializeComponent();
@@ -68,9 +70,9 @@ namespace shufflecad_4.Controls
             });
         }
 
-        public void Remove()
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            OnRemove?.Invoke(this, EventArgs.Empty);
         }
     }
 }

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:shufflecad_4.Controls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="220" d:DesignWidth="250">
     <Grid>
@@ -11,7 +12,17 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Name}" Style="{StaticResource ControlText}"/>
+        <TextBlock Text="{Binding Name}" Style="{StaticResource ControlText}">
+            <TextBlock.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Remove" x:Name="RemoveButton" Click="RemoveButton_Click">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="TrashCanOutline" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </TextBlock.ContextMenu>
+        </TextBlock>
         <WpfPlot Name="DataChart" Grid.Row="1" Width="250" Height="190" 
                  VerticalAlignment="Top"/>
     </Grid>

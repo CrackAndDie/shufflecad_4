@@ -19,6 +19,8 @@ namespace shufflecad_4.Controls
 
         private const float freqPres = 1000;
 
+        public event EventHandler OnRemove;
+
         public SliderControl(ShuffleVariable variable)
         {
             InitializeComponent();
@@ -109,9 +111,9 @@ namespace shufflecad_4.Controls
             e.Handled = !numEx.IsMatch(text);
         }
 
-        public void Remove()
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            OnRemove?.Invoke(this, EventArgs.Empty);
         }
     }
 }

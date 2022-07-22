@@ -2,12 +2,10 @@
 using shufflecad_4.Holders;
 using System;
 using System.IO;
-using System.Linq;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Threading;
 
 namespace shufflecad_4.Pages
 {
@@ -87,7 +85,7 @@ namespace shufflecad_4.Pages
         public void Save()
         {
             // берем текущее окно
-            MainWindow mainWindow = System.Windows.Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            MainWindow mainWindow = MainWindow.ThisMainWindow;
 
             mainWindow.ChangeStateText("Settings saved");
 

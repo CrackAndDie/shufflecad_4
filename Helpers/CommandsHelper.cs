@@ -122,7 +122,7 @@ namespace shufflecad_4.Helpers
         async public static Task StartProgram()
         {
             // берем текущее окно
-            MainWindow mainWindow = System.Windows.Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            MainWindow mainWindow = MainWindow.ThisMainWindow;
 
             bool check = string.IsNullOrEmpty(InfoHolder.CurrentSettings.PathToSrc) ||
                 string.IsNullOrEmpty(InfoHolder.CurrentSettings.MainFileName) ||
@@ -160,7 +160,7 @@ namespace shufflecad_4.Helpers
         async public static Task StopProgram()
         {
             // берем текущее окно
-            MainWindow mainWindow = System.Windows.Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            MainWindow mainWindow = MainWindow.ThisMainWindow;
 
             bool check = string.IsNullOrEmpty(InfoHolder.CurrentSettings.PathToSrc) ||
                 string.IsNullOrEmpty(InfoHolder.CurrentSettings.MainFileName) ||

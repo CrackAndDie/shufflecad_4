@@ -17,6 +17,8 @@ namespace shufflecad_4
     {
         public static List<LanguageClass> languageClasses;
 
+        public static MainWindow ThisMainWindow;
+
         public static ConnectionPage connectionPage;
         public static RunPage runPage;
         public static FrontPanelPage frontPanelPage;
@@ -30,6 +32,8 @@ namespace shufflecad_4
             InitializeComponent();
 
             this.WindowStyle = WindowStyle.None;
+
+            ThisMainWindow = this;
 
             SetUpVisual();
 

@@ -5,6 +5,7 @@ using shufflecad_4.Controls.Interfaces;
 using shufflecad_4.Helpers;
 using shufflecad_4.Holders;
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -192,6 +193,10 @@ namespace shufflecad_4.Pages
                 var vars = FrontPanelHelper.GetVariablesList(canvas);
                 FrontPanelHelper.SaveVariables(path, vars);
             }
+            else
+            {
+                System.Windows.Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().ChangeStateText("Error while saving file", MainWindow.STATE_ERROR_COLOR);
+            }
         }
 
         private void OpenFieldButton_Click(object sender, RoutedEventArgs e)
@@ -204,6 +209,10 @@ namespace shufflecad_4.Pages
                 {
                     PlaceVariable(svc.Variable, new Point(svc.XPos, svc.YPos));
                 }
+            }
+            else
+            {
+                System.Windows.Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().ChangeStateText("Error while opening file", MainWindow.STATE_ERROR_COLOR);
             }
         }
 

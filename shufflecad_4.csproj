@@ -143,6 +143,7 @@
     <Compile Include="Classes\RPIDataClass.cs" />
     <Compile Include="Classes\SettingsClass.cs" />
     <Compile Include="Classes\Variables\ChartVariable.cs" />
+    <Compile Include="Classes\Variables\DefaultVariable.cs" />
     <Compile Include="Classes\Variables\Interfaces\IFrontVariable.cs" />
     <Compile Include="Classes\Variables\ShuffleVariable.cs" />
     <Compile Include="Classes\ConnectionClasses\TalkPort.cs" />

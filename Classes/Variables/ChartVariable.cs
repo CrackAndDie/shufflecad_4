@@ -10,6 +10,9 @@ namespace shufflecad_4.Classes.Variables
 
         public event EventHandler<EventArgs> DataChanged;
 
+        public ChartVariable() : base() { }
+        public ChartVariable(DefaultVariable dv) : base(dv) { }
+
         public void ResetData()
         {
             Data = new double[DATA_SIZE];

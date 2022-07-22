@@ -24,19 +24,19 @@ namespace shufflecad_4.Pages
 
             // test - remove then
 
-            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
-            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
-            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime1", Type = ShuffleVariable.STRING_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
-            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime2", Type = ShuffleVariable.STRING_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
-            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime3", Type = ShuffleVariable.BIG_STRING_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
-            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime4", Type = ShuffleVariable.BIG_STRING_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
-            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime5", Type = ShuffleVariable.FLOAT_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
-            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime6", Type = ShuffleVariable.FLOAT_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
-            InfoHolder.AllVariables.Add(new ChartVariable() { Name = "anime7", Type = ShuffleVariable.CHART_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
-            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime8", Type = ShuffleVariable.SLIDER_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
-            InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime9", Type = ShuffleVariable.SLIDER_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "24" });
+            //InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
+            //InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime22", Type = ShuffleVariable.BOOL_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            //InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime1", Type = ShuffleVariable.STRING_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
+            //InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime2", Type = ShuffleVariable.STRING_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            //InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime3", Type = ShuffleVariable.BIG_STRING_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
+            //InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime4", Type = ShuffleVariable.BIG_STRING_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            //InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime5", Type = ShuffleVariable.FLOAT_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
+            //InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime6", Type = ShuffleVariable.FLOAT_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            //InfoHolder.AllVariables.Add(new ChartVariable() { Name = "anime7", Type = ShuffleVariable.CHART_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "0" });
+            //InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime8", Type = ShuffleVariable.SLIDER_TYPE, Direction = ShuffleVariable.OUT_DIR, Value = "0" });
+            //InfoHolder.AllVariables.Add(new ShuffleVariable() { Name = "anime9", Type = ShuffleVariable.SLIDER_TYPE, Direction = ShuffleVariable.IN_DIR, Value = "24" });
 
-            OnAllVariablesChange(null, EventArgs.Empty);
+            //OnAllVariablesChange(null, EventArgs.Empty);
 
             // test - remove then
         }
@@ -189,7 +189,15 @@ namespace shufflecad_4.Pages
 
         private void OpenFieldButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var vars = FrontPanelHelper.OpenSavedFile();
+            if (vars != null)
+            {
+                FrontPanelHelper.AddVariables(vars);
+                foreach (var svc in vars)
+                {
+                    PlaceVariable(svc.Variable, new Point(svc.XPos, svc.YPos));
+                }
+            }
         }
 
         private void CleanFieldButton_Click(object sender, RoutedEventArgs e)

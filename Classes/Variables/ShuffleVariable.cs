@@ -29,6 +29,19 @@ namespace shufflecad_4.Classes.Variables
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public ShuffleVariable()
+        {
+
+        }
+
+        public ShuffleVariable(DefaultVariable dv)
+        {
+            this.Name = dv.Name;
+            this.Type = dv.Type;
+            this.Direction = dv.Direction;
+            this.Value = dv.Value;
+        }
+
         private void NotifyPropertyChanged(String info)
         {
             if (PropertyChanged != null)

@@ -1,9 +1,12 @@
 ﻿using Microsoft.Win32;
 using shufflecad_4.Classes;
+using shufflecad_4.Classes.Variables;
 using shufflecad_4.Controls.Interfaces;
+using shufflecad_4.Holders;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +16,7 @@ namespace shufflecad_4.Helpers
 {
     public class FrontPanelHelper
     {
+        // save file
         public static List<SavingVariableClass> GetVariablesList(Canvas canvas)
         {
             List<SavingVariableClass> variables = new List<SavingVariableClass>();
@@ -52,6 +56,64 @@ namespace shufflecad_4.Helpers
         {
             string json = JsonSerializer.Serialize<List<SavingVariableClass>>(variables);
             File.WriteAllText(path, json);
+        }
+
+        // open saved file
+        public static List<SavingVariableClass> OpenSavedFile()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string path = openFileDialog.FileName;
+                if (File.Exists(path))
+                {
+                    string txt = File.ReadAllText(path);
+                    return ConvertToNormalVariablesList(JsonSerializer.Deserialize<List<OpenSavingVariableClass>>(txt));
+                }
+            }
+
+            return null;
+        }
+
+        public static void AddVariables(List<SavingVariableClass> vars)
+        {
+            foreach (SavingVariableClass svc in vars)
+            {
+                var inAll = InfoHolder.AllVariables.FirstOrDefault(x => x.Name == svc.Variable.Name);
+                if (inAll != null)
+                {
+                    svc.Variable = inAll;
+                }
+                else
+                {
+                    InfoHolder.AllVariables.Add(svc.Variable);
+                }
+            }
+            InfoHolder.OnAllVariablesChangeWrapper();
+        }
+
+        // cringe method, idk how to do it better
+        private static List<SavingVariableClass> ConvertToNormalVariablesList(List<OpenSavingVariableClass> vars)
+        {
+            List<SavingVariableClass> outList = new List<SavingVariableClass>();
+            foreach (var v in vars)
+            {
+                var svc = new SavingVariableClass();
+                svc.XPos = v.XPos;
+                svc.YPos = v.YPos;
+                if (v.Variable.Type == ShuffleVariable.CHART_TYPE)
+                {
+                    svc.Variable = new ChartVariable(v.Variable);
+                }
+                else
+                {
+                    svc.Variable = new ShuffleVariable(v.Variable);
+                }
+
+                outList.Add(svc);
+            }
+
+            return outList;
         }
     }
 }

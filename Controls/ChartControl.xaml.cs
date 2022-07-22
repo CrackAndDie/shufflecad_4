@@ -1,7 +1,9 @@
-﻿using shufflecad_4.Classes.Variables;
+﻿using ScottPlot;
+using shufflecad_4.Classes.Variables;
 using shufflecad_4.Classes.Variables.Interfaces;
 using shufflecad_4.Controls.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -13,6 +15,8 @@ namespace shufflecad_4.Controls
     public partial class ChartControl : UserControl, IRemoveable, IHaveVariable
     {
         private readonly ChartVariable variable;
+
+        List<WpfPlotViewer> wpfPlotViewers = new List<WpfPlotViewer>();
 
         public event EventHandler OnRemove;
 
@@ -48,10 +52,10 @@ namespace shufflecad_4.Controls
             DataChart.Plot.Style(ScottPlot.Style.Gray1);
 
             var padding = new ScottPlot.PixelPadding(
-                left: 25,
-                right: 10,
-                bottom: 25,
-                top: 10);
+                left: 35,
+                right: 7,
+                bottom: 23,
+                top: 7);
 
             DataChart.Plot.ManualDataArea(padding);
 
@@ -67,12 +71,41 @@ namespace shufflecad_4.Controls
                 DataChart.Plot.AxisAuto();
                 DataChart.Refresh();
                 DataChart.Render();
+
+                foreach (var chart in wpfPlotViewers)
+                {
+                    chart.wpfPlot1.Render();
+                }
             });
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
+            foreach (var chart in wpfPlotViewers)
+            {
+                chart.Close();
+            }
             OnRemove?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void DataChart_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            OpenNewWindow();
+        }
+
+        private void OpenNewWindow()
+        {
+            WpfPlotViewer newWindow = new WpfPlotViewer(DataChart.Plot)
+            {
+                Title = this.variable.Name
+            };
+            newWindow.Show();
+            wpfPlotViewers.Add(newWindow);
+        }
+
+        private void NewWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenNewWindow();
         }
     }
 }

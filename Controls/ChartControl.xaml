@@ -20,10 +20,15 @@
                             <materialDesign:PackIcon Kind="TrashCanOutline" />
                         </MenuItem.Icon>
                     </MenuItem>
+                    <MenuItem Header="Open In Window" x:Name="NewWindowButton" Click="NewWindowButton_Click">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="DockWindow" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </ContextMenu>
             </TextBlock.ContextMenu>
         </TextBlock>
         <WpfPlot Name="DataChart" Grid.Row="1" Width="250" Height="190" 
-                 VerticalAlignment="Top"/>
+                 VerticalAlignment="Top" MouseDoubleClick="DataChart_MouseDoubleClick" />
     </Grid>
 </UserControl>

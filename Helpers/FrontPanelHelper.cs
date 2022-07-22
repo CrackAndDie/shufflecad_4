@@ -68,7 +68,14 @@ namespace shufflecad_4.Helpers
                 if (File.Exists(path))
                 {
                     string txt = File.ReadAllText(path);
-                    return ConvertToNormalVariablesList(JsonSerializer.Deserialize<List<OpenSavingVariableClass>>(txt));
+                    try
+                    {
+                        return ConvertToNormalVariablesList(JsonSerializer.Deserialize<List<OpenSavingVariableClass>>(txt));
+                    }
+                    catch (JsonException)
+                    {
+                        return null;
+                    }
                 }
             }
 

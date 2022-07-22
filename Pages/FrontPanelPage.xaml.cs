@@ -110,10 +110,14 @@ namespace shufflecad_4.Pages
                     var element = draggingElement;
                     currentPoint = e.GetPosition(canvas);
                     TranslateTransform transform = new TranslateTransform();
-                    transform.X += element.RenderTransform.Value.OffsetX + (currentPoint.X - anchorPoint.X);
-                    transform.Y += element.RenderTransform.Value.OffsetY + (currentPoint.Y - anchorPoint.Y);
-                    element.RenderTransform = transform;
-                    anchorPoint = currentPoint;
+                    transform.X = element.RenderTransform.Value.OffsetX + (currentPoint.X - anchorPoint.X);
+                    transform.Y = element.RenderTransform.Value.OffsetY + (currentPoint.Y - anchorPoint.Y);
+                    // чтобы не выходило за границы канваса
+                    if (currentPoint.X > 0 && currentPoint.X < canvas.Width && currentPoint.Y > 0 && currentPoint.Y < canvas.Height)
+                    {
+                        element.RenderTransform = transform;
+                        anchorPoint = currentPoint;
+                    }
                 }
             }
         }

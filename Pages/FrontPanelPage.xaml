@@ -19,9 +19,16 @@
         </Grid.ColumnDefinitions>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"  Grid.Column="0" Grid.Row="0" x:Name="scrollViewer"
                       CanContentScroll="True" Style="{StaticResource FavsScrollViewer}">
-            <Canvas x:Name="canvas" Width="1300" Height="1300" Background="#3f444f" 
+            <Canvas x:Name="canvas" Width="1300" Height="1300"
                     MouseRightButtonDown="canvas_MouseRightButtonDown" MouseRightButtonUp="canvas_MouseRightButtonUp" 
                     MouseMove="canvas_MouseMove" AllowDrop="True" Drop="canvas_Drop">
+                <Canvas.Background>
+                    <VisualBrush TileMode="Tile" Stretch="Uniform" Viewport="50,50,50,50" ViewportUnits="Absolute">
+                        <VisualBrush.Visual>
+                            <Rectangle Width="50" Height="50" Fill="#3f444f" Stroke="#FF5B616F" StrokeThickness="0.3"/>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </Canvas.Background>
             </Canvas>
         </ScrollViewer>
 

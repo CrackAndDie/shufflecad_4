@@ -93,7 +93,7 @@ namespace shufflecad_4.Pages
         private void root_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var element = sender as FrameworkElement;
-            anchorPoint = e.GetPosition(null);
+            anchorPoint = e.GetPosition(canvas);
             element.CaptureMouse();
             isInDrag = true;
             draggingElement = element;
@@ -108,7 +108,7 @@ namespace shufflecad_4.Pages
                 if (draggingElement != null)
                 {
                     var element = draggingElement;
-                    currentPoint = e.GetPosition(null);
+                    currentPoint = e.GetPosition(canvas);
                     TranslateTransform transform = new TranslateTransform();
                     transform.X += element.RenderTransform.Value.OffsetX + (currentPoint.X - anchorPoint.X);
                     transform.Y += element.RenderTransform.Value.OffsetY + (currentPoint.Y - anchorPoint.Y);

@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using shufflecad_4.Helpers;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace shufflecad_4.Pages
 {
@@ -23,6 +13,65 @@ namespace shufflecad_4.Pages
         public JoystickPage()
         {
             InitializeComponent();
+
+            JoystickHelper.OnJoyValueChange += OnJoyValuesChange;
+        }
+
+        private void OnJoyValuesChange(object sender, EventArgs args)
+        {
+            int changedValue = JoystickHelper.JoystickValues[JoystickHelper.CurrentlyChangedOffset];
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                switch (JoystickHelper.CurrentlyChangedOffset)
+                {
+                    case "Buttons0":
+                        {
+                            AButtonControl.SetValue(changedValue);
+                            break;
+                        }
+                    case "Buttons1":
+                        {
+                            BButtonControl.SetValue(changedValue);
+                            break;
+                        }
+                    case "Buttons2":
+                        {
+                            XButtonControl.SetValue(changedValue);
+                            break;
+                        }
+                    case "Buttons3":
+                        {
+                            YButtonControl.SetValue(changedValue);
+                            break;
+                        }
+                    case "X":
+                        {
+                            LeftStickControl.SetValueX(changedValue);
+                            break;
+                        }
+                    case "Y":
+                        {
+                            LeftStickControl.SetValueY(changedValue);
+                            break;
+                        }
+                    case "RotationX":
+                        {
+                            RightStickControl.SetValueX(changedValue);
+                            break;
+                        }
+                    case "RotationY":
+                        {
+                            RightStickControl.SetValueY(changedValue);
+                            break;
+                        }
+                    case "PointOfViewControllers0":
+                        {
+                            ThisCrossControl.SetValue(changedValue);
+                            break;
+                        }
+                }
+            });
+           
         }
     }
 }

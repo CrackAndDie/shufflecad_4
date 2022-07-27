@@ -1,23 +1,25 @@
-﻿<UserControl x:Class="shufflecad_4.Controls.JoystickControls.StickControl"
+﻿<UserControl x:Class="shufflecad_4.Controls.JoystickControls.LetterButtonControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:shufflecad_4.Controls.JoystickControls"
              mc:Ignorable="d" 
-             d:DesignHeight="90" d:DesignWidth="90">
+             d:DesignHeight="34" d:DesignWidth="34">
     <Grid>
-        <Border Width="70" Height="70" Background="DarkBlue" CornerRadius="35"/>
-        <Border x:Name="Stick"  Width="60" Height="60" CornerRadius="30">
+        <Border Height="34" Width="34" CornerRadius="17">
             <Border.Background>
-                <RadialGradientBrush 
+                <RadialGradientBrush x:Name="BorderGradient"
                         GradientOrigin="0.5,0.5" Center="0.5,0.5" 
                         RadiusX="0.5" RadiusY="0.5">
-                    <GradientStop Color="#FF232323" Offset="0.3" />
-                    <GradientStop Color="#FF404040" Offset="0.9" />
+                    <GradientStop Color="#FF151515" Offset="0.3" />
+                    <GradientStop Color="#FF232323" Offset="0.7" />
+                    <GradientStop Color="#FF313131" Offset="0.9" />
                     <GradientStop Color="#FF232323" Offset="1" />
                 </RadialGradientBrush>
             </Border.Background>
         </Border>
+        <TextBlock x:Name="ButtonNameTB" Text="X" HorizontalAlignment="Center" FontSize="26"
+                   VerticalAlignment="Center" Foreground="Red" TextAlignment="Center" Margin="0, 0, 0, 3"/>
     </Grid>
 </UserControl>

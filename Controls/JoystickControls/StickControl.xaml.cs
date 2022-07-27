@@ -9,18 +9,35 @@ namespace shufflecad_4.Controls.JoystickControls
     /// </summary>
     public partial class StickControl : UserControl
     {
+        private const int MIDDLE = 32767;
+
         private static readonly float[] inArr = { 0, 65535 };
-        private static readonly float[] outArr = { -10, 10 };
+        private static readonly float[] outArr = { -25, 25 };
+
+        private int currentX = MIDDLE;
+        private int currentY = MIDDLE;
 
         public StickControl()
         {
             InitializeComponent();
         }
 
-        public void SetValue(int x, float y)
+        public void SetValueX(int value)
         {
-            int xMargin = (int)FuncadHelper.Transfunc(x, inArr.ToList(), outArr.ToList());
-            int yMargin = (int)FuncadHelper.Transfunc(y, inArr.ToList(), outArr.ToList());
+            currentX = value;
+            Update();
+        }
+
+        public void SetValueY(int value)
+        {
+            currentY = value;
+            Update();
+        }
+
+        public void Update()
+        {
+            int xMargin = (int)FuncadHelper.Transfunc(currentX, inArr.ToList(), outArr.ToList());
+            int yMargin = (int)FuncadHelper.Transfunc(currentY, inArr.ToList(), outArr.ToList());
             Stick.Margin = new System.Windows.Thickness(xMargin, yMargin, 0, 0);
         }
     }

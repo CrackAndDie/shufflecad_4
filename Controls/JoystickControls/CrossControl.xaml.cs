@@ -14,7 +14,7 @@ namespace shufflecad_4.Controls.JoystickControls
             InitializeComponent();
         }
 
-        public void SetValue(float angle)
+        public void SetValue(int angle)
         {
             if (angle == -1)
             {

@@ -4,80 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:shufflecad_4"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:othercontrols="clr-namespace:shufflecad_4.Controls.OtherControls"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="900" MinHeight="600" MinWidth="900" StateChanged="Window_StateChanged" SizeChanged="Window_SizeChanged">
-    <Window.Resources>
-        <Style x:Key="TitleBarButtonStyle" TargetType="{x:Type Button}">
-            <Setter Property="Foreground" Value="{DynamicResource WindowTextBrush}" />
-            <Setter Property="Padding" Value="0" />
-            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
-            <Setter Property="IsTabStop" Value="False" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border
-					x:Name="border"
-					Background="Transparent"
-					BorderThickness="0"
-					SnapsToDevicePixels="true">
-                            <ContentPresenter
-						x:Name="contentPresenter"
-						Margin="0"
-						HorizontalAlignment="Center"
-						VerticalAlignment="Center"
-						Focusable="False"
-						RecognizesAccessKey="True" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="Gray" />
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="DarkGray" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="TitleBarCloseButtonStyle" TargetType="{x:Type Button}">
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
-            <Setter Property="Padding" Value="0" />
-            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
-            <Setter Property="IsTabStop" Value="False" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border
-					x:Name="border"
-					Background="Transparent"
-					BorderThickness="0"
-					SnapsToDevicePixels="true">
-                            <ContentPresenter
-						x:Name="contentPresenter"
-						Margin="0"
-						HorizontalAlignment="Center"
-						VerticalAlignment="Center"
-						Focusable="False"
-						RecognizesAccessKey="True" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="Red" />
-                                <!--<Setter Property="Foreground" Value="{DynamicResource MouseOverWindowCloseButtonForegroundBrush}" />-->
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="DarkRed" />
-                                <!--<Setter Property="Foreground" Value="{DynamicResource MouseOverWindowCloseButtonForegroundBrush}" />-->
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
+    
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="22" ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" />
     </WindowChrome.WindowChrome>
@@ -96,109 +27,7 @@
 
             <Rectangle Grid.ColumnSpan="3" Grid.Row="0" Fill="#FF4C4C4F" />
 
-            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="160" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="30" />
-                    <ColumnDefinition Width="30" />
-                    <ColumnDefinition Width="30" />
-                </Grid.ColumnDefinitions>
-                <Image
-		    Grid.Column="0"
-		    Width="20"
-		    Height="20"
-		    Margin="1" Source="/Res/logo_sc4.png"
-		    x:Name="UpperLogoImage" RenderOptions.BitmapScalingMode="Fant"/>
-                <TextBlock
-		    Grid.Column="1"
-		    Margin="4 0 0 0"
-		    VerticalAlignment="Center"
-		    FontSize="14"
-		    Text="shufflecad"
-                    Foreground="AliceBlue">
-                    <TextBlock.Style>
-                        <Style TargetType="TextBlock">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource AncestorType=Window}}" Value="False">
-                                    <Setter Property="Foreground" Value="AliceBlue" />
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource AncestorType=Window}}" Value="True">
-                                    <Setter Property="Foreground" Value="AliceBlue" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-
-                <Button
-		    Grid.Column="5"
-		    Click="MinimizeButtonClick"
-		    RenderOptions.EdgeMode="Aliased"
-		    Style="{StaticResource TitleBarButtonStyle}">
-                    <Path
-			    Width="30"
-			    Height="22"
-			    Data="M 10,16 H 20"
-			    Stroke="AliceBlue"
-			    StrokeThickness="1" />
-                </Button>
-                <Button
-		    Name="maximizeButton"
-		    Grid.Column="6"
-		    Click="MaximizeButton_Click" Visibility="Visible"
-		    Style="{StaticResource TitleBarButtonStyle}">
-                    <Path
-			    Width="30"
-			    Height="22"
-			    Data="M 11,7 H 19 V 15 H 11 Z"
-			    Stroke="AliceBlue"
-			    StrokeThickness="1" />
-                </Button>
-                <Button
-		    Name="restoreButton" Visibility="Collapsed"
-		    Grid.Column="6"
-		    Click="RestoreButton_Click"
-		    Style="{StaticResource TitleBarButtonStyle}">
-                    <Path
-			    Width="30"
-			    Height="22"
-			    Data="M 10,8 H 17 V 15 H 10 Z M 12,8 V 6 H 19 V 13 H 17"
-			    Stroke="AliceBlue"
-			    StrokeThickness="1" />
-                </Button>
-                <Button
-		    Grid.Column="7"
-		    Click="CloseButton_Click"
-		    Style="{StaticResource TitleBarCloseButtonStyle}">
-                    <Path
-			    Width="30"
-			    Height="22"
-			    Data="M 11,7 19,15 M 11,15 19,7"
-			    Stroke="AliceBlue"
-			    StrokeThickness="1" />
-                </Button>
-
-                <ProgressBar
-                    x:Name="ProgressAsyncPB" ToolTip="Обновление данных приложения"
-                  Style="{StaticResource MaterialDesignCircularProgressBar}"
-                  Value="0" Grid.Column="3" Width="18" Height="18"
-                  IsIndeterminate="True"  Margin="20, 0"/>
-                <materialDesign:PackIcon Kind="CheckAll" x:Name="AllDonePI" ToolTip="Приложение готово к работе"
-                                         Foreground="Coral"
-                                         Grid.Column="3" VerticalAlignment="Center" Margin="20, 0" Visibility="Collapsed"/>
-
-                <ComboBox Grid.Column="4" Width="35" Padding="2, 0, 2, 0" Style="{StaticResource MaterialDesignOutlinedComboBox}" 
-                          Margin="5, 2" x:Name="LanguageCB" DisplayMemberPath="LangShortName" Height="17" FontSize="10" 
-                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="AliceBlue" 
-                          FontWeight="SemiBold" WindowChrome.IsHitTestVisibleInChrome="True"/>
-
-                <TextBlock Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Normal state" 
-                           Foreground="AliceBlue" x:Name="CurrentState" FontSize="14" TextAlignment="Center"/>
-            </Grid>
+            <othercontrols:WindowHeader x:Name="ThisHeader"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
 
             <Rectangle Grid.ColumnSpan="3" Grid.Row="1" Fill="#FF282B31" />
             <materialDesign:Card Grid.Row="1">

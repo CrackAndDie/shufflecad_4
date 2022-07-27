@@ -69,6 +69,16 @@ namespace shufflecad_4.Pages
                             ThisCrossControl.SetValue(changedValue);
                             break;
                         }
+                    case "Buttons8":
+                        {
+                            LeftStickControl.SetClickValue(changedValue);
+                            break;
+                        }
+                    case "Buttons9":
+                        {
+                            RightStickControl.SetClickValue(changedValue);
+                            break;
+                        }
                 }
             });
            

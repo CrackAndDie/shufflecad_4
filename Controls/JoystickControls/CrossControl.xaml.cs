@@ -1,4 +1,6 @@
-﻿using System;
+﻿using shufflecad_4.Helpers;
+using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,6 +11,9 @@ namespace shufflecad_4.Controls.JoystickControls
     /// </summary>
     public partial class CrossControl : UserControl
     {
+        private static readonly float[] inArr = { -1, 1 };
+        private static readonly float[] outArr = { 0, 1 };
+
         public CrossControl()
         {
             InitializeComponent();
@@ -23,9 +28,10 @@ namespace shufflecad_4.Controls.JoystickControls
             else
             {
                 angle /= 100;
+                angle -= 90;
                 double rad = Math.PI * angle / 180f;
-                double x = Math.Cos(rad);
-                double y = Math.Sin(rad);
+                double x = FuncadHelper.Transfunc((float)Math.Cos(rad), inArr.ToList(), outArr.ToList());
+                double y = FuncadHelper.Transfunc((float)Math.Sin(rad), inArr.ToList(), outArr.ToList());
                 CrossGradient.GradientOrigin = new Point(x, y);
             }
         }

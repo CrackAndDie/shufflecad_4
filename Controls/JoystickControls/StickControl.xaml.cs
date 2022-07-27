@@ -34,6 +34,11 @@ namespace shufflecad_4.Controls.JoystickControls
             Update();
         }
 
+        public void SetClickValue(int value)
+        {
+            OpacityBorder.Opacity = value == 0 ? 0 : 0.4;
+        }
+
         public void Update()
         {
             int xMargin = (int)FuncadHelper.Transfunc(currentX, inArr.ToList(), outArr.ToList());

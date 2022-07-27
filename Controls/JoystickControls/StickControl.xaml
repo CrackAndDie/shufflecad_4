@@ -8,16 +8,19 @@
              d:DesignHeight="90" d:DesignWidth="90">
     <Grid>
         <Border Width="70" Height="70" Background="DarkBlue" CornerRadius="35"/>
-        <Border x:Name="Stick"  Width="60" Height="60" CornerRadius="30">
-            <Border.Background>
-                <RadialGradientBrush 
+        <Grid x:Name="Stick"  Width="60" Height="60">
+            <Border CornerRadius="30">
+                <Border.Background>
+                    <RadialGradientBrush 
                         GradientOrigin="0.5,0.5" Center="0.5,0.5" 
                         RadiusX="0.5" RadiusY="0.5">
-                    <GradientStop Color="#FF232323" Offset="0.3" />
-                    <GradientStop Color="#FF404040" Offset="0.9" />
-                    <GradientStop Color="#FF232323" Offset="1" />
-                </RadialGradientBrush>
-            </Border.Background>
-        </Border>
+                        <GradientStop Color="#FF232323" Offset="0.3" />
+                        <GradientStop Color="#FF404040" Offset="0.9" />
+                        <GradientStop Color="#FF232323" Offset="1" />
+                    </RadialGradientBrush>
+                </Border.Background>
+            </Border>
+            <Border x:Name="OpacityBorder" CornerRadius="30" Background="Black" Opacity="0"/>
+        </Grid>
     </Grid>
 </UserControl>

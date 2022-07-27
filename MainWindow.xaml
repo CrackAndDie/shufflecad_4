@@ -300,6 +300,19 @@
                             </StackPanel>
                         </TabItem.Header>
                     </TabItem>
+                    <TabItem Width="48" Height="48">
+                        <TabItem.Header>
+                            <StackPanel
+                              Width="auto"
+                              Height="auto">
+                                <materialDesign:PackIcon
+                                Width="36"
+                                Height="36"
+                                HorizontalAlignment="Center"
+                                Kind="GoogleController" />
+                            </StackPanel>
+                        </TabItem.Header>
+                    </TabItem>
                 </TabControl>
             </materialDesign:Card>
 
@@ -339,6 +352,10 @@
                 <Grid Margin="5" ToolTip="Program Is Connected (to shufflecad)">
                     <Border x:Name="ConnectedBorder" Style="{StaticResource MainWinInfoBorder}"/>
                     <TextBlock Text="PIC" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
+                </Grid>
+                <Grid Margin="5" ToolTip="Joystick Is Connected (to computer)">
+                    <Border x:Name="JoystickBorder" Style="{StaticResource MainWinInfoBorder}"/>
+                    <TextBlock Text="JIC" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
                 </Grid>
             </StackPanel>
         </Grid>

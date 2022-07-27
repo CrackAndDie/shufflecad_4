@@ -26,6 +26,7 @@ namespace shufflecad_4
         public static CameraPage cameraPage;
         public static SettingsPage settingsPage;
         public static DevPage devPage;
+        public static JoystickPage joyPage;
 
         public MainWindow()
         {
@@ -60,6 +61,7 @@ namespace shufflecad_4
             loggerPage = new LoggerPage();
             cameraPage = new CameraPage();
             devPage = new DevPage();
+            joyPage = new JoystickPage();
 
             settingsPage = new SettingsPage();
             settingsPage.LoadAndSet();
@@ -157,6 +159,9 @@ namespace shufflecad_4
                     break;
                 case 6:
                     MainFrame.Navigate(devPage);
+                    break;
+                case 7:
+                    MainFrame.Navigate(joyPage);
                     break;
             }
         }

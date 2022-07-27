@@ -112,12 +112,26 @@ namespace shufflecad_4.Classes
             }
         }
 
+        private bool jic;
+        public bool JIC
+        {
+            get
+            {
+                return jic;
+            }
+            set
+            {
+                this.jic = value;
+                JICChanged();
+            }
+        }
+
         private void PowerChanged()
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().BatteryVoltage.Text = this.power.ToString("0.0");
-                Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().PowerBorder.Background = new SolidColorBrush(Color.FromArgb(255,
+                MainWindow.ThisMainWindow.BatteryVoltage.Text = this.power.ToString("0.0");
+                MainWindow.ThisMainWindow.PowerBorder.Background = new SolidColorBrush(Color.FromArgb(255,
                                                     (byte)(int)FuncadHelper.Transfunc(this.power, trans514In, transMaxToMin255Out),
                                                     (byte)(int)FuncadHelper.Transfunc(this.power, trans514In, transMinToMax255Out), 0));
             });
@@ -127,8 +141,8 @@ namespace shufflecad_4.Classes
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().Temperature.Text = this.temperature.ToString("0.0");
-                Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().TempBorder.Background = new SolidColorBrush(Color.FromArgb(255,
+                MainWindow.ThisMainWindow.Temperature.Text = this.temperature.ToString("0.0");
+                MainWindow.ThisMainWindow.TempBorder.Background = new SolidColorBrush(Color.FromArgb(255,
                                                     (byte)(int)FuncadHelper.Transfunc(this.temperature, trans3080In, transMinToMax255Out),
                                                     (byte)(int)FuncadHelper.Transfunc(this.temperature, trans3080In, transMaxToMin255Out), 0));
             });
@@ -138,8 +152,8 @@ namespace shufflecad_4.Classes
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().MemoryUsed.Text = this.memory.ToString("0.0");
-                Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().MemoryBorder.Background = new SolidColorBrush(Color.FromArgb(255,
+                MainWindow.ThisMainWindow.MemoryUsed.Text = this.memory.ToString("0.0");
+                MainWindow.ThisMainWindow.MemoryBorder.Background = new SolidColorBrush(Color.FromArgb(255,
                                                     (byte)(int)FuncadHelper.Transfunc(this.memory, trans100In, transMinToMax255Out),
                                                     (byte)(int)FuncadHelper.Transfunc(this.memory, trans100In, transMaxToMin255Out), 0));
             });
@@ -149,8 +163,8 @@ namespace shufflecad_4.Classes
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().CPU1.Text = this.cpu.ToString("0.0");
-                Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().CPU1Border.Background = new SolidColorBrush(Color.FromArgb(255,
+                MainWindow.ThisMainWindow.CPU1.Text = this.cpu.ToString("0.0");
+                MainWindow.ThisMainWindow.CPU1Border.Background = new SolidColorBrush(Color.FromArgb(255,
                                                     (byte)(int)FuncadHelper.Transfunc(this.cpu, trans100In, transMinToMax255Out),
                                                     (byte)(int)FuncadHelper.Transfunc(this.cpu, trans100In, transMaxToMin255Out), 0));
             });
@@ -160,7 +174,7 @@ namespace shufflecad_4.Classes
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().RobotConnectedBorder.Background = ric ? greenColor : redColor;
+                MainWindow.ThisMainWindow.RobotConnectedBorder.Background = ric ? greenColor : redColor;
             });
         }
 
@@ -168,7 +182,7 @@ namespace shufflecad_4.Classes
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().RunningBorder.Background = pir ? greenColor : redColor;
+                MainWindow.ThisMainWindow.RunningBorder.Background = pir ? greenColor : redColor;
             });
         }
 
@@ -176,7 +190,15 @@ namespace shufflecad_4.Classes
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().ConnectedBorder.Background = pic ? greenColor : redColor;
+                MainWindow.ThisMainWindow.ConnectedBorder.Background = pic ? greenColor : redColor;
+            });
+        }
+
+        private void JICChanged()
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                MainWindow.ThisMainWindow.JoystickBorder.Background = jic ? greenColor : redColor;
             });
         }
 

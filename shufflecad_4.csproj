@@ -202,6 +202,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\JoystickPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\LoggerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -227,6 +231,9 @@
     </Compile>
     <Compile Include="Pages\FrontPanelPage.xaml.cs">
       <DependentUpon>FrontPanelPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\JoystickPage.xaml.cs">
+      <DependentUpon>JoystickPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LoggerPage.xaml.cs">
       <DependentUpon>LoggerPage.xaml</DependentUpon>

@@ -1,4 +1,5 @@
-﻿using SharpDX.DirectInput;
+﻿using SharpDX;
+using SharpDX.DirectInput;
 using shufflecad_4.Holders;
 using System;
 using System.Collections.Generic;
@@ -51,21 +52,31 @@ namespace shufflecad_4.Helpers
                             joystick = new Joystick(directInput, joystickGuid);
                             joystick.Properties.BufferSize = 128;
                             joystick.Acquire();
+
+                            InfoHolder.CurrentRPIData.JIC = true;
                         }
                         else
                         {
-                            joystick.Poll();
-                            var datas = joystick.GetBufferedData();
-                            foreach (var state in datas)
+                            try
                             {
-                                if (JoystickValues.ContainsKey(state.Offset.ToString()))
+                                joystick.Poll();
+                                var datas = joystick.GetBufferedData();
+                                foreach (var state in datas)
                                 {
-                                    JoystickValues[state.Offset.ToString()] = state.Value;
+                                    if (JoystickValues.ContainsKey(state.Offset.ToString()))
+                                    {
+                                        JoystickValues[state.Offset.ToString()] = state.Value;
+                                    }
+                                    else
+                                    {
+                                        JoystickValues.Add(state.Offset.ToString(), state.Value);
+                                    }
                                 }
-                                else
-                                {
-                                    JoystickValues.Add(state.Offset.ToString(), state.Value);
-                                }
+                            }
+                            catch (SharpDXException)
+                            {
+                                joystick = null;
+                                InfoHolder.CurrentRPIData.JIC = false;
                             }
                         }
                     }

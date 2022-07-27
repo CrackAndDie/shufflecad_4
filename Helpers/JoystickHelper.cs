@@ -13,6 +13,8 @@ namespace shufflecad_4.Helpers
     internal class JoystickHelper
     {
         public static IDictionary<string, int> JoystickValues = new Dictionary<string, int>();
+        public static string CurrentlyChangedOffset;
+        public static event EventHandler OnJoyValueChange;
 
         private static Task taskJoystick;
         private static bool stopJoystick;
@@ -71,6 +73,9 @@ namespace shufflecad_4.Helpers
                                     {
                                         JoystickValues.Add(state.Offset.ToString(), state.Value);
                                     }
+
+                                    CurrentlyChangedOffset = state.Offset.ToString();
+                                    OnJoyValueChange?.Invoke(null, EventArgs.Empty);
                                 }
                             }
                             catch (SharpDXException)

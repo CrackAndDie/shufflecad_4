@@ -66,6 +66,7 @@ namespace shufflecad_4
 
             CommandsHelper.StartChecks();
             ConnectionHelper.StartHelper();
+            JoystickHelper.StartJoystick();
 
             ConnectionHelper.OnRPIDataChange += new EventHandler<EventArgs>(InfoHolder.CurrentRPIData.OnRPIDataChange);
 
@@ -104,6 +105,7 @@ namespace shufflecad_4
         {
             await CommandsHelper.StopChecks();
             await ConnectionHelper.StopHelper();
+            await JoystickHelper.StopJoystick();
             this.Close();
         }
 

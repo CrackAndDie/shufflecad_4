@@ -128,6 +128,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\JoystickControls\CrossControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\JoystickControls\StickControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\OtherControls\WindowHeader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -173,6 +181,12 @@
     <Compile Include="Controls\Interfaces\IFactory.cs" />
     <Compile Include="Controls\Interfaces\IHaveVariable.cs" />
     <Compile Include="Controls\Interfaces\IRemoveable.cs" />
+    <Compile Include="Controls\JoystickControls\CrossControl.xaml.cs">
+      <DependentUpon>CrossControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JoystickControls\StickControl.xaml.cs">
+      <DependentUpon>StickControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\OtherControls\WindowHeader.xaml.cs">
       <DependentUpon>WindowHeader.xaml</DependentUpon>
     </Compile>

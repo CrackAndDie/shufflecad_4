@@ -35,13 +35,19 @@ namespace shufflecad_4.Pages
                 if (InfoHolder.CurrentSettings.DetailedOutput)
                     AppendTextToLog("Invalid text color - use HEX like #xxxxxx");
             }
+
+            if ((bool)ScrollDownButton.IsChecked)
+            {
+                LoggerBox.ScrollToEnd();
+            }
+        }
+
+        public void SafeAppendTextToLog(string text, string color)
+        {
             // безопасность вызовов из других потоков
             Application.Current.Dispatcher.Invoke(() =>
             {
-                if ((bool)ScrollDownButton.IsChecked)
-                {
-                    LoggerBox.ScrollToEnd();
-                }
+                AppendTextToLog(text, color);
             });
         }
 
@@ -49,6 +55,15 @@ namespace shufflecad_4.Pages
         {
             // alice blue
             AppendTextToLog(text, "#F0F8FF");
+        }
+
+        public void SafeAppendTextToLog(string text)
+        {
+            // безопасность вызовов из других потоков
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                AppendTextToLog(text);
+            });
         }
     }
 }

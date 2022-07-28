@@ -2,12 +2,10 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace shufflecad_4.Helpers
 {
@@ -138,17 +136,32 @@ namespace shufflecad_4.Helpers
                 if (InfoHolder.CurrentRPIData.RIC)
                 {
                     mainWindow.ChangeStateText("Loading Commands...");
+                    MainWindow.loggerPage.AppendTextToLog("Loading Commands...");
                     await Task.Run(() =>
                     {
-                        StandartRun("/PyCommands/LoadCommands.txt").WaitForExit();
+                        var p = StandartRun("/PyCommands/LoadCommands.txt");
+                        if (InfoHolder.CurrentSettings.DetailedOutput)
+                        {
+                            string output = p.StandardOutput.ReadToEnd();
+                            MainWindow.loggerPage.SafeAppendTextToLog(output);
+                        }
+                        p.WaitForExit();
                     });
                     mainWindow.ChangeStateText("Deploying...");
+                    MainWindow.loggerPage.AppendTextToLog("Deploying...");
                     await Task.Run(() =>
                     {
                         StandartRun("/PyCommands/StopProgram.txt").WaitForExit();
-                        StandartRun("/PyCommands/StartProgram.txt").WaitForExit();
+                        var p = StandartRun("/PyCommands/StartProgram.txt");
+                        if (InfoHolder.CurrentSettings.DetailedOutput)
+                        {
+                            string output = p.StandardOutput.ReadToEnd();
+                            MainWindow.loggerPage.SafeAppendTextToLog(output);
+                        }
+                        p.WaitForExit();
                     });
                     mainWindow.ChangeStateText("Deployed");
+                    MainWindow.loggerPage.AppendTextToLog("Deployed");
                 }
                 else
                 {
@@ -176,11 +189,19 @@ namespace shufflecad_4.Helpers
                 if (InfoHolder.CurrentRPIData.RIC)
                 {
                     mainWindow.ChangeStateText("Stopping...");
+                    MainWindow.loggerPage.AppendTextToLog("Stopping...");
                     await Task.Run(() =>
                     {
-                        StandartRun("/PyCommands/StopProgram.txt").WaitForExit();
+                        var p = StandartRun("/PyCommands/StopProgram.txt");
+                        if (InfoHolder.CurrentSettings.DetailedOutput)
+                        {
+                            string output = p.StandardOutput.ReadToEnd();
+                            MainWindow.loggerPage.SafeAppendTextToLog(output);
+                        }
+                        p.WaitForExit();
                     });
                     mainWindow.ChangeStateText("Stopped");
+                    MainWindow.loggerPage.AppendTextToLog("Stopped");
                 }
                 else
                 {

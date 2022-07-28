@@ -19,6 +19,7 @@ namespace shufflecad_4.Helpers
         private static ListenPort outcadChannel;
         private static ListenPort rpiDataChannel;
         private static ListenPort cameraChannel;
+        private static TalkPort joystickChannel;
 
         private static Task helperTask;
         private static bool stopTask;
@@ -311,6 +312,33 @@ namespace shufflecad_4.Helpers
             }
         }
 
+        private static long lastJoystickChannelUpdate = 0;
+
+        private static void OnJoyVarsNeedToBeSet(object sender, EventArgs args)
+        {
+            try
+            {
+                // joy variables
+                if (JoystickHelper.JoystickValues.Count > 0)
+                {
+                    List<string> stringVars = JoystickHelper.JoystickValues.Select(x => string.Format("{0};{1}", x.Name, x.Value)).ToList();
+                    string sendString = string.Join("&", stringVars);
+                    joystickChannel.OutString = sendString;
+                }
+                else
+                {
+                    joystickChannel.OutString = "null";
+                }
+
+                InfoHolder.CurrentRPIData.JoystickTime = (DateTimeOffset.Now.ToUnixTimeMilliseconds() - lastJoystickChannelUpdate).ToString();
+                lastJoystickChannelUpdate = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            }
+            catch (Exception ex)
+            {
+                InfoHolder.UserLogger.LogWrite(ex.ToString());
+            }
+        }
+
         private static void SetUpChannels()
         {
             inVariablesChannel = new ListenPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63253), 5);
@@ -319,6 +347,7 @@ namespace shufflecad_4.Helpers
             outcadChannel = new ListenPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63257), 300);
             rpiDataChannel = new ListenPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63256), 500);
             cameraChannel = new ListenPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63254), 0, true);
+            joystickChannel = new TalkPort(new IPEndPoint(IPAddress.Parse(InfoHolder.CurrentSettings.IpAddress), 63259), 5);
         }
 
         private static void LinkEvents()
@@ -329,13 +358,14 @@ namespace shufflecad_4.Helpers
             outcadChannel.OnGotMessage += new EventHandler<EventArgs>(OnOutcadVarsChanged);
             rpiDataChannel.OnGotMessage += new EventHandler<EventArgs>(OnRPIDataVarsChanged);
             cameraChannel.OnGotMessage += new EventHandler<EventArgs>(OnCameraVarsChanged);
+            joystickChannel.OnNeedToSetMessage += new EventHandler<EventArgs>(OnJoyVarsNeedToBeSet);
         }
 
         private static bool CheckAlive()
         {
             return inVariablesChannel.IsAlive() && outcadChannel.IsAlive() &&
                 rpiDataChannel.IsAlive() && cameraChannel.IsAlive() &&
-                chartsChannel.IsAlive() && outVariablesChannel.IsAlive();
+                chartsChannel.IsAlive() && outVariablesChannel.IsAlive() && joystickChannel.IsAlive();
         }
 
         private static void StartChannels()
@@ -346,6 +376,7 @@ namespace shufflecad_4.Helpers
             outcadChannel.StartListening();
             rpiDataChannel.StartListening();
             cameraChannel.StartListening();
+            joystickChannel.StartTalking();
         }
 
         private static void StopChannesls()
@@ -356,6 +387,7 @@ namespace shufflecad_4.Helpers
             outcadChannel.StopListening();
             rpiDataChannel.StopListening();
             cameraChannel.StopListening();
+            joystickChannel.StopTalking();
         }
 
         async public static Task StopHelper()

@@ -209,6 +209,7 @@ namespace shufflecad_4.Classes
         public string CameraTime { get; set; }
         public string OutcadTime { get; set; }
         public string RPIDataTime { get; set; }
+        public string JoystickTime { get; set; }
         public string SPITime { get; set; }
         public string SPIRxTime { get; set; }
         public string SPITxTime { get; set; }
@@ -224,6 +225,7 @@ namespace shufflecad_4.Classes
                 MainWindow.devPage.CameraTimeTB.Text = CameraTime;
                 MainWindow.devPage.OutcadTimeTB.Text = OutcadTime;
                 MainWindow.devPage.RPIDataTimeTB.Text = RPIDataTime;
+                MainWindow.devPage.JoystickTimeTB.Text = JoystickTime;
                 MainWindow.devPage.SPITimeTB.Text = SPITime;
                 MainWindow.devPage.RxSpiPrepTB.Text = SPIRxTime;
                 MainWindow.devPage.TxSpiPrepTB.Text = SPITxTime;
@@ -244,6 +246,7 @@ namespace shufflecad_4.Classes
             CameraTime = "0";
             OutcadTime = "0";
             RPIDataTime = "0";
+            JoystickTime = "0";
             SPITime = "0";
             SPIRxTime = "0";
             SPITxTime = "0";

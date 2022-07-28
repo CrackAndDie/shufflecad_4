@@ -22,6 +22,7 @@ namespace shufflecad_4.Pages
         {
             ChangeListViewSource();
             int changedValue = JoystickHelper.JoystickValues.FirstOrDefault(x => x.Name == JoystickHelper.CurrentlyChangedOffset).Value;
+            // этот кринж нужно как-то переписать
             Application.Current.Dispatcher.Invoke(() =>
             {
                 switch (JoystickHelper.CurrentlyChangedOffset)

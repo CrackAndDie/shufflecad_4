@@ -46,14 +46,14 @@
                                                   ButtonLetter="A" Grid.Row="2" Grid.Column="2"
                                                   VerticalAlignment="Bottom" Margin="20"/>
 
-            <joystickcontrols:ButtonControl x:Name="LeftUpButton" Width="50" Height="60"/>
-            <joystickcontrols:ButtonControl x:Name="RightUpButton" Width="50" Height="60" Grid.Column="2"/>
-            <joystickcontrols:SmallButtonControl x:Name="LeftBottomButton" Grid.Row="1"/>
-            <joystickcontrols:SmallButtonControl x:Name="RightBottomButton" Grid.Row="1" Grid.Column="2"/>
+            <joystickcontrols:ButtonControl x:Name="LeftUpButton"/>
+            <joystickcontrols:ButtonControl x:Name="RightUpButton" Grid.Column="2"/>
+            <joystickcontrols:ButtonControl x:Name="LeftBottomButton" Grid.Row="1" ButtonShape="Small"/>
+            <joystickcontrols:ButtonControl x:Name="RightBottomButton" Grid.Row="1" Grid.Column="2" ButtonShape="Small"/>
 
-            <joystickcontrols:SmallButtonControl x:Name="LeftCenterButton" Grid.Row="1" Grid.Column="1"
+            <joystickcontrols:ButtonControl x:Name="LeftCenterButton" Grid.Row="1" Grid.Column="1" ButtonShape="Small"
                                                  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15, 0"/>
-            <joystickcontrols:SmallButtonControl x:Name="RightCenterButton" Grid.Row="1" Grid.Column="1"
+            <joystickcontrols:ButtonControl x:Name="RightCenterButton" Grid.Row="1" Grid.Column="1" ButtonShape="Small"
                                                  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15, 0"/>
 
             <Image Source="/Res/logo_4_gray.png" Grid.Row="2" Grid.Column="1" 

@@ -31,9 +31,11 @@
                 <ColumnDefinition Width="110px" ></ColumnDefinition>
                 <ColumnDefinition Width="130px" ></ColumnDefinition>
                 <ColumnDefinition Width="110px" ></ColumnDefinition>
+                <ColumnDefinition Width="130px" ></ColumnDefinition>
+                <ColumnDefinition Width="110px" ></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Text="Communication" FontSize="22" 
+            <TextBlock Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" Text="Communication" FontSize="22" 
                       Style="{StaticResource DevPageText}"/>
 
             <TextBlock x:Name="VarsOutTimeTB" Grid.Column="1" Grid.Row="1" Text="None" Style="{StaticResource DevPageText}"/>
@@ -48,25 +50,28 @@
             <TextBlock x:Name="CameraTimeTB" Grid.Column="1" Grid.Row="4" Text="None" Style="{StaticResource DevPageText}"/>
             <TextBlock Grid.Column="0" Grid.Row="4" Text="Camera (ms):" Style="{StaticResource DevPageText}"/>
 
-            <TextBlock x:Name="OutcadTimeTB" Grid.Column="1" Grid.Row="5" Text="None" Style="{StaticResource DevPageText}"/>
-            <TextBlock Grid.Column="0" Grid.Row="5" Text="Outcad (ms):" Style="{StaticResource DevPageText}"/>
+            <TextBlock x:Name="OutcadTimeTB" Grid.Column="3" Grid.Row="1" Text="None" Style="{StaticResource DevPageText}"/>
+            <TextBlock Grid.Column="2" Grid.Row="1" Text="Outcad (ms):" Style="{StaticResource DevPageText}"/>
 
-            <TextBlock x:Name="RPIDataTimeTB" Grid.Column="1" Grid.Row="6" Text="None" Style="{StaticResource DevPageText}"/>
-            <TextBlock Grid.Column="0" Grid.Row="6" Text="RPI data (ms):" Style="{StaticResource DevPageText}"/>
+            <TextBlock x:Name="RPIDataTimeTB" Grid.Column="3" Grid.Row="2" Text="None" Style="{StaticResource DevPageText}"/>
+            <TextBlock Grid.Column="2" Grid.Row="2" Text="RPI data (ms):" Style="{StaticResource DevPageText}"/>
 
-            <TextBlock Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="0" Text="VMX" FontSize="22" Style="{StaticResource DevPageText}"/>
+            <TextBlock x:Name="JoystickTimeTB" Grid.Column="3" Grid.Row="3" Text="None" Style="{StaticResource DevPageText}"/>
+            <TextBlock Grid.Column="2" Grid.Row="3" Text="Joystick (ms):" Style="{StaticResource DevPageText}"/>
 
-            <TextBlock x:Name="SPITimeTB" Grid.Column="3" Grid.Row="1" Text="None" Style="{StaticResource DevPageText}"/>
-            <TextBlock Grid.Column="2" Grid.Row="1" Text="SPI (ms):" Style="{StaticResource DevPageText}"/>
+            <TextBlock Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="0" Text="VMX" FontSize="22" Style="{StaticResource DevPageText}"/>
 
-            <TextBlock x:Name="RxSpiPrepTB" Grid.Column="3" Grid.Row="2" Text="None" Style="{StaticResource DevPageText}"/>
-            <TextBlock Grid.Column="2" Grid.Row="2" Text="Rx SPI (ms):" Style="{StaticResource DevPageText}"/>
+            <TextBlock x:Name="SPITimeTB" Grid.Column="5" Grid.Row="1" Text="None" Style="{StaticResource DevPageText}"/>
+            <TextBlock Grid.Column="4" Grid.Row="1" Text="SPI (ms):" Style="{StaticResource DevPageText}"/>
 
-            <TextBlock x:Name="TxSpiPrepTB" Grid.Column="3" Grid.Row="3" Text="None" Style="{StaticResource DevPageText}"/>
-            <TextBlock Grid.Column="2" Grid.Row="3" Text="Tx SPI (ms):" Style="{StaticResource DevPageText}"/>
+            <TextBlock x:Name="RxSpiPrepTB" Grid.Column="5" Grid.Row="2" Text="None" Style="{StaticResource DevPageText}"/>
+            <TextBlock Grid.Column="4" Grid.Row="2" Text="Rx SPI (ms):" Style="{StaticResource DevPageText}"/>
 
-            <TextBlock x:Name="SpiCountTB" Grid.Column="3" Grid.Row="4" Text="None" Style="{StaticResource DevPageText}"/>
-            <TextBlock Grid.Column="2" Grid.Row="4" Text="SPI calls / s:" Style="{StaticResource DevPageText}"/>
+            <TextBlock x:Name="TxSpiPrepTB" Grid.Column="5" Grid.Row="3" Text="None" Style="{StaticResource DevPageText}"/>
+            <TextBlock Grid.Column="4" Grid.Row="3" Text="Tx SPI (ms):" Style="{StaticResource DevPageText}"/>
+
+            <TextBlock x:Name="SpiCountTB" Grid.Column="5" Grid.Row="4" Text="None" Style="{StaticResource DevPageText}"/>
+            <TextBlock Grid.Column="4" Grid.Row="4" Text="SPI calls / s:" Style="{StaticResource DevPageText}"/>
         </Grid>
     </Grid>
 </Page>

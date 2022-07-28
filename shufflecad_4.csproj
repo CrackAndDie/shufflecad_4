@@ -140,10 +140,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\JoystickControls\SmallButtonControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\JoystickControls\StickControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -202,9 +198,6 @@
     </Compile>
     <Compile Include="Controls\JoystickControls\LetterButtonControl.xaml.cs">
       <DependentUpon>LetterButtonControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\JoystickControls\SmallButtonControl.xaml.cs">
-      <DependentUpon>SmallButtonControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\JoystickControls\StickControl.xaml.cs">
       <DependentUpon>StickControl.xaml</DependentUpon>

@@ -1,5 +1,6 @@
 ﻿using shufflecad_4.Helpers;
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -19,7 +20,8 @@ namespace shufflecad_4.Pages
 
         private void OnJoyValuesChange(object sender, EventArgs args)
         {
-            int changedValue = JoystickHelper.JoystickValues[JoystickHelper.CurrentlyChangedOffset];
+            ChangeListViewSource();
+            int changedValue = JoystickHelper.JoystickValues.FirstOrDefault(x => x.Name == JoystickHelper.CurrentlyChangedOffset).Value;
             Application.Current.Dispatcher.Invoke(() =>
             {
                 switch (JoystickHelper.CurrentlyChangedOffset)
@@ -119,6 +121,22 @@ namespace shufflecad_4.Pages
                 }
             });
            
+        }
+
+        private int lastJoystickValuesCount = 0;
+
+        private void ChangeListViewSource()
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                if (lastJoystickValuesCount != JoystickHelper.JoystickValues.Count)
+                {
+                    AllControls.ItemsSource = null;
+                    AllControls.Items.Clear();
+                    AllControls.ItemsSource = JoystickHelper.JoystickValues;
+                    lastJoystickValuesCount = JoystickHelper.JoystickValues.Count;
+                }
+            });
         }
     }
 }

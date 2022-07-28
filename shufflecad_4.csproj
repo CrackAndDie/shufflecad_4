@@ -169,6 +169,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\ConnectionClasses\Interfaces\IPort.cs" />
+    <Compile Include="Classes\JoystickClass.cs" />
     <Compile Include="Classes\SavingVariableClass.cs" />
     <Compile Include="Classes\Variables\CameraVariable.cs" />
     <Compile Include="Classes\LanguageClass.cs" />

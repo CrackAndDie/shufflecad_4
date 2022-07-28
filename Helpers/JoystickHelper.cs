@@ -1,5 +1,6 @@
 ﻿using SharpDX;
 using SharpDX.DirectInput;
+using shufflecad_4.Classes;
 using shufflecad_4.Holders;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace shufflecad_4.Helpers
 {
     internal class JoystickHelper
     {
-        public static IDictionary<string, int> JoystickValues = new Dictionary<string, int>();
+        public static List<JoystickClass> JoystickValues = new List<JoystickClass>();
         public static string CurrentlyChangedOffset;
         public static event EventHandler OnJoyValueChange;
 
@@ -65,13 +66,18 @@ namespace shufflecad_4.Helpers
                                 var datas = joystick.GetBufferedData();
                                 foreach (var state in datas)
                                 {
-                                    if (JoystickValues.ContainsKey(state.Offset.ToString()))
+                                    var element = JoystickValues.FirstOrDefault(x => x.Name == state.Offset.ToString());
+                                    if (element != null)
                                     {
-                                        JoystickValues[state.Offset.ToString()] = state.Value;
+                                        element.Value = state.Value;
                                     }
                                     else
                                     {
-                                        JoystickValues.Add(state.Offset.ToString(), state.Value);
+                                        JoystickValues.Add(new JoystickClass()
+                                        {
+                                            Name = state.Offset.ToString(), 
+                                            Value = state.Value 
+                                        });
                                     }
 
                                     CurrentlyChangedOffset = state.Offset.ToString();

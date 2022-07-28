@@ -79,6 +79,43 @@ namespace shufflecad_4.Pages
                             RightStickControl.SetClickValue(changedValue);
                             break;
                         }
+                    case "Z":
+                        {
+                            if (changedValue == 128)
+                            {
+                                RightUpButton.SetValue(128);
+                            }
+                            else if (changedValue == 65408)
+                            {
+                                LeftUpButton.SetValue(128);
+                            }
+                            else
+                            {
+                                RightUpButton.SetValue(0);
+                                LeftUpButton.SetValue(0);
+                            }
+                            break;
+                        }
+                    case "Buttons4":
+                        {
+                            LeftBottomButton.SetValue(changedValue);
+                            break;
+                        }
+                    case "Buttons5":
+                        {
+                            RightBottomButton.SetValue(changedValue);
+                            break;
+                        }
+                    case "Buttons6":
+                        {
+                            LeftCenterButton.SetValue(changedValue);
+                            break;
+                        }
+                    case "Buttons7":
+                        {
+                            RightCenterButton.SetValue(changedValue);
+                            break;
+                        }
                 }
             });
            

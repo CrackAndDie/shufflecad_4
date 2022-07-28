@@ -9,39 +9,51 @@
       Title="JoystickPage">
 
     <Grid>
-        <Grid Width="500" Height="340">
+        <Grid Width="500" Height="320">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="80"/>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="30"/>
                 <RowDefinition Height="150"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Border Background="Gray" Grid.ColumnSpan="10" Grid.RowSpan="10" CornerRadius="30"/>
+            <Border Background="#FF737373" Grid.ColumnSpan="10" Grid.RowSpan="10" CornerRadius="30"/>
 
-            <joystickcontrols:CrossControl x:Name="ThisCrossControl" Grid.Row="3"/>
+            <joystickcontrols:CrossControl x:Name="ThisCrossControl" Grid.Row="2"/>
 
-            <joystickcontrols:StickControl x:Name="LeftStickControl" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0, 80, 0, 0"/>
-            <joystickcontrols:StickControl x:Name="RightStickControl" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"  Margin="0, 80, 0, 0"/>
+            <joystickcontrols:StickControl x:Name="LeftStickControl" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0, 80, 0, 0"/>
+            <joystickcontrols:StickControl x:Name="RightStickControl" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"  Margin="0, 80, 0, 0"/>
 
             <joystickcontrols:LetterButtonControl x:Name="XButtonControl" ButtonColor="#db4ba1" 
-                                                  ButtonLetter="X" Grid.Row="3" Grid.Column="2"
+                                                  ButtonLetter="X" Grid.Row="2" Grid.Column="2"
                                                   HorizontalAlignment="Left" Margin="20"/>
             <joystickcontrols:LetterButtonControl x:Name="YButtonControl" ButtonColor="#5ad66b" 
-                                                  ButtonLetter="Y" Grid.Row="3" Grid.Column="2"
+                                                  ButtonLetter="Y" Grid.Row="2" Grid.Column="2"
                                                   VerticalAlignment="Top" Margin="20"/>
             <joystickcontrols:LetterButtonControl x:Name="BButtonControl" ButtonColor="#eb5252" 
-                                                  ButtonLetter="B" Grid.Row="3" Grid.Column="2"
+                                                  ButtonLetter="B" Grid.Row="2" Grid.Column="2"
                                                   HorizontalAlignment="Right" Margin="20"/>
             <joystickcontrols:LetterButtonControl x:Name="AButtonControl" ButtonColor="#527deb" 
-                                                  ButtonLetter="A" Grid.Row="3" Grid.Column="2"
+                                                  ButtonLetter="A" Grid.Row="2" Grid.Column="2"
                                                   VerticalAlignment="Bottom" Margin="20"/>
+
+            <joystickcontrols:ButtonControl x:Name="LeftUpButton" Width="50" Height="60"/>
+            <joystickcontrols:ButtonControl x:Name="RightUpButton" Width="50" Height="60" Grid.Column="2"/>
+            <joystickcontrols:SmallButtonControl x:Name="LeftBottomButton" Grid.Row="1"/>
+            <joystickcontrols:SmallButtonControl x:Name="RightBottomButton" Grid.Row="1" Grid.Column="2"/>
+
+            <joystickcontrols:SmallButtonControl x:Name="LeftCenterButton" Grid.Row="1" Grid.Column="1"
+                                                 VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15, 0"/>
+            <joystickcontrols:SmallButtonControl x:Name="RightCenterButton" Grid.Row="1" Grid.Column="1"
+                                                 VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15, 0"/>
+
+            <Image Source="/Res/logo_4_gray.png" Grid.Row="2" Grid.Column="1" 
+                   RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform" Height="120" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Page>

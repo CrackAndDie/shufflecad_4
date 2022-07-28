@@ -17,6 +17,8 @@ namespace shufflecad_4
     {
         public static List<LanguageClass> languageClasses;
 
+        public static MainWindow ThisMainWindow;
+
         public static ConnectionPage connectionPage;
         public static RunPage runPage;
         public static FrontPanelPage frontPanelPage;
@@ -24,12 +26,15 @@ namespace shufflecad_4
         public static CameraPage cameraPage;
         public static SettingsPage settingsPage;
         public static DevPage devPage;
+        public static JoystickPage joyPage;
 
         public MainWindow()
         {
             InitializeComponent();
 
             this.WindowStyle = WindowStyle.None;
+
+            ThisMainWindow = this;
 
             SetUpVisual();
 
@@ -47,8 +52,7 @@ namespace shufflecad_4
                 },
             };
 
-            LanguageCB.ItemsSource = languageClasses;
-            LanguageCB.SelectedIndex = 0;
+            ThisHeader.InitLangCB(languageClasses);
 
             connectionPage = new ConnectionPage();
             runPage = new RunPage();
@@ -56,19 +60,20 @@ namespace shufflecad_4
             loggerPage = new LoggerPage();
             cameraPage = new CameraPage();
             devPage = new DevPage();
+            joyPage = new JoystickPage();
 
             settingsPage = new SettingsPage();
             settingsPage.LoadAndSet();
 
             CommandsHelper.StartChecks();
             ConnectionHelper.StartHelper();
+            JoystickHelper.StartJoystick();
 
             ConnectionHelper.OnRPIDataChange += new EventHandler<EventArgs>(InfoHolder.CurrentRPIData.OnRPIDataChange);
 
             loggerPage.AppendTextToLog("Shufflecad inited", "#00AEAE");
 
-            ProgressAsyncPB.Visibility = Visibility.Collapsed;
-            AllDonePI.Visibility = Visibility.Visible;
+            ThisHeader.InitDone();
         }
 
         public const string STATE_DEFAULT_COLOR = "#F0F8FF";
@@ -77,43 +82,21 @@ namespace shufflecad_4
 
         public void ChangeStateText(string text, string color = STATE_DEFAULT_COLOR)
         {
-            CurrentState.Text = text;
-            CurrentState.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(color));
-        }
-
-        private void MinimizeButtonClick(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
-        private void MaximizeButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Maximized;
-        }
-
-        private void RestoreButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Normal;
-        }
-
-        async private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            await CommandsHelper.StopChecks();
-            await ConnectionHelper.StopHelper();
-            this.Close();
+            ThisHeader.CurrentState.Text = text;
+            ThisHeader.CurrentState.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(color));
         }
 
         private void RefreshMaximizeRestoreButton()
         {
             if (this.WindowState == WindowState.Maximized)
             {
-                this.maximizeButton.Visibility = Visibility.Collapsed;
-                this.restoreButton.Visibility = Visibility.Visible;
+                ThisHeader.maximizeButton.Visibility = Visibility.Collapsed;
+                ThisHeader.restoreButton.Visibility = Visibility.Visible;
             }
             else
             {
-                this.maximizeButton.Visibility = Visibility.Visible;
-                this.restoreButton.Visibility = Visibility.Collapsed;
+                ThisHeader.maximizeButton.Visibility = Visibility.Visible;
+                ThisHeader.restoreButton.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -151,6 +134,9 @@ namespace shufflecad_4
                     break;
                 case 6:
                     MainFrame.Navigate(devPage);
+                    break;
+                case 7:
+                    MainFrame.Navigate(joyPage);
                     break;
             }
         }

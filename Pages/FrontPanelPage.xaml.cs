@@ -195,7 +195,7 @@ namespace shufflecad_4.Pages
             }
             else
             {
-                System.Windows.Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().ChangeStateText("Error while saving file", MainWindow.STATE_ERROR_COLOR);
+                MainWindow.ThisMainWindow.ChangeStateText("Error while saving file", MainWindow.STATE_ERROR_COLOR);
             }
         }
 
@@ -212,7 +212,7 @@ namespace shufflecad_4.Pages
             }
             else
             {
-                System.Windows.Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().ChangeStateText("Error while opening file", MainWindow.STATE_ERROR_COLOR);
+                MainWindow.ThisMainWindow.ChangeStateText("Error while opening file", MainWindow.STATE_ERROR_COLOR);
             }
         }
 

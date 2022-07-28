@@ -1,0 +1,76 @@
+﻿<Page x:Class="shufflecad_4.Pages.JoystickPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:shufflecad_4.Pages" xmlns:joystickcontrols="clr-namespace:shufflecad_4.Controls.JoystickControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="JoystickPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="220"/>
+        </Grid.ColumnDefinitions>
+        <Grid Width="500" Height="320">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Background="#FF737373" Grid.ColumnSpan="10" Grid.RowSpan="10" CornerRadius="30"/>
+
+            <joystickcontrols:CrossControl x:Name="ThisCrossControl" Grid.Row="2"/>
+
+            <joystickcontrols:StickControl x:Name="LeftStickControl" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0, 80, 0, 0"/>
+            <joystickcontrols:StickControl x:Name="RightStickControl" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"  Margin="0, 80, 0, 0"/>
+
+            <joystickcontrols:LetterButtonControl x:Name="XButtonControl" ButtonColor="#db4ba1" 
+                                                  ButtonLetter="X" Grid.Row="2" Grid.Column="2"
+                                                  HorizontalAlignment="Left" Margin="20"/>
+            <joystickcontrols:LetterButtonControl x:Name="YButtonControl" ButtonColor="#5ad66b" 
+                                                  ButtonLetter="Y" Grid.Row="2" Grid.Column="2"
+                                                  VerticalAlignment="Top" Margin="20"/>
+            <joystickcontrols:LetterButtonControl x:Name="BButtonControl" ButtonColor="#eb5252" 
+                                                  ButtonLetter="B" Grid.Row="2" Grid.Column="2"
+                                                  HorizontalAlignment="Right" Margin="20"/>
+            <joystickcontrols:LetterButtonControl x:Name="AButtonControl" ButtonColor="#527deb" 
+                                                  ButtonLetter="A" Grid.Row="2" Grid.Column="2"
+                                                  VerticalAlignment="Bottom" Margin="20"/>
+
+            <joystickcontrols:ButtonControl x:Name="LeftUpButton"/>
+            <joystickcontrols:ButtonControl x:Name="RightUpButton" Grid.Column="2"/>
+            <joystickcontrols:ButtonControl x:Name="LeftBottomButton" Grid.Row="1" ButtonShape="Small"/>
+            <joystickcontrols:ButtonControl x:Name="RightBottomButton" Grid.Row="1" Grid.Column="2" ButtonShape="Small"/>
+
+            <joystickcontrols:ButtonControl x:Name="LeftCenterButton" Grid.Row="1" Grid.Column="1" ButtonShape="Small"
+                                                 VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15, 0"/>
+            <joystickcontrols:ButtonControl x:Name="RightCenterButton" Grid.Row="1" Grid.Column="1" ButtonShape="Small"
+                                                 VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15, 0"/>
+
+            <Image Source="/Res/logo_4_gray.png" Grid.Row="2" Grid.Column="1" 
+                   RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform" Height="120" VerticalAlignment="Top"/>
+        </Grid>
+
+        <ListView x:Name="AllControls" Grid.Column="1" Grid.Row="0" Background="#3f444f" BorderThickness="0" 
+                        Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                        HorizontalContentAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <UniformGrid Rows="2" HorizontalAlignment="Stretch" Margin="-5">
+                        <TextBlock FontSize="14" Text="{Binding Path=Name}" HorizontalAlignment="Center" Margin="0, 0" Foreground="AliceBlue"/>
+                        <TextBlock FontSize="14" Text="{Binding Path=Value}" HorizontalAlignment="Center" Margin="0, 0" Foreground="#FFC7C7C7"/>
+                    </UniformGrid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

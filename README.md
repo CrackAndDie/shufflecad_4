@@ -20,7 +20,7 @@
 
 - [ReadTheDocs](https://studicad.readthedocs.io/en/latest/docs/all_docs/Shufflecad_docs/index.html)
 
-<h3>Скриншоты</h3>
+<h3>Скриншоты:</h3>
 
 ![image](https://user-images.githubusercontent.com/52558686/181498799-6ec54fb0-f5b0-4ef0-90dd-abd924c9e4fd.png)
 ![image](https://user-images.githubusercontent.com/52558686/181498872-f0340008-2cc5-447d-bd60-6c0bdf36c283.png)
